@@ -1,0 +1,162 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Smarty
+providerId: smarty
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+type: freemium
+description: >-
+  Smarty offers a freemium model with a 42-day free trial for US address APIs
+  (1,000 lookups) and 100 lookups for international. Paid plans are subscription
+  based with a fixed monthly lookup quota. No overages are charged; service halts
+  when the quota is depleted. Enterprise plans with custom quotas and throughput
+  are available on request.
+plans:
+  - name: Free Trial
+    description: >-
+      42-day trial with no credit card required. Covers US address verification
+      with 1,000 lookups.
+    type: free
+    targets:
+      - api: smarty:us-street-address-api
+    quotas:
+      - metric: address_lookups
+        limit: 1000
+        timeFrame: trial_42_days
+        type: quota
+    price:
+      amount: 0
+      currency: USD
+      period: once
+  - name: Free Trial - International
+    description: >-
+      42-day trial with no credit card required. Covers international address
+      verification with 100 lookups.
+    type: free
+    targets:
+      - api: smarty:international-street-address-api
+    quotas:
+      - metric: address_lookups
+        limit: 100
+        timeFrame: trial_42_days
+        type: quota
+    price:
+      amount: 0
+      currency: USD
+      period: once
+  - name: Professional - US Address
+    description: >-
+      Monthly subscription for US address verification. Lookup tier selected at
+      signup. Up to 25,000 address lookups per second throughput. Includes 210M
+      US addresses, 55 metadata points, and ZIP9 geocodes.
+    type: paid
+    targets:
+      - api: smarty:us-street-address-api
+      - api: smarty:us-autocomplete-pro-api
+      - api: smarty:us-zipcode-api
+      - api: smarty:us-reverse-geocode-api
+      - api: smarty:us-extract-api
+    quotas:
+      - metric: address_lookups_per_month
+        limit: 1000
+        timeFrame: month
+        type: quota
+        tier: starter
+      - metric: address_lookups_per_month
+        limit: 5000
+        timeFrame: month
+        type: quota
+        tier: small
+      - metric: address_lookups_per_month
+        limit: 10000
+        timeFrame: month
+        type: quota
+        tier: medium
+      - metric: address_lookups_per_month
+        limit: 25000
+        timeFrame: month
+        type: quota
+        tier: large
+      - metric: address_lookups_per_month
+        limit: 50000
+        timeFrame: month
+        type: quota
+        tier: xlarge
+      - metric: address_lookups_per_month
+        limit: 85000
+        timeFrame: month
+        type: quota
+        tier: xxlarge
+      - metric: address_lookups_per_month
+        limit: 170000
+        timeFrame: month
+        type: quota
+        tier: xxxlarge
+    throughput:
+      metric: address_lookups_per_second
+      limit: 25000
+    price:
+      amount: 50
+      currency: USD
+      period: month
+      notes: Starting price at 1K lookups/month tier; price scales with lookup tier
+  - name: Professional - International Address
+    description: >-
+      Monthly subscription for international address verification. Up to 3,500
+      address lookups per second throughput. Lookup tier selected at signup.
+    type: paid
+    targets:
+      - api: smarty:international-street-address-api
+      - api: smarty:international-address-autocomplete-api
+      - api: smarty:international-postal-code-api
+    quotas:
+      - metric: address_lookups_per_month
+        limit: 1000
+        timeFrame: month
+        type: quota
+        tier: starter
+      - metric: address_lookups_per_month
+        limit: 2500
+        timeFrame: month
+        type: quota
+        tier: small
+      - metric: address_lookups_per_month
+        limit: 5000
+        timeFrame: month
+        type: quota
+        tier: medium
+      - metric: address_lookups_per_month
+        limit: 10000
+        timeFrame: month
+        type: quota
+        tier: large
+    throughput:
+      metric: address_lookups_per_second
+      limit: 3500
+    price:
+      amount: 95
+      currency: USD
+      period: month
+      notes: Starting price at 1K lookups/month tier; price scales with lookup tier
+  - name: Enterprise
+    description: >-
+      Custom plan with unlimited annual lookups, custom country selection for
+      international APIs, custom throughput, custom legal terms, enhanced data
+      privacy, and enhanced compliance options. Contact Smarty for a quote.
+    type: enterprise
+    quotas:
+      - metric: address_lookups
+        limit: -1
+        timeFrame: year
+        type: quota
+        notes: Unlimited / custom
+    price:
+      amount: 0
+      currency: USD
+      period: custom
+      notes: Contact Smarty for custom pricing
+notes: >-
+  No overage charges apply. When quotas are depleted the API returns a 402
+  Payment Required error. Alerts are sent at 10% remaining capacity.
+  Month-to-month subscriptions have no cancellation fees.

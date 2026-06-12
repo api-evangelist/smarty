@@ -1,0 +1,118 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: Smarty
+providerId: smarty
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >-
+  FinOps profile for Smarty address intelligence APIs, covering US and
+  international address verification, geocoding, autocomplete, and enrichment.
+  Billing is subscription-based with fixed monthly lookup quotas; no overages
+  are charged and the API returns 402 when quota is depleted.
+billingModel:
+  type: subscription
+  cadence: monthly
+  overagePolicy: none
+  quotaDepletionCode: 402
+  alertThreshold: 10_percent_remaining
+  cancellationFee: none
+  annualDiscounts: true
+focusColumns:
+  - column: ServiceName
+    value: Smarty Address APIs
+  - column: ServiceCategory
+    value: Location Data / Address Intelligence
+  - column: ProviderName
+    value: Smarty
+  - column: BillingCurrency
+    value: USD
+  - column: ChargeType
+    value: Usage
+  - column: ResourceType
+    value: API Lookup
+meters:
+  - name: us_address_lookup
+    description: Single US address verification lookup (GET or POST batch item)
+    unit: lookup
+    applicableTo:
+      - smarty:us-street-address-api
+      - smarty:us-extract-api
+    pricing:
+      model: included_in_subscription
+      notes: >-
+        Consumed against monthly quota included in Professional plan starting
+        at $50/month for 1,000 lookups/month
+  - name: us_autocomplete_lookup
+    description: Single US address autocomplete suggestion request
+    unit: lookup
+    applicableTo:
+      - smarty:us-autocomplete-pro-api
+    pricing:
+      model: included_in_subscription
+  - name: us_zipcode_lookup
+    description: Single US ZIP code lookup
+    unit: lookup
+    applicableTo:
+      - smarty:us-zipcode-api
+    pricing:
+      model: included_in_subscription
+  - name: us_reverse_geocode_lookup
+    description: Single US reverse geocode coordinate-to-address lookup
+    unit: lookup
+    applicableTo:
+      - smarty:us-reverse-geocode-api
+    pricing:
+      model: included_in_subscription
+  - name: us_enrichment_lookup
+    description: Single US address enrichment lookup returning up to 350 property attributes
+    unit: lookup
+    applicableTo:
+      - smarty:us-address-enrichment-api
+    pricing:
+      model: included_in_subscription
+      notes: May require separate enrichment subscription; verify with Smarty
+  - name: international_address_lookup
+    description: Single international address verification lookup
+    unit: lookup
+    applicableTo:
+      - smarty:international-street-address-api
+      - smarty:international-address-autocomplete-api
+      - smarty:international-postal-code-api
+    pricing:
+      model: included_in_subscription
+      notes: >-
+        International APIs require a separate subscription starting at
+        $95/month for 1,000 lookups/month
+principles:
+  - name: Visibility
+    description: >-
+      Monitor monthly lookup consumption via the Smarty dashboard. Smarty sends
+      alerts at 10% remaining quota. Track US and international quotas
+      separately as they are billed under distinct subscriptions.
+    actions:
+      - Set up email alerts for quota thresholds
+      - Review the Smarty dashboard for real-time usage metrics
+      - Use status.smarty.com to monitor API availability
+  - name: Optimization
+    description: >-
+      Reduce costs by batching US address POST requests (up to 100 per call)
+      to minimize per-request overhead. Use autocomplete APIs to prevent
+      invalid address submissions before they consume street-address verification
+      quotas. Cache validated addresses to avoid re-verifying known-good records.
+      Choose annual billing over monthly for plan discounts.
+    actions:
+      - Batch POST requests up to 100 addresses per call for US Street API
+      - Cache verified addresses to avoid redundant lookup consumption
+      - Implement autocomplete to catch invalid inputs early
+      - Evaluate annual vs monthly subscription pricing
+      - Match lookup tier to actual monthly volume to avoid wasted quota
+  - name: Accountability
+    description: >-
+      Allocate API costs by product team or use-case (checkout validation,
+      batch enrichment, real-time geocoding) using internal tagging on API
+      calls. Separate US and international subscriptions for accurate
+      cost-center attribution.
+    actions:
+      - Tag API request sources by application or team
+      - Separate US and international subscription costs by cost center
+      - Review utilization before renewal to right-size the plan tier

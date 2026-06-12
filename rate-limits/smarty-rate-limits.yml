@@ -1,0 +1,83 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: Smarty
+providerId: smarty
+created: '2026-06-12'
+modified: '2026-06-12'
+description: >-
+  Smarty implements two categories of rate limits: security-based limits that
+  apply per IP address on embedded-key requests, and plan-based limits that
+  throttle the entire license when lookups per second exceed the plan allowance.
+  Both return HTTP 429 with a Retry-After header. Rate limits use a Leaky Bucket
+  algorithm.
+throttled:
+  httpStatusCode: 429
+  description: Too Many Requests — rate limit exceeded for this IP or license
+retryAfter:
+  header: Retry-After
+  unit: seconds
+  description: >-
+    Seconds to wait before the next request. Smarty recommends implementing
+    dynamic retry logic using this header value. Official SDKs include built-in
+    retry mechanisms for automatic 429 handling.
+algorithm: Leaky Bucket
+limits:
+  - scope: ip_per_embedded_key
+    metric: requests
+    limit: undisclosed
+    timeFrame: second
+    description: >-
+      Security-based limit applied per source IP address when using embedded-key
+      authentication. Exact thresholds are not publicly disclosed to maintain
+      security effectiveness. Trusted IPs can be whitelisted (up to 100 hosts
+      per embedded key) to bypass these limits.
+    authType: embedded_key
+  - scope: license
+    metric: address_lookups_per_second
+    limit: 25000
+    timeFrame: second
+    description: >-
+      Plan-based throughput limit for US address APIs. Throttles the entire
+      license rather than individual machines. Applies when using secret-key
+      authentication.
+    authType: secret_key
+    applicableTo:
+      - smarty:us-street-address-api
+      - smarty:us-autocomplete-pro-api
+      - smarty:us-zipcode-api
+      - smarty:us-reverse-geocode-api
+      - smarty:us-extract-api
+      - smarty:us-address-enrichment-api
+  - scope: license
+    metric: address_lookups_per_second
+    limit: 3500
+    timeFrame: second
+    description: >-
+      Plan-based throughput limit for international address APIs. Throttles the
+      entire license rather than individual machines.
+    authType: secret_key
+    applicableTo:
+      - smarty:international-street-address-api
+      - smarty:international-address-autocomplete-api
+      - smarty:international-postal-code-api
+errorCodes:
+  - code: 429
+    meaning: Rate limit exceeded — Retry-After header present
+  - code: 402
+    meaning: Payment Required — lookup quota depleted for the billing period
+authentication:
+  types:
+    - name: embedded_key
+      description: >-
+        auth-id and auth-token passed as query parameters; HTTP GET only;
+        subject to per-IP security rate limits
+    - name: secret_key
+      description: >-
+        auth-id and auth-token passed as query parameters; HTTP GET and POST
+        supported; subject to plan-based throughput limits
+embeddedKeyWhitelist:
+  maxHostsPerKey: 100
+  description: Whitelisting trusted IPs allows bypassing security-based rate limits for those IPs
+notes: >-
+  SDK built-in retry: All official Smarty SDKs handle 429 responses with
+  automatic back-off using the Retry-After header value.
