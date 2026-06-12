@@ -1,0 +1,120 @@
+vocabulary:
+  - term: AddressVerification
+    label: Address Verification
+    description: The process of confirming that a mailing address exists and is deliverable according to postal authority records.
+    related: USStreetAddress, USPS, Deliverability
+
+  - term: AddressStandardization
+    label: Address Standardization
+    description: Normalizing an address to a canonical format accepted by the postal authority, correcting abbreviations, spelling, and component order.
+    related: AddressVerification, Components
+
+  - term: USStreetAddress
+    label: US Street Address
+    description: A physical mailing address within the United States, composed of street number, street name, secondary unit, city, state, and ZIP code.
+    related: AddressVerification, ZIPCode, Geocoding
+
+  - term: InternationalAddress
+    label: International Address
+    description: A mailing address outside the United States, formatted according to the postal conventions of the destination country.
+    related: AddressVerification, PostalCode
+
+  - term: AddressAutocomplete
+    label: Address Autocomplete
+    description: A real-time suggestion service that returns verified candidate addresses as a user types, reducing data entry errors and improving form completion speed.
+    related: USStreetAddress, InternationalAddress
+
+  - term: Geocoding
+    label: Geocoding
+    description: The process of converting an address or location description into geographic coordinates (latitude and longitude).
+    related: USStreetAddress, Coordinate, ZIPCode
+
+  - term: ReverseGeocoding
+    label: Reverse Geocoding
+    description: The process of converting geographic coordinates (latitude/longitude) into a human-readable address.
+    related: Geocoding, Coordinate
+
+  - term: AddressEnrichment
+    label: Address Enrichment
+    description: Appending additional property, demographic, or geographic attributes to a base address record, returning up to 350 data points per address.
+    related: USStreetAddress, PropertyData
+
+  - term: AddressExtraction
+    label: Address Extraction
+    description: Identifying and parsing one or more addresses embedded within unstructured freeform text.
+    related: USStreetAddress
+
+  - term: ZIPCode
+    label: ZIP Code
+    description: A US postal code system used by the USPS to identify mail delivery areas; Smarty supports ZIP+4 precision (ZIP9).
+    related: USStreetAddress, Geocoding
+
+  - term: PostalCode
+    label: Postal Code
+    description: A code used by postal services in many countries to identify a geographic area for mail sorting and delivery.
+    related: InternationalAddress
+
+  - term: Deliverability
+    label: Deliverability
+    description: A classification indicating whether mail or parcels can be successfully delivered to a given address (e.g., deliverable, vacant, no-stat).
+    related: AddressVerification, USPS
+
+  - term: Components
+    label: Address Components
+    description: The parsed fields of a standardized address, such as primary number, street name, street suffix, city name, state abbreviation, and ZIP code.
+    related: USStreetAddress, AddressStandardization
+
+  - term: Coordinate
+    label: Geographic Coordinate
+    description: A latitude/longitude pair representing a precise point on the Earth's surface, returned as part of geocoding results.
+    related: Geocoding, ReverseGeocoding
+
+  - term: SmartyKey
+    label: Smarty Key
+    description: A unique persistent identifier assigned by Smarty to each verified US address, enabling reliable lookups without re-validating the full address string.
+    related: USStreetAddress, AddressEnrichment
+
+  - term: PropertyData
+    label: Property Data
+    description: Attributes describing a real estate parcel, including tax assessor data, ownership records, estimated value, and physical characteristics.
+    related: AddressEnrichment
+
+  - term: CensusData
+    label: Census Data
+    description: Geographic and demographic identifiers tied to an address, including census tract, census block, county FIPS code, and CBSA code.
+    related: Geocoding, USStreetAddress
+
+  - term: EmbeddedKey
+    label: Embedded Key Authentication
+    description: An authentication method using a single public key intended for client-side use, where the key is embedded in JavaScript or mobile applications.
+    related: AuthID, AuthToken
+
+  - term: AuthID
+    label: Auth-ID
+    description: The account identifier component of Smarty's secret-key authentication pair, used in server-side API requests alongside the auth-token.
+    related: AuthToken, EmbeddedKey
+
+  - term: AuthToken
+    label: Auth-Token
+    description: The secret component of Smarty's authentication pair, used together with the auth-id in server-to-server API requests.
+    related: AuthID
+
+  - term: BatchRequest
+    label: Batch Request
+    description: A single POST API call containing multiple address lookup objects (up to 100 per request) for efficient bulk processing.
+    related: USStreetAddress, AddressVerification
+
+  - term: Urbanization
+    label: Urbanization
+    description: A Puerto Rico-specific address component used to distinguish areas within Puerto Rico that share similar street names across neighborhoods.
+    related: USStreetAddress
+
+  - term: Candidates
+    label: Address Candidates
+    description: Multiple potential matching addresses returned when an ambiguous input address could match more than one deliverable location.
+    related: AddressVerification, USStreetAddress
+
+  - term: Freeform
+    label: Freeform Input
+    description: An unstructured address string passed as a single field rather than broken into individual components; supported by several Smarty API endpoints.
+    related: AddressExtraction, AddressVerification

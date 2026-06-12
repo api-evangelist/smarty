@@ -1,0 +1,26 @@
+[
+  {
+    "input_id": "addr-001",
+    "street": "1600 Amphitheatre Pkwy",
+    "city": "Mountain View",
+    "state": "CA",
+    "zipcode": "94043",
+    "candidates": 1,
+    "match": "strict"
+  },
+  {
+    "input_id": "addr-002",
+    "street": "1 Infinite Loop",
+    "city": "Cupertino",
+    "state": "CA",
+    "candidates": 3
+  },
+  {
+    "input_id": "addr-003",
+    "street": "350 Fifth Ave",
+    "secondary": "Ste 6402",
+    "city": "New York",
+    "state": "NY",
+    "zipcode": "10118"
+  }
+]

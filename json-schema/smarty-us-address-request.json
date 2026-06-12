@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.smarty.com/schema/us-address-request",
+  "title": "Smarty US Address Request",
+  "description": "Input object for validating a single US street address via the Smarty US Street Address API.",
+  "type": "object",
+  "properties": {
+    "input_id": {
+      "type": "string",
+      "maxLength": 36,
+      "description": "A unique identifier for this address in your application; returned unchanged in the response."
+    },
+    "street": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "The street line of the address to be verified. This can also contain the entire address (freeform)."
+    },
+    "street2": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Apartment, suite, or other secondary unit designator."
+    },
+    "secondary": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "Aptartment or suite number, if present."
+    },
+    "city": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "City name."
+    },
+    "state": {
+      "type": "string",
+      "maxLength": 32,
+      "description": "State name or two-letter abbreviation."
+    },
+    "zipcode": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "The ZIP Code."
+    },
+    "lastline": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "City, state, and ZIP Code combined."
+    },
+    "addressee": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "The name of the recipient, firm, or company at this address."
+    },
+    "urbanization": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "Only used with Puerto Rican addresses."
+    },
+    "candidates": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 1,
+      "description": "Maximum number of valid addresses to return when the input is ambiguous."
+    },
+    "match": {
+      "type": "string",
+      "enum": ["strict", "invalid", "enhanced"],
+      "default": "strict",
+      "description": "The match strategy to use: strict returns only valid USPS addresses, invalid also returns non-USPS addresses, enhanced includes additional address types."
+    }
+  },
+  "required": ["street"]
+}

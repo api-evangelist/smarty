@@ -1,0 +1,44 @@
+[
+  {
+    "input_id": "addr-001",
+    "input_index": 0,
+    "candidate_index": 0,
+    "delivery_line_1": "1600 Amphitheatre Pkwy",
+    "last_line": "Mountain View CA 94043-1351",
+    "delivery_point_barcode": "940431351004",
+    "components": {
+      "primary_number": "1600",
+      "street_name": "Amphitheatre",
+      "street_suffix": "Pkwy",
+      "city_name": "Mountain View",
+      "default_city_name": "Mountain View",
+      "state_abbreviation": "CA",
+      "zipcode": "94043",
+      "plus4_code": "1351",
+      "delivery_point": "00",
+      "delivery_point_check_digit": "4"
+    },
+    "metadata": {
+      "record_type": "S",
+      "zip_type": "Standard",
+      "county_fips": "06085",
+      "county_name": "Santa Clara",
+      "carrier_route": "C058",
+      "congressional_district": "16",
+      "rdi": "Commercial",
+      "latitude": 37.42279,
+      "longitude": -122.08584,
+      "precision": "Zip9",
+      "time_zone": "Pacific",
+      "utc_offset": -8,
+      "obeys_dst": true
+    },
+    "analysis": {
+      "dpv_match_code": "Y",
+      "dpv_footnotes": "AABB",
+      "dpv_vacant": "N",
+      "dpv_no_stat": "N",
+      "active": "Y"
+    }
+  }
+]

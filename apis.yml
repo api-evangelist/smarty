@@ -44,6 +44,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/apis/us-street-api/reference
+      - type: OpenAPI
+        url: openapi/smarty-us-street-address-api-openapi.yml
   - aid: smarty:us-autocomplete-pro-api
     name: US Autocomplete Pro API
     description: >-
@@ -59,6 +61,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/us-autocomplete-pro-api
+      - type: OpenAPI
+        url: openapi/smarty-us-autocomplete-pro-api-openapi.yml
   - aid: smarty:us-zipcode-api
     name: US ZIP Code API
     description: >-
@@ -74,6 +78,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/us-zipcode-api
+      - type: OpenAPI
+        url: openapi/smarty-us-zipcode-api-openapi.yml
   - aid: smarty:us-reverse-geocode-api
     name: US Reverse Geocode API
     description: >-
@@ -89,6 +95,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/us-reverse-geo-api
+      - type: OpenAPI
+        url: openapi/smarty-us-reverse-geocode-api-openapi.yml
   - aid: smarty:us-address-enrichment-api
     name: US Address Enrichment API
     description: >-
@@ -104,6 +112,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/us-enrichment-api
+      - type: OpenAPI
+        url: openapi/smarty-us-address-enrichment-api-openapi.yml
   - aid: smarty:us-extract-api
     name: US Extract API
     description: >-
@@ -119,6 +129,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/us-extract-api
+      - type: OpenAPI
+        url: openapi/smarty-us-extract-api-openapi.yml
   - aid: smarty:international-street-address-api
     name: International Street Address API
     description: >-
@@ -134,6 +146,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/international-street-api
+      - type: OpenAPI
+        url: openapi/smarty-international-street-address-api-openapi.yml
   - aid: smarty:international-address-autocomplete-api
     name: International Address Autocomplete API
     description: >-
@@ -149,6 +163,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/international-autocomplete-api
+      - type: OpenAPI
+        url: openapi/smarty-international-address-autocomplete-api-openapi.yml
   - aid: smarty:international-postal-code-api
     name: International Postal Code API
     description: >-
@@ -164,6 +180,8 @@ apis:
     properties:
       - type: Documentation
         url: https://www.smarty.com/docs/cloud/international-postal-code-api
+      - type: OpenAPI
+        url: openapi/smarty-international-postal-code-api-openapi.yml
 common:
   - type: Website
     url: https://www.smarty.com/
@@ -171,6 +189,8 @@ common:
     url: https://www.smarty.com/docs
   - type: GitHubOrganization
     url: https://github.com/smartystreets
+  - type: GitHubOrganization
+    url: https://github.com/smarty
   - type: LinkedIn
     url: https://www.linkedin.com/company/smarty-digital-llc
   - type: Blog
@@ -189,6 +209,14 @@ common:
     url: rate-limits/smarty-rate-limits.yml
   - type: FinOps
     url: finops/smarty-finops.yml
+  - type: Vocabulary
+    url: vocabulary/smarty-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/smarty-context.jsonld
+  - type: JSONSchema
+    url: json-schema/smarty-us-address-request.json
+  - type: JSONSchema
+    url: json-schema/smarty-us-address-response.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

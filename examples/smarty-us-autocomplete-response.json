@@ -1,0 +1,28 @@
+{
+  "suggestions": [
+    {
+      "street_line": "1600 Amphitheatre Pkwy",
+      "secondary": "",
+      "city": "Mountain View",
+      "state": "CA",
+      "zipcode": "94043",
+      "entries": 1
+    },
+    {
+      "street_line": "1600 Amphitheatre Ct",
+      "secondary": "",
+      "city": "San Jose",
+      "state": "CA",
+      "zipcode": "95127",
+      "entries": 1
+    },
+    {
+      "street_line": "1600 Amphitheatre Dr",
+      "secondary": "",
+      "city": "Arlington",
+      "state": "TX",
+      "zipcode": "76011",
+      "entries": 1
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "smarty": "https://www.smarty.com/vocabulary#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "AddressVerification": "smarty:AddressVerification",
+    "AddressStandardization": "smarty:AddressStandardization",
+    "AddressAutocomplete": "smarty:AddressAutocomplete",
+    "AddressEnrichment": "smarty:AddressEnrichment",
+    "AddressExtraction": "smarty:AddressExtraction",
+    "ReverseGeocoding": "smarty:ReverseGeocoding",
+
+    "street": {
+      "@id": "schema:streetAddress",
+      "@type": "xsd:string"
+    },
+    "street2": {
+      "@id": "smarty:street2",
+      "@type": "xsd:string"
+    },
+    "secondary": {
+      "@id": "smarty:secondary",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "schema:addressLocality",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "schema:addressRegion",
+      "@type": "xsd:string"
+    },
+    "zipcode": {
+      "@id": "schema:postalCode",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "schema:addressCountry",
+      "@type": "xsd:string"
+    },
+    "urbanization": {
+      "@id": "smarty:urbanization",
+      "@type": "xsd:string"
+    },
+    "addressee": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "candidates": {
+      "@id": "smarty:candidates",
+      "@type": "xsd:integer"
+    },
+    "latitude": {
+      "@id": "schema:latitude",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "schema:longitude",
+      "@type": "xsd:decimal"
+    },
+    "smartykey": {
+      "@id": "smarty:smartyKey",
+      "@type": "xsd:string"
+    },
+    "deliverability": {
+      "@id": "smarty:deliverability",
+      "@type": "xsd:string"
+    },
+    "dpv_match_code": {
+      "@id": "smarty:dpvMatchCode",
+      "@type": "xsd:string"
+    },
+    "dpv_footnotes": {
+      "@id": "smarty:dpvFootnotes",
+      "@type": "xsd:string"
+    },
+    "dpv_vacant": {
+      "@id": "smarty:dpvVacant",
+      "@type": "xsd:string"
+    },
+    "dpv_no_stat": {
+      "@id": "smarty:dpvNoStat",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "smarty:active",
+      "@type": "xsd:string"
+    },
+    "primary_number": {
+      "@id": "smarty:primaryNumber",
+      "@type": "xsd:string"
+    },
+    "street_predirection": {
+      "@id": "smarty:streetPredirection",
+      "@type": "xsd:string"
+    },
+    "street_name": {
+      "@id": "smarty:streetName",
+      "@type": "xsd:string"
+    },
+    "street_suffix": {
+      "@id": "smarty:streetSuffix",
+      "@type": "xsd:string"
+    },
+    "street_postdirection": {
+      "@id": "smarty:streetPostdirection",
+      "@type": "xsd:string"
+    },
+    "secondary_designator": {
+      "@id": "smarty:secondaryDesignator",
+      "@type": "xsd:string"
+    },
+    "secondary_number": {
+      "@id": "smarty:secondaryNumber",
+      "@type": "xsd:string"
+    },
+    "plus4_code": {
+      "@id": "smarty:plus4Code",
+      "@type": "xsd:string"
+    },
+    "delivery_point": {
+      "@id": "smarty:deliveryPoint",
+      "@type": "xsd:string"
+    },
+    "delivery_point_check_digit": {
+      "@id": "smarty:deliveryPointCheckDigit",
+      "@type": "xsd:string"
+    },
+    "census_tract": {
+      "@id": "smarty:censusTract",
+      "@type": "xsd:string"
+    },
+    "census_block": {
+      "@id": "smarty:censusBlock",
+      "@type": "xsd:string"
+    },
+    "county_fips": {
+      "@id": "smarty:countyFIPS",
+      "@type": "xsd:string"
+    },
+    "county_name": {
+      "@id": "smarty:countyName",
+      "@type": "xsd:string"
+    },
+    "precision": {
+      "@id": "smarty:geocodePrecision",
+      "@type": "xsd:string"
+    },
+    "time_zone": {
+      "@id": "schema:temporalCoverage",
+      "@type": "xsd:string"
+    },
+    "utc_offset": {
+      "@id": "smarty:utcOffset",
+      "@type": "xsd:integer"
+    },
+    "obeys_dst": {
+      "@id": "smarty:obeysDST",
+      "@type": "xsd:boolean"
+    },
+    "input_id": {
+      "@id": "smarty:inputId",
+      "@type": "xsd:string"
+    },
+    "input_index": {
+      "@id": "smarty:inputIndex",
+      "@type": "xsd:integer"
+    },
+    "candidate_index": {
+      "@id": "smarty:candidateIndex",
+      "@type": "xsd:integer"
+    },
+    "delivery_line_1": {
+      "@id": "smarty:deliveryLine1",
+      "@type": "xsd:string"
+    },
+    "delivery_line_2": {
+      "@id": "smarty:deliveryLine2",
+      "@type": "xsd:string"
+    },
+    "last_line": {
+      "@id": "smarty:lastLine",
+      "@type": "xsd:string"
+    },
+    "organization": {
+      "@id": "schema:Organization",
+      "@type": "@id"
+    },
+    "PostalAddress": {
+      "@id": "schema:PostalAddress"
+    },
+    "GeoCoordinates": {
+      "@id": "schema:GeoCoordinates"
+    }
+  }
+}

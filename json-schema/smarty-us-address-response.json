@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://www.smarty.com/schema/us-address-response",
+  "title": "Smarty US Address Response",
+  "description": "A single validated address candidate returned by the Smarty US Street Address API.",
+  "type": "object",
+  "properties": {
+    "input_id": {
+      "type": "string",
+      "description": "The input_id submitted with the request, echoed back unchanged."
+    },
+    "input_index": {
+      "type": "integer",
+      "description": "Zero-based position of this address in the batch request."
+    },
+    "candidate_index": {
+      "type": "integer",
+      "description": "Zero-based index of this candidate among multiple matches for the same input."
+    },
+    "addressee": {
+      "type": "string",
+      "description": "Recipient name or company name associated with the address."
+    },
+    "delivery_line_1": {
+      "type": "string",
+      "description": "The primary delivery line (e.g., 1600 Amphitheatre Pkwy)."
+    },
+    "delivery_line_2": {
+      "type": "string",
+      "description": "Secondary delivery line (usually blank, used for military addresses)."
+    },
+    "last_line": {
+      "type": "string",
+      "description": "City, state, and ZIP Code combined (e.g., Mountain View CA 94043-1351)."
+    },
+    "delivery_point_barcode": {
+      "type": "string",
+      "description": "12-digit USPS delivery point barcode."
+    },
+    "components": {
+      "$ref": "#/definitions/Components"
+    },
+    "metadata": {
+      "$ref": "#/definitions/Metadata"
+    },
+    "analysis": {
+      "$ref": "#/definitions/Analysis"
+    }
+  },
+  "definitions": {
+    "Components": {
+      "type": "object",
+      "title": "Address Components",
+      "description": "The individual parsed components of the standardized address.",
+      "properties": {
+        "urbanization": { "type": "string" },
+        "primary_number": { "type": "string", "description": "House, PO Box, or building number." },
+        "street_predirection": { "type": "string", "description": "Directional preceding the street name (N, S, E, W, etc.)." },
+        "street_name": { "type": "string" },
+        "street_suffix": { "type": "string", "description": "Abbreviated street type (St, Ave, Blvd, etc.)." },
+        "street_postdirection": { "type": "string", "description": "Directional following the street name." },
+        "secondary_designator": { "type": "string", "description": "Apartment or suite designator (Apt, Ste, Unit, etc.)." },
+        "secondary_number": { "type": "string", "description": "Apartment or suite number." },
+        "plus4_code": { "type": "string", "description": "The 4-digit add-on code for ZIP+4." },
+        "delivery_point": { "type": "string" },
+        "delivery_point_check_digit": { "type": "string" },
+        "city_name": { "type": "string" },
+        "default_city_name": { "type": "string" },
+        "state_abbreviation": { "type": "string" },
+        "zipcode": { "type": "string" }
+      }
+    },
+    "Metadata": {
+      "type": "object",
+      "title": "Address Metadata",
+      "description": "Geographical and postal metadata about the address.",
+      "properties": {
+        "record_type": { "type": "string", "description": "F=Firm, G=General Delivery, H=High-rise, P=PO Box, R=Rural Route, S=Street." },
+        "zip_type": { "type": "string", "description": "Unique, Military, POBox, Standard." },
+        "county_fips": { "type": "string" },
+        "county_name": { "type": "string" },
+        "carrier_route": { "type": "string" },
+        "congressional_district": { "type": "string" },
+        "rdi": { "type": "string", "description": "Residential Delivery Indicator: Residential or Commercial." },
+        "elot_sequence": { "type": "string" },
+        "elot_sort": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "coordinate_license": { "type": "integer" },
+        "precision": { "type": "string", "description": "Geocode precision level (Zip5, Zip6, Zip7, Zip8, Zip9, Block, Parcel, Rooftop)." },
+        "time_zone": { "type": "string" },
+        "utc_offset": { "type": "number" },
+        "obeys_dst": { "type": "boolean" },
+        "is_ews_match": { "type": "boolean" }
+      }
+    },
+    "Analysis": {
+      "type": "object",
+      "title": "Address Analysis",
+      "description": "USPS DPV and other deliverability analysis results.",
+      "properties": {
+        "dpv_match_code": { "type": "string", "description": "Y=confirmed, S=secondary missing, D=secondary added, N=not confirmed." },
+        "dpv_footnotes": { "type": "string", "description": "Two-character codes indicating address details and correction notes." },
+        "dpv_cmos": { "type": "string" },
+        "dpv_pbsa": { "type": "string" },
+        "dpv_door_not_accessible": { "type": "string" },
+        "dpv_throwback": { "type": "string" },
+        "dpv_non_delivery_days": { "type": "string" },
+        "dpv_no_secure_location": { "type": "string" },
+        "dpv_pbp": { "type": "string" },
+        "dpv_seasons": { "type": "string" },
+        "dpv_vacant": { "type": "string", "description": "Y=vacant, N=not vacant." },
+        "dpv_no_stat": { "type": "string" },
+        "dpv_active": { "type": "string" },
+        "active": { "type": "string" },
+        "dpv_footnote": { "type": "string" },
+        "footnotes": { "type": "string" },
+        "lacslink_code": { "type": "string" },
+        "lacslink_indicator": { "type": "string" },
+        "suitelink_match": { "type": "boolean" },
+        "enhanced_line": { "type": "string" }
+      }
+    }
+  }
+}
