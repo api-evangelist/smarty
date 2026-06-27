@@ -199,7 +199,7 @@ common:
     url: https://www.smarty.com/pricing
   - type: StatusPage
     url: https://status.smarty.com/
-  - type: Changelog
+  - type: ChangeLog
     url: https://www.smarty.com/docs/changelog
   - type: X
     url: https://x.com/smartycompany
