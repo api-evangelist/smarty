@@ -1,0 +1,55 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/smarty-international-address-autocomplete-api-openapi.yml, openapi/smarty-international-postal-code-api-openapi.yml,
+  openapi/smarty-international-street-address-api-openapi.yml, openapi/smarty-us-address-enrichment-api-openapi.yml,
+  openapi/smarty-us-autocomplete-pro-api-openapi.yml, openapi/smarty-us-extract-api-openapi.yml,
+  openapi/smarty-us-reverse-geocode-api-openapi.yml, openapi/smarty-us-street-address-api-openapi.yml,
+  openapi/smarty-us-zipcode-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: auth-id
+  type: apiKey
+  in: query
+  parameter: auth-id
+  sources:
+  - openapi/smarty-international-address-autocomplete-api-openapi.yml
+  - openapi/smarty-international-postal-code-api-openapi.yml
+  - openapi/smarty-international-street-address-api-openapi.yml
+  - openapi/smarty-us-address-enrichment-api-openapi.yml
+  - openapi/smarty-us-autocomplete-pro-api-openapi.yml
+  - openapi/smarty-us-extract-api-openapi.yml
+  - openapi/smarty-us-reverse-geocode-api-openapi.yml
+  - openapi/smarty-us-street-address-api-openapi.yml
+  - openapi/smarty-us-zipcode-api-openapi.yml
+- name: auth-token
+  type: apiKey
+  in: query
+  parameter: auth-token
+  sources:
+  - openapi/smarty-international-address-autocomplete-api-openapi.yml
+  - openapi/smarty-international-postal-code-api-openapi.yml
+  - openapi/smarty-international-street-address-api-openapi.yml
+  - openapi/smarty-us-address-enrichment-api-openapi.yml
+  - openapi/smarty-us-autocomplete-pro-api-openapi.yml
+  - openapi/smarty-us-extract-api-openapi.yml
+  - openapi/smarty-us-reverse-geocode-api-openapi.yml
+  - openapi/smarty-us-street-address-api-openapi.yml
+  - openapi/smarty-us-zipcode-api-openapi.yml
+- name: embedded-key
+  type: apiKey
+  in: query
+  parameter: key
+  sources:
+  - openapi/smarty-international-address-autocomplete-api-openapi.yml
+  - openapi/smarty-international-postal-code-api-openapi.yml
+  - openapi/smarty-international-street-address-api-openapi.yml
+  - openapi/smarty-us-address-enrichment-api-openapi.yml
+  - openapi/smarty-us-autocomplete-pro-api-openapi.yml
+  - openapi/smarty-us-extract-api-openapi.yml
+  - openapi/smarty-us-reverse-geocode-api-openapi.yml
+  - openapi/smarty-us-street-address-api-openapi.yml
+  - openapi/smarty-us-zipcode-api-openapi.yml
