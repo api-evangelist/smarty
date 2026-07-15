@@ -183,6 +183,8 @@ apis:
       - type: OpenAPI
         url: openapi/smarty-international-postal-code-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/smarty-agentic-access.yml
   - type: DomainSecurity
     url: security/smarty-domain-security.yml
   - type: Authentication

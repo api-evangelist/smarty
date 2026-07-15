@@ -1,0 +1,228 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/smarty-international-address-autocomplete-api-openapi.yml, openapi/smarty-international-postal-code-api-openapi.yml,
+  openapi/smarty-international-street-address-api-openapi.yml, openapi/smarty-us-address-enrichment-api-openapi.yml,
+  openapi/smarty-us-autocomplete-pro-api-openapi.yml, openapi/smarty-us-extract-api-openapi.yml,
+  openapi/smarty-us-reverse-geocode-api-openapi.yml, openapi/smarty-us-street-address-api-openapi.yml,
+  openapi/smarty-us-zipcode-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 19
+  by_action_class:
+    connected: 16
+    acting: 3
+  by_consequence:
+    read: 16
+    write: 3
+  human_in_the_loop_required: 0
+operations:
+- path: /v2/lookup
+  method: get
+  operationId: get-lookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/lookup/{addressId}
+  method: get
+  operationId: get-lookup-id
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup
+  method: get
+  operationId: lookup-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /verify
+  method: get
+  operationId: get-verify
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/{smartykey}/property
+  method: get
+  operationId: get-lookup-smartykey-property
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/search/property
+  method: get
+  operationId: get-lookup-property
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/{smarykey}/geo-reference/{dataset?}
+  method: get
+  operationId: get-lookup-smartykey-geo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/search/geo-reference/{dataset?}
+  method: get
+  operationId: get-lookup-geo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/{smartykey}/secondary
+  method: get
+  operationId: get-lookup-smartykey-secondary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/search/secondary
+  method: get
+  operationId: get-lookup-secondary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/{smartykey}/secondary/count
+  method: get
+  operationId: get-lookup-smartykey-secondary-count
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup/search/secondary/count
+  method: get
+  operationId: get-lookup-secondary-count
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup
+  method: get
+  operationId: get-lookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /
+  method: post
+  operationId: post-extract
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /lookup
+  method: get
+  operationId: get-street-address
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /street-address
+  method: get
+  operationId: get-street-address
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /street-address
+  method: post
+  operationId: post-street-address
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /lookup
+  method: get
+  operationId: lookup-get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lookup
+  method: post
+  operationId: lookup-post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
