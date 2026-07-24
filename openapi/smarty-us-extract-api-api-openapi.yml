@@ -1,0 +1,553 @@
+openapi: 3.0.1
+info:
+  title: International Address Autocomplete Lookup US Extract API API
+  version: '0.9'
+  description: "This API returns suggestions that are fully verified global addresses.\nUses fuzzy logic during searching to:\nAllow for missing directionals and street suffixes.\nAllow substitution of street suffixes and unit designators. E.g., ST is accepted for AVE; APT is accepted for UNIT, etc.\nAllow full or partial spelling of street suffixes and unit designators. E.g., ST can be spelled as STR or STREET and still match.\nFilters and preferences allow for multiple cities in a single country.\nNote: Effective with the adoption of the V2 version of International Address Autocomplete, lookup usage will be based on the final selection of an address rather than per keystroke.\n\nBy default, the character set returned will be the native set for that country. If any latin characters are provided in the input (excluding numerics), the latin set will be returned. Character sets include:\nCyrillic\nGreek\nHebrew\nKanji (Japanese)\nSimplified Chinese\nArabic\nThai\nHangul (Korean)\n\nSupports the following 242 countries: \nAfghanistan\tAFG\nAlbania\tALB\nAlgeria\tDZA\nAndorra\tAND\nAngola\tAGO\nAnguilla\tAIA\nAntarctica\tATA\nAntigua and Barbuda\tATG\nArgentina\tARG\nArmenia\tARM\nAruba\tABW\nAustralia\tAUS\nAustria\tAUT\nAzerbaijan\tAZE\nBahamas\tBHS\nBahrain\tBHR\nBangladesh\tBGD\nBarbados\tBRB\nBelarus\tBLR\nBelgium\tBEL\nBelize\tBLZ\nBenin\tBEN\nBermuda\tBMU\nBhutan\tBTN\nBolivia\tBOL\nBonaire, Sint Eustatius and Saba\tBES\nBosnia and Herzegovina\tBIH\nBotswana\tBWA\nBouvet Island\tBVT\nBrazil\tBRA\nBritish Indian Ocean Territory\tIOT\nBrunei Darussalam\tBRN\nBulgaria\tBGR\nBurkina Faso\tBFA\nBurundi\tBDI\nCambodia\tKHM\nCameroon\tCMR\nCanada\tCAN\nCabo Verde\tCPV\nCayman Islands\tCYM\nCentral African Republic\tCAF\nChad\tTCD\nChile\tCHL\nChina\tCHN\nChristmas Island\tCXR\nCocos (Keeling) Islands\tCCK\nColombia\tCOL\nComoros\tCOM\nCongo\tCOG\nDemocratic Republic of the Congo\tCOD\nCook Islands\tCOK\nCosta Rica\tCRI\nCroatia\tHRV\nCuba\tCUB\nCuraçao\tCUW\nCyprus\tCYP\nCzechia\tCZE\nIvory Coast\tCIV\nDenmark\tDNK\nDjibouti\tDJI\nDominica\tDMA\nDominican Republic\tDOM\nEcuador\tECU\nEgypt\tEGY\nEl Salvador\tSLV\nEquatorial Guinea\tGNQ\nEritrea\tERI\nEstonia\tEST\nEswatini\tSWZ\nEthiopia\tETH\nFalkland Islands\tFLK\nFaroe Islands\tFRO\nFiji\tFJI\nFinland\tFIN\nFrance\tFRA\nFrench Guiana\tGUF\nFrench Polynesia\tPYF\nFrench Southern Territories\tATF\nGabon\tGAB\nGambia\tGMB\nGeorgia\tGEO\nGermany\tDEU\nGhana\tGHA\nGibraltar\tGIB\nGreece\tGRC\nGreenland\tGRL\nGrenada\tGRD\nGuadeloupe\tGLP\nGuatemala\tGTM\nGuernsey\tGGY\nGuinea\tGIN\nGuinea-Bissau\tGNB\nGuyana\tGUY\nHaiti\tHTI\nHeard Island and McDonald Islands\tHMD\nHoly See\tVAT\nHonduras\tHND\nHong Kong\tHKG\nHungary\tHUN\nIceland\tISL\nIndia\tIND\nIndonesia\tIDN\nIslamic Republic of Iran\tIRN\nIraq\tIRQ\nIreland\tIRL\nIsle of Man\tIMN\nIsrael\tISR\nItaly\tITA\nJamaica\tJAM\nJapan\tJPN\nJersey\tJEY\nJordan\tJOR\nKazakhstan\tKAZ\nKenya\tKEN\nKiribati\tKIR\nDemocratic People's Republic of Korea (North Korea)\tPRK\nRepublic of Korea\tKOR\nKosovo\tXKX\nKuwait\tKWT\nKyrgyzstan\tKGZ\nLao People's Democratic Republic\tLAO\nLatvia\tLVA\nLebanon\tLBN\nLesotho\tLSO\nLiberia\tLBR\nLibya\tLBY\nLiechtenstein\tLIE\nLithuania\tLTU\nLuxembourg\tLUX\nMacao\tMAC\nRepublic of North Macedonia\tMKD\nMadagascar\tMDG\nMalawi\tMWI\nMalaysia\tMYS\nMaldives\tMDV\nMali\tMLI\nMalta\tMLT\nMartinique\tMTQ\nMauritania\tMRT\nMauritius\tMUS\nMayotte\tMYT\nMexico\tMEX\nFederated States of Micronesia\tFSM\nRepublic of Moldova\tMDA\nMonaco\tMCO\nMongolia\tMNG\nMontenegro\tMNE\nMontserrat\tMSR\nMorocco\tMAR\nMozambique\tMOZ\nMyanmar\tMMR\nNamibia\tNAM\nNauru\tNRU\nNepal\tNPL\nNetherlands\tNLD\nNew Caledonia\tNCL\nNew Zealand\tNZL\nNicaragua\tNIC\nNiger\tNER\nNigeria\tNGA\nNiue\tNIU\nNorfolk Island\tNFK\nNorway\tNOR\nOman\tOMN\nPakistan\tPAK\nPalau\tPLW\nState of Palestine\tPSE\nPanama\tPAN\nPapua New Guinea\tPNG\nParaguay\tPRY\nPeru\tPER\nPhilippines\tPHL\nPitcairn\tPCN\nPoland\tPOL\nPortugal\tPRT\nQatar\tQAT\nSouth Sudan\tSSD\nRomania\tROU\nRussian Federation\tRUS\nRwanda\tRWA\nRéunion\tREU\nSaint Barthélemy\tBLM\nSaint Helena, Ascension and Tristan da Cunha\tSHN\nSaint Kitts and Nevis\tKNA\nSaint Lucia\tLCA\nSaint Martin\tMAF\nSaint Pierre and Miquelon\tSPM\nSaint Vincent and the Grenadines\tVCT\nSamoa\tWSM\nSan Marino\tSMR\nSao Tome and Principe\tSTP\nSaudi Arabia\tSAU\nSenegal\tSEN\nSerbia\tSRB\nSeychelles\tSYC\nSierra Leone\tSLE\nSingapore\tSGP\nSint Maarten (Dutch)\tSXM\nSlovakia\tSVK\nSlovenia\tSVN\nSolomon Islands\tSLB\nSomalia\tSOM\nSouth Africa\tZAF\nSouth Georgia and the South Sandwich Islands\tSGS\nSpain\tESP\nSri Lanka\tLKA\nSudan\tSDN\nSuriname\tSUR\nSvalbard and Jan Mayen Islands\tSJM\nSweden\tSWE\nSwitzerland\tCHE\nSyrian Arab Republic\tSYR\nTaiwan\tTWN\nTajikistan\tTJK\nUnited Republic of Tanzania\tTZA\nThailand\tTHA\nTimor-Leste\tTLS\nTogo\tTGO\nTokelau\tTKL\nTonga\tTON\nTrinidad and Tobago\tTTO\nTunisia\tTUN\nTürkiye (Turkey)\tTUR\nTurkmenistan\tTKM\nTurks and Caicos Islands\tTCA\nTuvalu\tTUV\nUganda\tUGA\nUkraine\tUKR\nUnited Arab Emirates\tARE\nUnited Kingdom\tGBR\nUruguay\tURY\nUzbekistan\tUZB\nVanuatu\tVUT\nBolivarian Republic of Venezuela\tVEN\nViet Nam\tVNM\nBritish Virgin Islands\tVGB\nWallis and Futuna\tWLF\nWestern Sahara\tESH\nYemen\tYEM\nZambia\tZMB\nZimbabwe\tZWE\nÅland Islands\tALA\n"
+  termsOfService: https://smartystreets.com/legal/terms-of-service
+  license:
+    url: https://www.smarty.com/legal/terms-of-service
+    name: Smarty License
+  contact:
+    name: Smarty Support
+    email: support@smartystreets.com
+servers:
+- url: https://international-autocomplete.api.smarty.com
+tags:
+- name: US Extract API
+paths:
+  /:
+    post:
+      summary: Extract an Address from Data
+      operationId: post-extract
+      description: Search for a larger volume of data (up to 100 inputs or 16K per request)
+      requestBody:
+        description: Data should be encoded as a `JSON` array where each element in the array is a `JSON` object with field names identical to those in the provided examples.
+        content:
+          application/json; charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/200'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/200'
+        '400':
+          description: Bad Request (Malformed Payload)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Required
+        '413':
+          description: Request Entity Too Large
+        '422':
+          description: Unprocessable Entity
+        '429':
+          description: Too Many Requests
+      parameters:
+      - $ref: '#/components/parameters/Content-Type'
+      - $ref: '#/components/parameters/Host'
+      - $ref: '#/components/parameters/html'
+      - $ref: '#/components/parameters/aggressive'
+      - $ref: '#/components/parameters/addr_line_breaks'
+      - $ref: '#/components/parameters/addr_per_line'
+      - $ref: '#/components/parameters/license'
+      - $ref: '#/components/parameters/match'
+      tags:
+      - US Extract API
+components:
+  parameters:
+    aggressive:
+      name: aggressive
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: 'Aggressive mode may use more lookups on your account, but it can find addresses in populous cities without needing a state and ZIP Code , as well as finding addresses in some messy inputs. Default: false'
+    Host:
+      name: Host
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com'
+    match:
+      name: match
+      in: query
+      required: false
+      schema:
+        type: string
+      description: 'The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict'
+    addr_per_line:
+      name: addr_per_line
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Limits the extractor to a certain number of addresses per input line. Generally, you will not need this parameter unless you are submitting structured data that you know will only have a certain number of addresses per line. Set to 0 (default) for no limit.
+    html:
+      name: html
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false.
+    Content-Type:
+      name: Content-Type
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8'
+    addr_line_breaks:
+      name: addr_line_breaks
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: 'This parameter specifies if addresses in your input will ever have line breaks. Default: true'
+    license:
+      name: license
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Specifies the license or licenses (comma separated) to use for this lookup. Valid values cn be found in your Subscriptions Page. If multiple licenses are specified, they are considered to be in left to right order. As a default, this value is derived.
+  schemas:
+    '200':
+      title: Successful response
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            lines:
+              type: integer
+              example: 6
+              description: total lines of input received
+            unicode:
+              type: boolean
+              example: false
+              description: Did the text have unicode characters or was it plain ASCII?
+            address_count:
+              type: integer
+              example: 1
+              description: Amount of addresses found in the input
+            verified_count:
+              type: integer
+              example: 1
+              description: Amount of valid addresses found
+            bytes:
+              type: integer
+              example: 53
+              description: Length of input in bytes
+            character_count:
+              type: integer
+              example: 53
+              description: Length of input in Characters
+        addresses:
+          type: array
+          description: Array of addresses extracted from the input
+          items:
+            $ref: '#/components/schemas/Addresses'
+    APIOutput:
+      title: APIOutput
+      type: object
+      properties:
+        input_id:
+          type: string
+          maxLength: 36
+          description: Any unique identifier that you use to reference the input address; the output will be identical to the input.
+        input_index:
+          type: integer
+          description: 'The order in which this address was submitted with the others
+
+            (0 if alone)'
+        candidate_index:
+          type: integer
+          description: "An input address can match multiple valid addresses. This ties the candidates to the input index. \n(e.g., \"1 Rosedale Street Baltimore Maryland\" will return multiple candidates.)"
+        addressee:
+          type: string
+          description: The name of the person or company at this address. This value is taken directly from the addressee input field. Very rarely, this field might be filled automatically based on the USPS address record.
+          maxLength: 64
+        delivery_line_1:
+          type: string
+          description: "Contains the first delivery line (usually the street address). This can include any of the following: \n- urbanization (Puerto Rico only)\n- primary number\n- street predirection\n- street name\n- street suffix\n- street postdirection\n- secondary designator\n- secondary number\n- extra secondary designator\n- extra secondary number\n- PMB designator\n- PMB number"
+          maxLength: 64
+        delivery_line_2:
+          type: string
+          description: The second delivery line (if needed). It is common for this field to remain empty, but it may contain a private mailbox number.
+          maxLength: 64
+        last_line:
+          type: string
+          description: City, state, and ZIP Code combined
+          maxLength: 64
+        delivery_point_barcode:
+          type: string
+          description: 12-digit POSTNET™ barcode; consists of 5-digit ZIP Code, 4-digit add-on code, 2-digit delivery point, and 1-digit check digit.
+          maxLength: 12
+        smarty_key:
+          type: string
+          description: Smarty's unique identifier for an address. This identifier will only be displayed when an address is submitted with the match parameter set to enhanced, with an appropriate product subscription.
+          maxLength: 10
+        components:
+          $ref: '#/components/schemas/ComponentsObject'
+        metadata:
+          $ref: '#/components/schemas/MetadataObject'
+        analysis:
+          $ref: '#/components/schemas/AnalysisObject'
+    ComponentsObject:
+      title: Components Object
+      type: object
+      description: Object representing the different components of a verified address
+      properties:
+        urbanization:
+          type: string
+          maxLength: 64
+          description: The neighborhood, or city subdivision; used with Puerto Rican addresses
+        primary_number:
+          type: string
+          description: The house, PO Box, or building number
+          maxLength: 30
+        street_name:
+          type: string
+          description: The name of the street
+          maxLength: 64
+        street_predirection:
+          type: string
+          maxLength: 16
+          description: Directional information before a street name (N, SW, etc.)
+        street_postdirection:
+          type: string
+          description: Directional information after a street name (N, SW, etc.)
+          maxLength: 16
+        street_suffix:
+          type: string
+          description: Abbreviated value describing the street (St, Ave, Blvd, etc.)
+          maxLength: 16
+        secondary_number:
+          type: string
+          description: Apartment or suite number, if any
+          maxLength: 32
+        secondary_designator:
+          type: string
+          description: Describes location within a complex/building (Ste, Apt, etc.)
+          maxLength: 16
+        extra_secondary_number:
+          type: string
+          description: "Descriptive information about the location of a building within a campus \n(e.g., E-5 in \"5619 Loop 1604, Bldg E-5, Ste. 101 San Antonio TX\")"
+          maxLength: 32
+        extra_secondary_designator:
+          type: string
+          description: "Description of the location type within a campus \n(e.g., Bldg, Unit, Lot, etc.)"
+          maxLength: 16
+        pmb_designator:
+          type: string
+          description: The private mailbox unit designator, assigned by a CMRA
+          maxLength: 16
+        pmb_number:
+          type: string
+          description: The private mailbox number, assigned by a CMRA
+          maxLength: 16
+        city_name:
+          type: string
+          description: The USPS-preferred city name for this particular address, or an acceptable alternate if provided by the user
+          maxLength: 64
+        default_city_name:
+          type: string
+          description: The default city name for this 5-digit ZIP Code
+          maxLength: 64
+        state_abbreviation:
+          type: string
+          description: The two-letter state abbreviation
+          maxLength: 2
+        zipcode:
+          type: string
+          description: The 5-digit ZIP Code
+          maxLength: 5
+        plus4_code:
+          type: string
+          description: The 4-digit add-on code (more specific than 5-digit ZIP)
+          maxLength: 4
+        delivery_point:
+          type: string
+          description: The last two digits of the house/box number, unless an "H" record is matched, in which case this is the secondary unit number representing the delivery point information to form the delivery point barcode (DPBC).
+          maxLength: 2
+        delivery_point_check_digit:
+          type: string
+          description: Correction character, or check digit, for the 11-digit barcode
+          maxLength: 1
+    MetadataObject:
+      title: Metadata Object
+      type: object
+      properties:
+        record_type:
+          type: string
+          maxLength: 1
+          description: "Indicates the type of record that was matched. Only given if a DPV match is made. \n\nF — Firm; the finest level of match available for an address. \n(e.g., Julie Julia 11300 Center Ave Gilroy CA 95020-9257)\nG — General Delivery; for mail to be held at local post offices. \n(e.g., General Delivery Provo UT 84601)\nH — High-rise; address contains apartment or building sub-units. \n(e.g., 1600 Pennsylvania Ave SE Washington DC 20003-3228)\nP — Post Office box \n(e.g., PO Box 4735 Tulsa OK 74159-0735)\nR — Rural Route or Highway Contract; may have box number ranges. \n(e.g., RR 2 Box 4560 Anasco PR 00610-9393)\nS — Street; address contains a valid primary number range. \n(e.g., 16990 Monterey Rd Lake Elsinore CA 92530-7529)\n[blank] — No record type because address did not make a valid DPV match"
+        zip_type:
+          type: string
+          maxLength: 32
+          description: "Indicates the type of the ZIP Code for the address that was matched. Only given if a 5-digit match is made. \n\nUnique — The ZIP Code consists of a single delivery point, pertaining to a US Postal Service customer (like a large business or government agency) that routes all of its own mail internally.\nMilitary — The ZIP Code pertains to military units and diplomatic organizations, often in foreign locations.\nPOBox — The ZIP Code is a PO Box ZIP Code and is assigned to a collection of Post Office Boxes.\nStandard — The ZIP Code does not pertain to any of the above categories."
+        county_fips:
+          type: string
+          maxLength: 5
+          description: The 5-digit county FIPS (Federal Information Processing Standards) code. It is a combination of a 2-digit state FIPS code and a 3-digit county code assigned by the NIST (National Institute of Standards and Technology).
+        county_name:
+          type: string
+          maxLength: 5
+          description: The name of the county in which the address is located
+        ews_match:
+          type: string
+          maxLength: 5
+          description: "Early warning system flag; a positive result indicates the street of the address is not yet ready for mail delivery and that the address will soon be added to the master ZIP+4 file in the coming weeks or months. This commonly occurs for new streets or streets undergoing a name change. \n\ntrue — The address was flagged by EWS, preventing a ZIP+4 match.\n[blank] — Address was not flagged by EWS."
+        carrier_route:
+          type: string
+          maxLength: 4
+          description: "The postal carrier route for the address. Consists of a one-letter prefix followed by a three-digit route designator. \n(e.g., C007, R123) \n\nC — Carrier Route (commonly termed \"City Route\")\nR — Rural Route\nH — Highway Contract Route\nB — Post Office Box Section\nG — General Delivery Unit\n\nRoutes C770 through C779 pertain to PO Box Street Addresses."
+        congressional_district:
+          type: string
+          maxLength: 2
+          description: The congressional district to which the address belongs. Output will be two digits from 01 - 53 or "AL." "AL" means that the entire state (or territory) is covered by a single congressional district. These include Alaska, Delaware, Montana, North Dakota, South Dakota, Vermont, Wyoming, Washington DC, Virgin Islands, and other territories.
+        building_default_indicator:
+          type: string
+          maxLength: 1
+          description: "Indicates whether the address is the \"default\" address for a building; for example, the main lobby \n\nY — Yes\nN — No"
+        rdi:
+          type: string
+          maxLength: 12
+          description: "Residential Delivery Indicator (residential or commercial) \n\nResidential — The address is a residential address.\nCommercial — The address is a commercial address.\n[blank] — This happens when the address is invalid or we don't have enough information to ascertain RDI status. The Bulk Address Validation Tool translates a [blank] RDI value to \"Unknown.\"\n\nNote: For some reason, known only to the US Postal Service, PO Boxes are always marked as \"Residential.\""
+        elot_sequence:
+          type: string
+          maxLength: 4
+          description: eLOT (Enhanced Line of Travel) 4-digit sequence number
+        elot_sort:
+          type: string
+          maxLength: 4
+          description: "eLOT (Enhanced Line of Travel) product was developed to give mailers the ability to sort their mailings by line of travel sequence. \n\nA — Ascending\nD — Descending\n[blank] — Address not submitted for eLOT"
+        latitude:
+          type: number
+          description: The horizontal component used for geographic positioning. It is the angle between 0° (the equator) and ±90° (north or south) at the poles. It is the first value in an ordered pair of (latitude, longitude). A negative number denotes a location below the equator; a positive number is above the equator. Combining lat/long values enables you to pinpoint addresses on a map.
+        longitude:
+          type: number
+          description: The vertical component used for geographic positioning. It is the angle between 0° (the Prime Meridian) and ±180° (westward or eastward). It is the second number in an ordered pair of (latitude, longitude). A negative number indicates a location west of Greenwich, England; a positive number east. Combining lat/long values enables you to pinpoint addresses on a map.
+        coordinate_license:
+          type: integer
+          description: The license ID for the geographic coordinate returned. See the licensing table below for more details.
+        precision:
+          type: string
+          maxLength: 18
+          description: "Indicates the precision of the latitude and longitude values. \n\nUnknown — Coordinates not known. Reasons could include: address is invalid, military address (APO or FPO), lat/lon coordinates not available.\nZip5 — Accurate to a 5-digit ZIP Code level (least precise)\nZip6 — Accurate to a 6-digit ZIP Code level\nZip7 — Accurate to a 7-digit ZIP Code level\nZip8 — Accurate to an 8-digit ZIP Code level\nZip9 — Accurate to a 9-digit ZIP Code level (most precise with the basic subscription)\nStreet — Accurate to a position along the street proportional to the house/building number.\nParcel — Accurate to the centroid of a property parcel. Requires the US Rooftop Geocoding subscription.\nRooftop — Accurate to the rooftop of a structure for this address. Requires the US Rooftop Geocoding subscription.\n\nNote: Concerning addresses for which the ZIP9 precision is not available, the ZIP# precision is interpolated based on neighboring addresses. Thus, ZIP7 is an average of all the lat/long coordinates of nearby ZIP Codes that share those first 7 digits."
+        time_zone:
+          type: string
+          maxLength: 48
+          description: "Indicates the common name of the time zone associated with the address. \n\nValid Responses\nAlaska, Atlantic, Central, Eastern, Hawaii, Mountain, None, Pacific, Samoa, UTC+9, UTC+10, UTC+11, UTC+12"
+        utc_offset:
+          type: number
+          description: "Indicates the number of hours the time zone is offset from Universal Time Coordinated (UTC), the international time standard, also known as Greenwich Meridian Time (GMT). \n\nValid Responses\n-11, -10, -9, -8, -7, -6, -5, -4, 0, 9, 10, 11, 12"
+        dst:
+          type: string
+          maxLength: 5
+          description: "Indicates if the time zone \"obeys,\" or, in other words, adjusts their clocks forward and back with the seasons. This information is particularly useful to determine time in other time zones with areas that may or may not use daylight saving time - for example, Arizona, Hawaii, and, of all places, Indiana. \n\ntrue — Time zone observes daylight saving time. \n\nIf dst is absent from the response, then time zone does not observe daylight saving time."
+      description: Object representing the different metadata of a verified address
+    Addresses:
+      title: Addresses
+      type: object
+      properties:
+        text:
+          type: string
+          example: 5732 Lincoln Drive Minneapolis MN
+          description: The actual input text
+        verified:
+          type: boolean
+          example: true
+          description: Was the address verified successfully
+        line:
+          type: integer
+          description: The starting line of the text in the input
+          example: 4
+        start:
+          type: integer
+          description: The starting character index of the text
+          example: 16
+        end:
+          type: integer
+          description: The ending character index of the text
+          example: 49
+        api_output:
+          type: array
+          description: The actual response from the US Street API
+          items:
+            $ref: '#/components/schemas/APIOutput'
+    AnalysisObject:
+      title: Analysis Object
+      type: object
+      properties:
+        dpv_match_code:
+          type: string
+          maxLength: 1
+          description: "Status of the Delivery Point Validation (DPV). This indicates whether or not the address is present in the USPS data. \n\nY — Confirmed; entire address is present in the USPS data. (To be certain the address is actually deliverable, verify that the dpv_vacant field has a value of N. You may also want to verify that the dpv_no_stat field has a value of N. However, the USPS is often several months behind in updating this data point, so only rely on the dpv_no_stat data if you are fully aware of its weaknesses and limitations.) \n(e.g., 1600 Amphitheatre Pkwy Mountain View, CA)\nN — Not confirmed; address is not present in the USPS data.\nS — Confirmed by ignoring secondary info; the main address is present in the USPS data, but the submitted secondary information (apartment, suite, etc.) was not recognized. \n(e.g., 62 Ea Darden Dr Apt 298 Anniston, AL)\nD — Confirmed but missing secondary info; the main address is present in the USPS data, but it is missing secondary information (apartment, suite, etc.). \n(e.g., 122 Mast Rd Lee, NH)\n[blank or null] — The address is not present in the USPS database."
+        dpv_footnotes:
+          type: string
+          maxLength: 32
+          description: 'Information related to the delivery point validation of this address. All these footnotes have a length of 2 characters, and there may be up to 14 footnotes.
+
+
+            AA — Street name, city, state, and ZIP are all valid.
+
+            (e.g., 2335 S State St Ste 300 Provo UT)
+
+            A1 — Address not present in USPS data.
+
+            (e.g., 3214 N University Ave New York NY)
+
+            BB — Entire address is valid.
+
+            (e.g., 2335 S State St Ste 300 Provo UT)
+
+            CC — The submitted secondary information (apartment, suite, etc.) was not recognized. Secondary number is NOT REQUIRED for delivery.
+
+            (e.g., 3331 Erie Ave Apt 2 Cincinnati OH 45208)
+
+            C1 — The submitted secondary information (apartment, suite, etc.) was not recognized. Secondary number IS REQUIRED for delivery.
+
+            (e.g., 2335 S State St Ste 500 Provo UT)
+
+            F1 — Military or diplomatic address
+
+            (e.g., Unit 2050 Box 4190 APO AP 96278)
+
+            G1 — General delivery address
+
+            (e.g., General Delivery Provo UT 84601)
+
+            M1 — Primary number (e.g., house number) is missing.
+
+            (e.g., N University Ave Provo UT)
+
+            M3 — Primary number (e.g., house number) is invalid.
+
+            (e.g., 16 N University Ave Provo UT)
+
+            N1 — Address is missing secondary information (apartment, suite, etc.).
+
+            (e.g., 2335 S State St Provo UT)
+
+            PB — PO Box street style address.
+
+            (e.g., 555 S B B King Blvd Unit 1 Memphis TN 38103)
+
+            P1 — PO, RR, or HC box number is missing.
+
+            (e.g., Dept 126 Denver CO 802910126)
+
+            P3 — PO, RR, or HC box number is invalid.
+
+            (e.g., PO BOX 60780 FAIRBANKS AK 99706)
+
+            RR — Confirmed address with private mailbox (PMB) info.
+
+            (e.g., 3214 N University Ave #409 Provo UT)
+
+            R1 — Confirmed address without private mailbox (PMB) info.
+
+            (e.g., 3214 N University Ave Provo UT)
+
+            R7 — Confirmed as a valid address that doesn''t currently receive US Postal Service street delivery.
+
+            (e.g., 6D Cruz Bay St John VI 00830)
+
+            TA — Primary number was matched by dropping trailing alpha.
+
+            (e.g., 4-C PENINSULA CTR RANCHO PALOS VERDES CA 90274)
+
+            U1 — Address has a "unique" ZIP Code.
+
+            (e.g., 100 North Happy Street 12345)
+
+
+            Here are some common combinations:
+
+            AABB - ZIP, state, city, street name, and primary number match.
+
+            AABBCC - ZIP, state, city, street name, and primary number match, but secondary does not. A secondary is NOT required for delivery.
+
+            AAC1 - ZIP, state, city, street name, and primary number match, but secondary does not. A secondary is required for delivery.
+
+            AAM1 - ZIP, state, city, and street name match, but the primary number is missing.
+
+            AAM3 - ZIP, state, city, and street name match, but the primary number is invalid.
+
+            AAN1 - ZIP, state, city, street name, and primary number match, but there is secondary information such as apartment or suite that would be helpful.
+
+            AABBR1 - ZIP, state, city, street name, and primary number match. Address confirmed without private mailbox (PMB) info.'
+        dpv_cmra:
+          type: string
+          maxLength: 1
+          description: "Indicates whether the address is associated with a Commercial Mail Receiving Agency (CMRA), also known as a private mailbox (PMB) operator. A CMRA is a business through which USPS mail may be sent or received, for example the UPS Store and Mailboxes Etc. \n\nY — Address is associated with a valid CMRA.\nN — Address is not associated with a valid CMRA.\n[blank] — Address was not submitted for CMRA verification."
+        dpv_vacant:
+          type: string
+          maxLength: 1
+          description: "Indicates that a delivery point was active in the past but is currently vacant (in most cases, unoccupied over 90 days) and is not receiving deliveries. This status is often obtained when mail receptacles aren't being emptied and are filling up, so mail is held at the post office for a certain number of days before the delivery point is marked vacant. \n\nY — Address is vacant.\nN — Address is not vacant.\n[blank] — Address was not submitted for vacancy verification."
+        dpv_no_stat:
+          type: string
+          maxLength: 1
+          description: "Indicates that a delivery point is listed as \"no-stat\" by the USPS. Technically, that means the USPS is temporarily declaring the address undeliverable. In practice, however, the USPS is often several months behind in removing addresses from the \"no-stat\" list, so only rely on this data point if you are fully aware of its weaknesses and limitations. \n\nY — USPS lists the address as \"no-stat.\"\nN — USPS does not list the address as \"no-stat.\"\n[blank] — Address was not submitted for \"no-stat\" verification."
+        active:
+          type: string
+          maxLength: 1
+          description: The API still returns this field, but in practical terms, it is deprecated. This field will contain a value of Y for every address submitted.
+        footnotes:
+          type: string
+          maxLength: 12
+          description: 'Indicates which changes were made to the input address. Footnotes are delimited by a # character. See the footnotes table below for details.'
+        lacslink_code:
+          type: string
+          maxLength: 2
+          description: "The reason for the LACSLink indication that was given (below) \n\nA — Match: Address provided. LACSLink record match was found, and a converted address was provided.\n00 — No Match. No converted address. No soup for you!\n09 — Match: No new address. LACSLink matched an input address to an old address which is a \"high-rise default\" address; no new address was provided.\n14 — Match: No conversion. Found a LACSLink record, but couldn't convert the data to a deliverable address.\n92 — Match: Dropped secondary number. LACSLink record was matched after dropping the secondary number from input.\n[blank] — No LACSLink lookup attempted."
+        lacslink_indicator:
+          type: string
+          maxLength: 1
+          description: "Indicates whether there is an address match in the LACSLink database. \n\nY — LACS record match; a new address could be furnished because the input record matched a record in the master file.\nS — LACS record - secondary number dropped; the record is a ZIP+4 street level or high-rise match. The input record matched a master file record, but the input address had a secondary number and the master file record did not.\nN — No match; a new address could not be furnished; the input record could not be matched to a record in the master file.\nF — False positive; a false positive record was detected.\n[blank] — No LACSLink lookup attempted."
+        suitelink_match:
+          type: string
+          maxLength: 5
+          description: "Indicates a match (or not) to the USPS SuiteLink data. SuiteLink attempts to provide secondary information such as \"suite\" or \"apartment\" whenever there is a match based on address and company name. \n\ntrue — There was a SuiteLink match and the result is provided.\nfalse — There was no SuiteLink match."
+        enhanced_match:
+          type: string
+          maxLength: 64
+          description: 'When an address is submitted with the match parameter set to "enhanced," this field will contain additional information about the result. Multiple values may be present, separated by commas. Additional values will be added from time to time. The current possible values are:
+
+
+            none — No address match was found.
+
+            non-postal-match — A match was found within additional, non-postal address data.
+
+            postal-match — A match was found within postal address data.
+
+            missing-secondary — The address should have a secondary (e.g., apartment), but none was found in the input.
+
+            unknown-secondary — The provided secondary information did not match a known secondary within the address data.
+
+            ignored-input — The provided input contained information that was not used for a match.'
+      description: Object representing the different metadata of a verified address
+  securitySchemes:
+    auth-id:
+      type: apiKey
+      name: auth-id
+      in: query
+    auth-token:
+      type: apiKey
+      name: auth-token
+      in: query
+    embedded-key:
+      type: apiKey
+      name: key
+      in: query
+externalDocs:
+  description: Extensive documentation for the International Address Autocomplete API
+  url: https://www.smarty.com/docs/cloud/international-address-autocomplete-api
