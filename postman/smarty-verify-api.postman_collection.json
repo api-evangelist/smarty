@@ -1,0 +1,976 @@
+{
+  "info": {
+    "_postman_id": "0ceeaec7-bf79-496f-975b-4876c07a6017",
+    "name": "International Address Autocomplete Lookup Verify API",
+    "description": "This API returns suggestions that are fully verified global addresses.\nUses fuzzy logic during searching to:\nAllow for missing directionals and street suffixes.\nAllow substitution of street suffixes and unit designators. E.g., ST is accepted for AVE; APT is accepted for UNIT, etc.\nAllow full or partial spelling of street suffixes and unit designators. E.g., ST can be spelled as STR or STREET and still match.\nFilters and preferences allow for multiple cities in a single country.\nNote: Effective with the adoption of the V2 version of International Address Autocomplete, lookup usage will be based on the final selection of an address rather than per keystroke.\n\nBy default, the character set returned will be the native set for that country. If any latin characters are provided in the input (excluding numerics), the latin set will be returned. Character sets include:\nCyrillic\nGreek\nHebrew\nKanji (Japanese)\nSimplified Chinese\nArabic\nThai\nHangul (Korean)\n\nSupports the following 242 countries: \nAfghanistan\tAFG\nAlbania\tALB\nAlgeria\tDZA\nAndorra\tAND\nAngola\tAGO\nAnguilla\tAIA\nAntarctica\tATA\nAntigua and Barbuda\tATG\nArgentina\tARG\nArmenia\tARM\nAruba\tABW\nAustralia\tAUS\nAustria\tAUT\nAzerbaijan\tAZE\nBahamas\tBHS\nBahrain\tBHR\nBangladesh\tBGD\nBarbados\tBRB\nBelarus\tBLR\nBelgium\tBEL\nBelize\tBLZ\nBenin\tBEN\nBermuda\tBMU\nBhutan\tBTN\nBolivia\tBOL\nBonaire, Sint Eustatius and Saba\tBES\nBosnia and Herzegovina\tBIH\nBotswana\tBWA\nBouvet Island\tBVT\nBrazil\tBRA\nBritish Indian Ocean Territory\tIOT\nBrunei Darussalam\tBRN\nBulgaria\tBGR\nBurkina Faso\tBFA\nBurundi\tBDI\nCambodia\tKHM\nCameroon\tCMR\nCanada\tCAN\nCabo Verde\tCPV\nCayman Islands\tCYM\nCentral African Republic\tCAF\nChad\tTCD\nChile\tCHL\nChina\tCHN\nChristmas Island\tCXR\nCocos (Keeling) Islands\tCCK\nColombia\tCOL\nComoros\tCOM\nCongo\tCOG\nDemocratic Republic of the Congo\tCOD\nCook Islands\tCOK\nCosta Rica\tCRI\nCroatia\tHRV\nCuba\tCUB\nCura\u00e7ao\tCUW\nCyprus\tCYP\nCzechia\tCZE\nIvory Coast\tCIV\nDenmark\tDNK\nDjibouti\tDJI\nDominica\tDMA\nDominican Republic\tDOM\nEcuador\tECU\nEgypt\tEGY\nEl Salvador\tSLV\nEquatorial Guinea\tGNQ\nEritrea\tERI\nEstonia\tEST\nEswatini\tSWZ\nEthiopia\tETH\nFalkland Islands\tFLK\nFaroe Islands\tFRO\nFiji\tFJI\nFinland\tFIN\nFrance\tFRA\nFrench Guiana\tGUF\nFrench Polynesia\tPYF\nFrench Southern Territories\tATF\nGabon\tGAB\nGambia\tGMB\nGeorgia\tGEO\nGermany\tDEU\nGhana\tGHA\nGibraltar\tGIB\nGreece\tGRC\nGreenland\tGRL\nGrenada\tGRD\nGuadeloupe\tGLP\nGuatemala\tGTM\nGuernsey\tGGY\nGuinea\tGIN\nGuinea-Bissau\tGNB\nGuyana\tGUY\nHaiti\tHTI\nHeard Island and McDonald Islands\tHMD\nHoly See\tVAT\nHonduras\tHND\nHong Kong\tHKG\nHungary\tHUN\nIceland\tISL\nIndia\tIND\nIndonesia\tIDN\nIslamic Republic of Iran\tIRN\nIraq\tIRQ\nIreland\tIRL\nIsle of Man\tIMN\nIsrael\tISR\nItaly\tITA\nJamaica\tJAM\nJapan\tJPN\nJersey\tJEY\nJordan\tJOR\nKazakhstan\tKAZ\nKenya\tKEN\nKiribati\tKIR\nDemocratic People's Republic of Korea (North Korea)\tPRK\nRepublic of Korea\tKOR\nKosovo\tXKX\nKuwait\tKWT\nKyrgyzstan\tKGZ\nLao People's Democratic Republic\tLAO\nLatvia\tLVA\nLebanon\tLBN\nLesotho\tLSO\nLiberia\tLBR\nLibya\tLBY\nLiechtenstein\tLIE\nLithuania\tLTU\nLuxembourg\tLUX\nMacao\tMAC\nRepublic of North Macedonia\tMKD\nMadagascar\tMDG\nMalawi\tMWI\nMalaysia\tMYS\nMaldives\tMDV\nMali\tMLI\nMalta\tMLT\nMartinique\tMTQ\nMauritania\tMRT\nMauritius\tMUS\nMayotte\tMYT\nMexico\tMEX\nFederated States of Micronesia\tFSM\nRepublic of Moldova\tMDA\nMonaco\tMCO\nMongolia\tMNG\nMontenegro\tMNE\nMontserrat\tMSR\nMorocco\tMAR\nMozambique\tMOZ\nMyanmar\tMMR\nNamibia\tNAM\nNauru\tNRU\nNepal\tNPL\nNetherlands\tNLD\nNew Caledonia\tNCL\nNew Zealand\tNZL\nNicaragua\tNIC\nNiger\tNER\nNigeria\tNGA\nNiue\tNIU\nNorfolk Island\tNFK\nNorway\tNOR\nOman\tOMN\nPakistan\tPAK\nPalau\tPLW\nState of Palestine\tPSE\nPanama\tPAN\nPapua New Guinea\tPNG\nParaguay\tPRY\nPeru\tPER\nPhilippines\tPHL\nPitcairn\tPCN\nPoland\tPOL\nPortugal\tPRT\nQatar\tQAT\nSouth Sudan\tSSD\nRomania\tROU\nRussian Federation\tRUS\nRwanda\tRWA\nR\u00e9union\tREU\nSaint Barth\u00e9lemy\tBLM\nSaint Helena, Ascension and Tristan da Cunha\tSHN\nSaint Kitts and Nevis\tKNA\nSaint Lucia\tLCA\nSaint Martin\tMAF\nSaint Pierre and Miquelon\tSPM\nSaint Vincent and the Grenadines\tVCT\nSamoa\tWSM\nSan Marino\tSMR\nSao Tome and Principe\tSTP\nSaudi Arabia\tSAU\nSenegal\tSEN\nSerbia\tSRB\nSeychelles\tSYC\nSierra Leone\tSLE\nSingapore\tSGP\nSint Maarten (Dutch)\tSXM\nSlovakia\tSVK\nSlovenia\tSVN\nSolomon Islands\tSLB\nSomalia\tSOM\nSouth Africa\tZAF\nSouth Georgia and the South Sandwich Islands\tSGS\nSpain\tESP\nSri Lanka\tLKA\nSudan\tSDN\nSuriname\tSUR\nSvalbard and Jan Mayen Islands\tSJM\nSweden\tSWE\nSwitzerland\tCHE\nSyrian Arab Republic\tSYR\nTaiwan\tTWN\nTajikistan\tTJK\nUnited Republic of Tanzania\tTZA\nThailand\tTHA\nTimor-Leste\tTLS\nTogo\tTGO\nTokelau\tTKL\nTonga\tTON\nTrinidad and Tobago\tTTO\nTunisia\tTUN\nT\u00fcrkiye (Turkey)\tTUR\nTurkmenistan\tTKM\nTurks and Caicos Islands\tTCA\nTuvalu\tTUV\nUganda\tUGA\nUkraine\tUKR\nUnited Arab Emirates\tARE\nUnited Kingdom\tGBR\nUruguay\tURY\nUzbekistan\tUZB\nVanuatu\tVUT\nBolivarian Republic of Venezuela\tVEN\nViet Nam\tVNM\nBritish Virgin Islands\tVGB\nWallis and Futuna\tWLF\nWestern Sahara\tESH\nYemen\tYEM\nZambia\tZMB\nZimbabwe\tZWE\n\u00c5land Islands\tALA\n\n\nContact Support:\n Name: Smarty Support\n Email: support@smartystreets.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:56:50.000Z",
+    "updatedAt": "2026-07-28T02:56:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0ceeaec7-bf79-496f-975b-4876c07a6017"
+  },
+  "item": [
+    {
+      "name": "verify",
+      "item": [
+        {
+          "name": "Submit Address to Verify",
+          "id": "8232e5fe-e582-4127-b1b4-fb9dd15382b3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "auth-id",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "query",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                "key": "Host",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "verify"
+              ],
+              "query": [
+                {
+                  "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                  "key": "input_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                  "key": "geocode",
+                  "value": "<string>"
+                },
+                {
+                  "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                  "key": "language",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                  "key": "freeform",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                  "key": "address1",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The second address line (if any)",
+                  "key": "address2",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The third address line (if any)",
+                  "key": "address3",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The fourth address line (if any)",
+                  "key": "address4",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                  "key": "organization",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The city name  (e.g., Paris)",
+                  "key": "locality",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                  "key": "administrative_area",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The postal code  (e.g., 90210-2301)",
+                  "key": "postal_code",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                  "key": "license",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                  "key": "features",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "To send one (and only one) address to our API, simply encode the input field names from the table below along with the corresponding input values as query string parameters in the URL of your request. Here's an example that uses the address1, address2, locality, administrative_area, postal_code, and country fields:\n```\ncurl -v 'https://international-street.api.smarty.com/verify?\n  auth-id=YOUR+AUTH-ID+HERE&\n  auth-token=YOUR+AUTH-TOKEN+HERE&\n\n  address1=Rua+Padre+Antonio+D%27Angelo+121&\n  address2=Casa+Verde&\n  locality=Sao+Paulo&\n  administrative_area=SP&\n  postal_code=02516-040&\n  country=Brazil'\n```\nPlease note that all query string parameter values must be url-encoded (spaces become + or %20, for example) to ensure that the data is transferred correctly. A common mistake we see is a non-encoded pound sign (#) like in an apartment number (# 409). This character, when properly encoded in a URL, becomes %23. When not encoded this character functions as the fragment identifier, which is ignored by our API servers.\n"
+          },
+          "response": [
+            {
+              "id": "f308ce88-7e6a-43cb-8563-a30b9ae21857",
+              "name": "OK (success!): A JSON array containing zero or more address matches for the input provided with the request. If none of the submitted addresses validate, the array will be empty ([]).",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                      "key": "geocode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                      "key": "freeform",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The second address line (if any)",
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The third address line (if any)",
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The fourth address line (if any)",
+                      "key": "address4",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name  (e.g., Paris)",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code  (e.g., 90210-2301)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"input_id\": \"<string>\",\n    \"organization\": \"<string>\",\n    \"address1-12\": \"<string>\",\n    \"components\": {\n      \"country_iso_3\": \"<string>\",\n      \"attention\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"administrative_area_iso2\": \"<string>\",\n      \"super_administrative_area\": \"<string>\",\n      \"sub_administrative_area\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"dependent_locality\": \"<string>\",\n      \"dependent_locality_name\": \"<string>\",\n      \"double_dependent_locality\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"postal_code_short\": \"<string>\",\n      \"postal_code_extra\": \"<string>\",\n      \"premise\": \"<string>\",\n      \"premise_extra\": \"<string>\",\n      \"premise_number\": \"<string>\",\n      \"premise_type\": \"<string>\",\n      \"thoroughfare\": \"<string>\",\n      \"thoroughfare_predirection\": \"<string>\",\n      \"thoroughfare_postdirection\": \"<string>\",\n      \"thoroughfare_name\": \"<string>\",\n      \"thoroughfare_trailing_type\": \"<string>\",\n      \"thoroughfare_type\": \"<string>\",\n      \"dependent_thoroughfare\": \"<string>\",\n      \"dependent_thoroughfare_predirection\": \"<string>\",\n      \"dependent_thoroughfare_postdirection\": \"<string>\",\n      \"dependent_thoroughfare_name\": \"<string>\",\n      \"dependent_thoroughfare_trailing_type\": \"<string>\",\n      \"dependent_thoroughfare_type\": \"<string>\",\n      \"building\": \"<string>\",\n      \"building_leading_type\": \"<string>\",\n      \"building_name\": \"<string>\",\n      \"building_trailing_type\": \"<string>\",\n      \"sub_building\": \"<string>\",\n      \"sub_building_type\": \"<string>\",\n      \"sub_building_number\": \"<string>\",\n      \"sub_building_name\": \"<string>\",\n      \"post_box\": \"<string>\",\n      \"post_box_type\": \"<string>\",\n      \"post_box_number\": \"<string>\",\n      \"additional_content\": \"<string>\",\n      \"delivery_installation\": \"<string>\",\n      \"delivery_installation_type\": \"<string>\",\n      \"delivery_installation_qualifier_name\": \"<string>\",\n      \"route\": \"<string>\",\n      \"route_type\": \"<string>\",\n      \"route_number\": \"<string>\"\n    },\n    \"metadata\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"geocode_classificiation\": \"<string>\",\n      \"geocode_precision\": \"<string>\",\n      \"max_geocode_precision\": \"<string>\",\n      \"address_format\": \"<string>\",\n      \"occupant_use\": \"<string>\"\n    },\n    \"analysis\": {\n      \"verification_status\": \"<string>\",\n      \"address_precision\": \"<string>\",\n      \"max_address_precision\": \"<string>\",\n      \"changes\": {\n        \"organization\": \"<string>\",\n        \"components\": {\n          \"country_iso_3\": \"<string>\",\n          \"attention\": \"<string>\",\n          \"administrative_area\": \"<string>\",\n          \"administrative_area_iso2\": \"<string>\",\n          \"super_administrative_area\": \"<string>\",\n          \"sub_administrative_area\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"dependent_locality\": \"<string>\",\n          \"dependent_locality_name\": \"<string>\",\n          \"double_dependent_locality\": \"<string>\",\n          \"postal_code\": \"<string>\",\n          \"postal_code_short\": \"<string>\",\n          \"postal_code_extra\": \"<string>\",\n          \"premise\": \"<string>\",\n          \"premise_extra\": \"<string>\",\n          \"premise_number\": \"<string>\",\n          \"premise_type\": \"<string>\",\n          \"thoroughfare\": \"<string>\",\n          \"thoroughfare_predirection\": \"<string>\",\n          \"thoroughfare_postdirection\": \"<string>\",\n          \"thoroughfare_name\": \"<string>\",\n          \"thoroughfare_trailing_type\": \"<string>\",\n          \"thoroughfare_type\": \"<string>\",\n          \"dependent_thoroughfare\": \"<string>\",\n          \"dependent_thoroughfare_predirection\": \"<string>\",\n          \"dependent_thoroughfare_postdirection\": \"<string>\",\n          \"dependent_thoroughfare_name\": \"<string>\",\n          \"dependent_thoroughfare_trailing_type\": \"<string>\",\n          \"dependent_thoroughfare_type\": \"<string>\",\n          \"building\": \"<string>\",\n          \"building_leading_type\": \"<string>\",\n          \"building_name\": \"<string>\",\n          \"building_trailing_type\": \"<string>\",\n          \"sub_building\": \"<string>\",\n          \"sub_building_type\": \"<string>\",\n          \"sub_building_number\": \"<string>\",\n          \"sub_building_name\": \"<string>\",\n          \"post_box\": \"<string>\",\n          \"post_box_type\": \"<string>\",\n          \"post_box_number\": \"<string>\",\n          \"additional_content\": \"<string>\",\n          \"delivery_installation\": \"<string>\",\n          \"delivery_installation_type\": \"<string>\",\n          \"delivery_installation_qualifier_name\": \"<string>\",\n          \"route\": \"<string>\",\n          \"route_type\": \"<string>\",\n          \"route_number\": \"<string>\"\n        }\n      }\n    }\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"organization\": \"<string>\",\n    \"address1-12\": \"<string>\",\n    \"components\": {\n      \"country_iso_3\": \"<string>\",\n      \"attention\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"administrative_area_iso2\": \"<string>\",\n      \"super_administrative_area\": \"<string>\",\n      \"sub_administrative_area\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"dependent_locality\": \"<string>\",\n      \"dependent_locality_name\": \"<string>\",\n      \"double_dependent_locality\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"postal_code_short\": \"<string>\",\n      \"postal_code_extra\": \"<string>\",\n      \"premise\": \"<string>\",\n      \"premise_extra\": \"<string>\",\n      \"premise_number\": \"<string>\",\n      \"premise_type\": \"<string>\",\n      \"thoroughfare\": \"<string>\",\n      \"thoroughfare_predirection\": \"<string>\",\n      \"thoroughfare_postdirection\": \"<string>\",\n      \"thoroughfare_name\": \"<string>\",\n      \"thoroughfare_trailing_type\": \"<string>\",\n      \"thoroughfare_type\": \"<string>\",\n      \"dependent_thoroughfare\": \"<string>\",\n      \"dependent_thoroughfare_predirection\": \"<string>\",\n      \"dependent_thoroughfare_postdirection\": \"<string>\",\n      \"dependent_thoroughfare_name\": \"<string>\",\n      \"dependent_thoroughfare_trailing_type\": \"<string>\",\n      \"dependent_thoroughfare_type\": \"<string>\",\n      \"building\": \"<string>\",\n      \"building_leading_type\": \"<string>\",\n      \"building_name\": \"<string>\",\n      \"building_trailing_type\": \"<string>\",\n      \"sub_building\": \"<string>\",\n      \"sub_building_type\": \"<string>\",\n      \"sub_building_number\": \"<string>\",\n      \"sub_building_name\": \"<string>\",\n      \"post_box\": \"<string>\",\n      \"post_box_type\": \"<string>\",\n      \"post_box_number\": \"<string>\",\n      \"additional_content\": \"<string>\",\n      \"delivery_installation\": \"<string>\",\n      \"delivery_installation_type\": \"<string>\",\n      \"delivery_installation_qualifier_name\": \"<string>\",\n      \"route\": \"<string>\",\n      \"route_type\": \"<string>\",\n      \"route_number\": \"<string>\"\n    },\n    \"metadata\": {\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"geocode_classificiation\": \"<string>\",\n      \"geocode_precision\": \"<string>\",\n      \"max_geocode_precision\": \"<string>\",\n      \"address_format\": \"<string>\",\n      \"occupant_use\": \"<string>\"\n    },\n    \"analysis\": {\n      \"verification_status\": \"<string>\",\n      \"address_precision\": \"<string>\",\n      \"max_address_precision\": \"<string>\",\n      \"changes\": {\n        \"organization\": \"<string>\",\n        \"components\": {\n          \"country_iso_3\": \"<string>\",\n          \"attention\": \"<string>\",\n          \"administrative_area\": \"<string>\",\n          \"administrative_area_iso2\": \"<string>\",\n          \"super_administrative_area\": \"<string>\",\n          \"sub_administrative_area\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"dependent_locality\": \"<string>\",\n          \"dependent_locality_name\": \"<string>\",\n          \"double_dependent_locality\": \"<string>\",\n          \"postal_code\": \"<string>\",\n          \"postal_code_short\": \"<string>\",\n          \"postal_code_extra\": \"<string>\",\n          \"premise\": \"<string>\",\n          \"premise_extra\": \"<string>\",\n          \"premise_number\": \"<string>\",\n          \"premise_type\": \"<string>\",\n          \"thoroughfare\": \"<string>\",\n          \"thoroughfare_predirection\": \"<string>\",\n          \"thoroughfare_postdirection\": \"<string>\",\n          \"thoroughfare_name\": \"<string>\",\n          \"thoroughfare_trailing_type\": \"<string>\",\n          \"thoroughfare_type\": \"<string>\",\n          \"dependent_thoroughfare\": \"<string>\",\n          \"dependent_thoroughfare_predirection\": \"<string>\",\n          \"dependent_thoroughfare_postdirection\": \"<string>\",\n          \"dependent_thoroughfare_name\": \"<string>\",\n          \"dependent_thoroughfare_trailing_type\": \"<string>\",\n          \"dependent_thoroughfare_type\": \"<string>\",\n          \"building\": \"<string>\",\n          \"building_leading_type\": \"<string>\",\n          \"building_name\": \"<string>\",\n          \"building_trailing_type\": \"<string>\",\n          \"sub_building\": \"<string>\",\n          \"sub_building_type\": \"<string>\",\n          \"sub_building_number\": \"<string>\",\n          \"sub_building_name\": \"<string>\",\n          \"post_box\": \"<string>\",\n          \"post_box_type\": \"<string>\",\n          \"post_box_number\": \"<string>\",\n          \"additional_content\": \"<string>\",\n          \"delivery_installation\": \"<string>\",\n          \"delivery_installation_type\": \"<string>\",\n          \"delivery_installation_qualifier_name\": \"<string>\",\n          \"route\": \"<string>\",\n          \"route_type\": \"<string>\",\n          \"route_number\": \"<string>\"\n        }\n      }\n    }\n  }\n]",
+              "createdAt": "2026-07-28T02:56:51.000Z",
+              "updatedAt": "2026-07-28T02:56:51.000Z",
+              "uid": "35240-f308ce88-7e6a-43cb-8563-a30b9ae21857"
+            },
+            {
+              "id": "161c866b-0eda-4110-ada8-fcf4980ad629",
+              "name": "Bad Request (Malformed Payload): Inputs from the request could not be interpreted.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                      "key": "geocode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                      "key": "freeform",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The second address line (if any)",
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The third address line (if any)",
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The fourth address line (if any)",
+                      "key": "address4",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name  (e.g., Paris)",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code  (e.g., 90210-2301)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:51.000Z",
+              "updatedAt": "2026-07-28T02:56:51.000Z",
+              "uid": "35240-161c866b-0eda-4110-ada8-fcf4980ad629"
+            },
+            {
+              "id": "ed3e223e-d914-4d7c-b563-50d016148636",
+              "name": "Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                      "key": "geocode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                      "key": "freeform",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The second address line (if any)",
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The third address line (if any)",
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The fourth address line (if any)",
+                      "key": "address4",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name  (e.g., Paris)",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code  (e.g., 90210-2301)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:51.000Z",
+              "updatedAt": "2026-07-28T02:56:51.000Z",
+              "uid": "35240-ed3e223e-d914-4d7c-b563-50d016148636"
+            },
+            {
+              "id": "749bc75f-c659-4a5c-a6a9-0b427b60dd2c",
+              "name": "Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                      "key": "geocode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                      "key": "freeform",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The second address line (if any)",
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The third address line (if any)",
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The fourth address line (if any)",
+                      "key": "address4",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name  (e.g., Paris)",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code  (e.g., 90210-2301)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:51.000Z",
+              "updatedAt": "2026-07-28T02:56:51.000Z",
+              "uid": "35240-749bc75f-c659-4a5c-a6a9-0b427b60dd2c"
+            },
+            {
+              "id": "69dbaff4-3ace-4740-b4f3-67572c993f15",
+              "name": "Unprocessable Entity: A GET request lacked required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                      "key": "geocode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                      "key": "freeform",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The second address line (if any)",
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The third address line (if any)",
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The fourth address line (if any)",
+                      "key": "address4",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name  (e.g., Paris)",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code  (e.g., 90210-2301)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:51.000Z",
+              "updatedAt": "2026-07-28T02:56:51.000Z",
+              "uid": "35240-69dbaff4-3ace-4740-b4f3-67572c993f15"
+            },
+            {
+              "id": "c8da7037-1e3c-410b-b1e2-36357a40d051",
+              "name": "Too Many Requests: Too many requests with exactly the same input values were submitted within too short a period. This status code conveys that the input was not processed in order to prevent runaway charges caused by such conditions as a misbehaving (inf",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                      "key": "geocode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                      "key": "freeform",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The second address line (if any)",
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The third address line (if any)",
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The fourth address line (if any)",
+                      "key": "address4",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name  (e.g., Paris)",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code  (e.g., 90210-2301)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:51.000Z",
+              "updatedAt": "2026-07-28T02:56:51.000Z",
+              "uid": "35240-c8da7037-1e3c-410b-b1e2-36357a40d051"
+            },
+            {
+              "id": "e5d7597d-e033-4f1e-b65b-38adf9f23622",
+              "name": "Gateway Timeout: Our own upstream data provider did not respond in a timely fashion and the request failed. A serious, yet rare occurrence indeed.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: international-street.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/verify?input_id=<string>&country=<string>&geocode=<string>&language=<string>&freeform=<string>&address1=<string>&address2=<string>&address3=<string>&address4=<string>&organization=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier generated by you for this address for use within your application; this field will be copied into the output.  (e.g., 123456) Max Characters: 36",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2 or ISO-N). Address validation will fail if this is missing.  (e.g., Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Set to true to enable geocoding (disabled by default). See the examples section for, well, an example.",
+                      "key": "geocode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "When not set, the output language will match the language of the input values. When set to native, the results will always be in the language of the output country whenever possible. When set to latin, the results will always be provided using a Latin character set basic ASCII, accents and other diacritics removed. The following character sets can be transliterated, into either native or Latin characters, for the specified countries: Russian (Kazakhstan, Azerbaijan) Japanese (Japan) Simplified Chinese (China) Thai (Thailand) Arabic (Algeria, Bahrain, Egypt, Iraq, Jordan, Kuwait, Lebanon, Morocco, Oman, Qatar, Saudi Arabia, United Arab Emirates, Yemen)",
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The entire address in a single field (without the country). If freeform is specified, all other address input fields (except country) will be ignored.  (e.g., Via Santa Maria di Costantinopoli, 72 46030-Tabellano MN) Max Characters: 512",
+                      "key": "freeform",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The first address line  (e.g., Calle Proc. San Sebasti\u00e1n, 15)",
+                      "key": "address1",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The second address line (if any)",
+                      "key": "address2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The third address line (if any)",
+                      "key": "address3",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The fourth address line (if any)",
+                      "key": "address4",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The name of the recipient, firm, or company at this address (e.g., Robert Smith OR The Clean Oil Company)",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name  (e.g., Paris)",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation  (e.g., Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code  (e.g., 90210-2301)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left to right order. We recommend that each request explicitly specify a license value. For more information see License Selection.",
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. Examples:occupant-use: Return the occupant_use metadata field; geocode-classification: Return the geocode_classification metadata field if geocode=true; geocode-precision-enhanced: Enable the PostalCode return value in geocode_precision",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:51.000Z",
+              "updatedAt": "2026-07-28T02:56:51.000Z",
+              "uid": "35240-e5d7597d-e033-4f1e-b65b-38adf9f23622"
+            }
+          ],
+          "createdAt": "2026-07-28T02:56:51.000Z",
+          "updatedAt": "2026-07-28T02:56:51.000Z",
+          "uid": "35240-8232e5fe-e582-4127-b1b4-fb9dd15382b3"
+        }
+      ],
+      "id": "dcc4b012-d66c-471e-9931-e80326c3ef04",
+      "createdAt": "2026-07-28T02:56:51.000Z",
+      "updatedAt": "2026-07-28T02:56:51.000Z",
+      "uid": "35240-dcc4b012-d66c-471e-9931-e80326c3ef04"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://international-autocomplete.api.smarty.com"
+    }
+  ]
+}

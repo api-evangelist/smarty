@@ -1,0 +1,1203 @@
+{
+  "info": {
+    "_postman_id": "7b3a9f9c-6b1c-4c27-95df-1afe02b6f412",
+    "name": "International Address Autocomplete Lookup street-address API",
+    "description": "This API returns suggestions that are fully verified global addresses.\nUses fuzzy logic during searching to:\nAllow for missing directionals and street suffixes.\nAllow substitution of street suffixes and unit designators. E.g., ST is accepted for AVE; APT is accepted for UNIT, etc.\nAllow full or partial spelling of street suffixes and unit designators. E.g., ST can be spelled as STR or STREET and still match.\nFilters and preferences allow for multiple cities in a single country.\nNote: Effective with the adoption of the V2 version of International Address Autocomplete, lookup usage will be based on the final selection of an address rather than per keystroke.\n\nBy default, the character set returned will be the native set for that country. If any latin characters are provided in the input (excluding numerics), the latin set will be returned. Character sets include:\nCyrillic\nGreek\nHebrew\nKanji (Japanese)\nSimplified Chinese\nArabic\nThai\nHangul (Korean)\n\nSupports the following 242 countries: \nAfghanistan\tAFG\nAlbania\tALB\nAlgeria\tDZA\nAndorra\tAND\nAngola\tAGO\nAnguilla\tAIA\nAntarctica\tATA\nAntigua and Barbuda\tATG\nArgentina\tARG\nArmenia\tARM\nAruba\tABW\nAustralia\tAUS\nAustria\tAUT\nAzerbaijan\tAZE\nBahamas\tBHS\nBahrain\tBHR\nBangladesh\tBGD\nBarbados\tBRB\nBelarus\tBLR\nBelgium\tBEL\nBelize\tBLZ\nBenin\tBEN\nBermuda\tBMU\nBhutan\tBTN\nBolivia\tBOL\nBonaire, Sint Eustatius and Saba\tBES\nBosnia and Herzegovina\tBIH\nBotswana\tBWA\nBouvet Island\tBVT\nBrazil\tBRA\nBritish Indian Ocean Territory\tIOT\nBrunei Darussalam\tBRN\nBulgaria\tBGR\nBurkina Faso\tBFA\nBurundi\tBDI\nCambodia\tKHM\nCameroon\tCMR\nCanada\tCAN\nCabo Verde\tCPV\nCayman Islands\tCYM\nCentral African Republic\tCAF\nChad\tTCD\nChile\tCHL\nChina\tCHN\nChristmas Island\tCXR\nCocos (Keeling) Islands\tCCK\nColombia\tCOL\nComoros\tCOM\nCongo\tCOG\nDemocratic Republic of the Congo\tCOD\nCook Islands\tCOK\nCosta Rica\tCRI\nCroatia\tHRV\nCuba\tCUB\nCura\u00e7ao\tCUW\nCyprus\tCYP\nCzechia\tCZE\nIvory Coast\tCIV\nDenmark\tDNK\nDjibouti\tDJI\nDominica\tDMA\nDominican Republic\tDOM\nEcuador\tECU\nEgypt\tEGY\nEl Salvador\tSLV\nEquatorial Guinea\tGNQ\nEritrea\tERI\nEstonia\tEST\nEswatini\tSWZ\nEthiopia\tETH\nFalkland Islands\tFLK\nFaroe Islands\tFRO\nFiji\tFJI\nFinland\tFIN\nFrance\tFRA\nFrench Guiana\tGUF\nFrench Polynesia\tPYF\nFrench Southern Territories\tATF\nGabon\tGAB\nGambia\tGMB\nGeorgia\tGEO\nGermany\tDEU\nGhana\tGHA\nGibraltar\tGIB\nGreece\tGRC\nGreenland\tGRL\nGrenada\tGRD\nGuadeloupe\tGLP\nGuatemala\tGTM\nGuernsey\tGGY\nGuinea\tGIN\nGuinea-Bissau\tGNB\nGuyana\tGUY\nHaiti\tHTI\nHeard Island and McDonald Islands\tHMD\nHoly See\tVAT\nHonduras\tHND\nHong Kong\tHKG\nHungary\tHUN\nIceland\tISL\nIndia\tIND\nIndonesia\tIDN\nIslamic Republic of Iran\tIRN\nIraq\tIRQ\nIreland\tIRL\nIsle of Man\tIMN\nIsrael\tISR\nItaly\tITA\nJamaica\tJAM\nJapan\tJPN\nJersey\tJEY\nJordan\tJOR\nKazakhstan\tKAZ\nKenya\tKEN\nKiribati\tKIR\nDemocratic People's Republic of Korea (North Korea)\tPRK\nRepublic of Korea\tKOR\nKosovo\tXKX\nKuwait\tKWT\nKyrgyzstan\tKGZ\nLao People's Democratic Republic\tLAO\nLatvia\tLVA\nLebanon\tLBN\nLesotho\tLSO\nLiberia\tLBR\nLibya\tLBY\nLiechtenstein\tLIE\nLithuania\tLTU\nLuxembourg\tLUX\nMacao\tMAC\nRepublic of North Macedonia\tMKD\nMadagascar\tMDG\nMalawi\tMWI\nMalaysia\tMYS\nMaldives\tMDV\nMali\tMLI\nMalta\tMLT\nMartinique\tMTQ\nMauritania\tMRT\nMauritius\tMUS\nMayotte\tMYT\nMexico\tMEX\nFederated States of Micronesia\tFSM\nRepublic of Moldova\tMDA\nMonaco\tMCO\nMongolia\tMNG\nMontenegro\tMNE\nMontserrat\tMSR\nMorocco\tMAR\nMozambique\tMOZ\nMyanmar\tMMR\nNamibia\tNAM\nNauru\tNRU\nNepal\tNPL\nNetherlands\tNLD\nNew Caledonia\tNCL\nNew Zealand\tNZL\nNicaragua\tNIC\nNiger\tNER\nNigeria\tNGA\nNiue\tNIU\nNorfolk Island\tNFK\nNorway\tNOR\nOman\tOMN\nPakistan\tPAK\nPalau\tPLW\nState of Palestine\tPSE\nPanama\tPAN\nPapua New Guinea\tPNG\nParaguay\tPRY\nPeru\tPER\nPhilippines\tPHL\nPitcairn\tPCN\nPoland\tPOL\nPortugal\tPRT\nQatar\tQAT\nSouth Sudan\tSSD\nRomania\tROU\nRussian Federation\tRUS\nRwanda\tRWA\nR\u00e9union\tREU\nSaint Barth\u00e9lemy\tBLM\nSaint Helena, Ascension and Tristan da Cunha\tSHN\nSaint Kitts and Nevis\tKNA\nSaint Lucia\tLCA\nSaint Martin\tMAF\nSaint Pierre and Miquelon\tSPM\nSaint Vincent and the Grenadines\tVCT\nSamoa\tWSM\nSan Marino\tSMR\nSao Tome and Principe\tSTP\nSaudi Arabia\tSAU\nSenegal\tSEN\nSerbia\tSRB\nSeychelles\tSYC\nSierra Leone\tSLE\nSingapore\tSGP\nSint Maarten (Dutch)\tSXM\nSlovakia\tSVK\nSlovenia\tSVN\nSolomon Islands\tSLB\nSomalia\tSOM\nSouth Africa\tZAF\nSouth Georgia and the South Sandwich Islands\tSGS\nSpain\tESP\nSri Lanka\tLKA\nSudan\tSDN\nSuriname\tSUR\nSvalbard and Jan Mayen Islands\tSJM\nSweden\tSWE\nSwitzerland\tCHE\nSyrian Arab Republic\tSYR\nTaiwan\tTWN\nTajikistan\tTJK\nUnited Republic of Tanzania\tTZA\nThailand\tTHA\nTimor-Leste\tTLS\nTogo\tTGO\nTokelau\tTKL\nTonga\tTON\nTrinidad and Tobago\tTTO\nTunisia\tTUN\nT\u00fcrkiye (Turkey)\tTUR\nTurkmenistan\tTKM\nTurks and Caicos Islands\tTCA\nTuvalu\tTUV\nUganda\tUGA\nUkraine\tUKR\nUnited Arab Emirates\tARE\nUnited Kingdom\tGBR\nUruguay\tURY\nUzbekistan\tUZB\nVanuatu\tVUT\nBolivarian Republic of Venezuela\tVEN\nViet Nam\tVNM\nBritish Virgin Islands\tVGB\nWallis and Futuna\tWLF\nWestern Sahara\tESH\nYemen\tYEM\nZambia\tZMB\nZimbabwe\tZWE\n\u00c5land Islands\tALA\n\n\nContact Support:\n Name: Smarty Support\n Email: support@smartystreets.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:56:46.000Z",
+    "updatedAt": "2026-07-28T02:56:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7b3a9f9c-6b1c-4c27-95df-1afe02b6f412"
+  },
+  "item": [
+    {
+      "name": "street-address",
+      "item": [
+        {
+          "name": "Single Address Validation",
+          "id": "3bd2f33e-18d9-4eca-844c-a39183a459ad",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "auth-id",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "query",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                "key": "Host",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/street-address?input_id=<string>&street=<string>&street2=<string>&secondary=<string>&city=<string>&state=<string>&zipcode=<string>&lastline=<string>&addressee=<string>&urbanization=<string>&candidates=<string>&match=<string>&format=<string>&county_source=<string>&features=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "street-address"
+              ],
+              "query": [
+                {
+                  "description": "**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output",
+                  "key": "input_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Street** *Example: 1600+amphitheatre+pkwy* The street line of the address, or the entire address('freeform' input).",
+                  "key": "street",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Street2** *Example: Leave it on the front porch* Any extra address information.",
+                  "key": "street2",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Secondary** *Example: Apt 52* Apartment, suite, or office number.",
+                  "key": "secondary",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**City** *Example: Provo* The city name.",
+                  "key": "city",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**State** *Example: UT* State name or two-letter abbreviation.",
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Zip code** *Example: 84604* The ZIP Code.",
+                  "key": "zipcode",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Last Line** *Example: Provo, UT 84604* City, state, and ZIP Code combined.",
+                  "key": "lastline",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Addressee** *Example: John Doe* The name of the recipient, firm, or company at this address.",
+                  "key": "addressee",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Urbanization** Only used with Puerto Rico.",
+                  "key": "urbanization",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Candidates** *Example: 1* The maximum number of valid addresses returned when the input is ambiguous (Max Value: 10).",
+                  "key": "candidates",
+                  "value": "<string>"
+                },
+                {
+                  "description": "**Match Type** *Example: invalid* The match output strategy to be employted for this lookup. Valid values are: **strict**: The API will ONLY return candidates that are valid USPS addresses. **range**: The API will return candidates that are valid USPS addresses, as well as invalid addresses with primary numbers that fall within a valid range for the street. **invalid**: The API will return a single candidate for every properly submitted address, even if invalid or ambiguous.",
+                  "key": "match",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The output format to be employed for this lookup, with an appropriate product subscription. Valid values are: default  The API will return the address in the default format. project-usa  The API will return the address in Project US@ format.",
+                  "key": "format",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The authoritative source to be used for the county information of the address. Valid values are: postal  The API will return county information based on the postal delivery information of the address. This is the default option. geographic  The API will return county information based on the physical location of the address.",
+                  "key": "county_source",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Component Analysis is available in the US Address Verification 42-day Free Trial and certain custom plans. If you have a subscription that allows for component analysis details, to return the component analysis details include the features parameters as features=components-analysis.",
+                  "key": "features",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "To send one (and only one) address to our API, simply encode the input field names from the table below along with the corresponding input values as query string parameters in the URL of your request. Here's an example that uses the street, city, state, and candidates fields (line breaks added for readability):\n```\ncurl -v 'https://us-street.api.smarty.com/street-address?\n  auth-id=YOUR+AUTH-ID+HERE&\n  auth-token=YOUR+AUTH-TOKEN+HERE&\n  street=1600+amphitheatre+pkwy&\n  city=mountain+view&\n  state=CA&\n  candidates=10'\n```\nPlease note that all query string parameter values must be url-encoded (spaces become + or %20, for example) to ensure that the data is transferred correctly. A common mistake we see is a non-encoded pound sign (#) like in an apartment number (# 409). This character, when properly encoded in a URL, becomes %23. When not encoded this character functions as the fragment identifier, which is ignored by our API servers.\n"
+          },
+          "response": [
+            {
+              "id": "20c1da59-b389-4620-b803-0ab0043fff96",
+              "name": "OK (success!): A JSON array containing zero or more address matches for the input provided with the request. If none of the submitted addresses validate, the array will be empty ([]). The structure of the response is the same for both GET and POST request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?input_id=<string>&street=<string>&street2=<string>&secondary=<string>&city=<string>&state=<string>&zipcode=<string>&lastline=<string>&addressee=<string>&urbanization=<string>&candidates=<string>&match=<string>&format=<string>&county_source=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street** *Example: 1600+amphitheatre+pkwy* The street line of the address, or the entire address('freeform' input).",
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street2** *Example: Leave it on the front porch* Any extra address information.",
+                      "key": "street2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Secondary** *Example: Apt 52* Apartment, suite, or office number.",
+                      "key": "secondary",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**City** *Example: Provo* The city name.",
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**State** *Example: UT* State name or two-letter abbreviation.",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Zip code** *Example: 84604* The ZIP Code.",
+                      "key": "zipcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Last Line** *Example: Provo, UT 84604* City, state, and ZIP Code combined.",
+                      "key": "lastline",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Addressee** *Example: John Doe* The name of the recipient, firm, or company at this address.",
+                      "key": "addressee",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Urbanization** Only used with Puerto Rico.",
+                      "key": "urbanization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Candidates** *Example: 1* The maximum number of valid addresses returned when the input is ambiguous (Max Value: 10).",
+                      "key": "candidates",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Match Type** *Example: invalid* The match output strategy to be employted for this lookup. Valid values are: **strict**: The API will ONLY return candidates that are valid USPS addresses. **range**: The API will return candidates that are valid USPS addresses, as well as invalid addresses with primary numbers that fall within a valid range for the street. **invalid**: The API will return a single candidate for every properly submitted address, even if invalid or ambiguous.",
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format to be employed for this lookup, with an appropriate product subscription. Valid values are: default  The API will return the address in the default format. project-usa  The API will return the address in Project US@ format.",
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The authoritative source to be used for the county information of the address. Valid values are: postal  The API will return county information based on the postal delivery information of the address. This is the default option. geographic  The API will return county information based on the physical location of the address.",
+                      "key": "county_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Component Analysis is available in the US Address Verification 42-day Free Trial and certain custom plans. If you have a subscription that allows for component analysis details, to return the component analysis details include the features parameters as features=components-analysis.",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"input_id\": \"<string>\",\n    \"input_index\": \"<integer>\",\n    \"candidate_index\": \"<integer>\",\n    \"addressee\": \"<string>\",\n    \"delivery_line_1\": \"<string>\",\n    \"delivery_line_2\": \"<string>\",\n    \"last_line\": \"<string>\",\n    \"delivery_point_barcode\": \"<string>\",\n    \"smarty_key\": \"<string>\",\n    \"components\": {\n      \"urbanization\": \"<string>\",\n      \"primary_number\": \"<string>\",\n      \"street_name\": \"<string>\",\n      \"street_predirection\": \"<string>\",\n      \"street_postdirection\": \"<string>\",\n      \"street_suffix\": \"<string>\",\n      \"secondary_number\": \"<string>\",\n      \"secondary_designator\": \"<string>\",\n      \"extra_secondary_number\": \"<string>\",\n      \"extra_secondary_designator\": \"<string>\",\n      \"pmb_designator\": \"<string>\",\n      \"pmb_number\": \"<string>\",\n      \"city_name\": \"<string>\",\n      \"default_city_name\": \"<string>\",\n      \"state_abbreviation\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"plus4_code\": \"<string>\",\n      \"delivery_point\": \"<string>\",\n      \"delivery_point_check_digit\": \"<string>\"\n    },\n    \"metadata\": {\n      \"record_type\": \"<string>\",\n      \"zip_type\": \"<string>\",\n      \"county_fips\": \"<string>\",\n      \"county_name\": \"<string>\",\n      \"ews_match\": \"<string>\",\n      \"carrier_route\": \"<string>\",\n      \"congressional_district\": \"<string>\",\n      \"building_default_indicator\": \"<string>\",\n      \"rdi\": \"<string>\",\n      \"elot_sequence\": \"<string>\",\n      \"elot_sort\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"coordinate_license\": \"<integer>\",\n      \"precision\": \"<string>\",\n      \"time_zone\": \"<string>\",\n      \"utc_offset\": \"<number>\",\n      \"dst\": \"<string>\"\n    },\n    \"analysis\": {\n      \"dpv_match_code\": \"<string>\",\n      \"dpv_footnotes\": \"<string>\",\n      \"dpv_cmra\": \"<string>\",\n      \"dpv_vacant\": \"<string>\",\n      \"dpv_no_stat\": \"<string>\",\n      \"active\": \"<string>\",\n      \"footnotes\": \"<string>\",\n      \"lacslink_code\": \"<string>\",\n      \"lacslink_indicator\": \"<string>\",\n      \"suitelink_match\": \"<string>\",\n      \"enhanced_match\": \"<string>\"\n    },\n    \"component-analysis\": {\n      \"status\": \"<string>\",\n      \"change\": \"<string>\"\n    }\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"input_index\": \"<integer>\",\n    \"candidate_index\": \"<integer>\",\n    \"addressee\": \"<string>\",\n    \"delivery_line_1\": \"<string>\",\n    \"delivery_line_2\": \"<string>\",\n    \"last_line\": \"<string>\",\n    \"delivery_point_barcode\": \"<string>\",\n    \"smarty_key\": \"<string>\",\n    \"components\": {\n      \"urbanization\": \"<string>\",\n      \"primary_number\": \"<string>\",\n      \"street_name\": \"<string>\",\n      \"street_predirection\": \"<string>\",\n      \"street_postdirection\": \"<string>\",\n      \"street_suffix\": \"<string>\",\n      \"secondary_number\": \"<string>\",\n      \"secondary_designator\": \"<string>\",\n      \"extra_secondary_number\": \"<string>\",\n      \"extra_secondary_designator\": \"<string>\",\n      \"pmb_designator\": \"<string>\",\n      \"pmb_number\": \"<string>\",\n      \"city_name\": \"<string>\",\n      \"default_city_name\": \"<string>\",\n      \"state_abbreviation\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"plus4_code\": \"<string>\",\n      \"delivery_point\": \"<string>\",\n      \"delivery_point_check_digit\": \"<string>\"\n    },\n    \"metadata\": {\n      \"record_type\": \"<string>\",\n      \"zip_type\": \"<string>\",\n      \"county_fips\": \"<string>\",\n      \"county_name\": \"<string>\",\n      \"ews_match\": \"<string>\",\n      \"carrier_route\": \"<string>\",\n      \"congressional_district\": \"<string>\",\n      \"building_default_indicator\": \"<string>\",\n      \"rdi\": \"<string>\",\n      \"elot_sequence\": \"<string>\",\n      \"elot_sort\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"coordinate_license\": \"<integer>\",\n      \"precision\": \"<string>\",\n      \"time_zone\": \"<string>\",\n      \"utc_offset\": \"<number>\",\n      \"dst\": \"<string>\"\n    },\n    \"analysis\": {\n      \"dpv_match_code\": \"<string>\",\n      \"dpv_footnotes\": \"<string>\",\n      \"dpv_cmra\": \"<string>\",\n      \"dpv_vacant\": \"<string>\",\n      \"dpv_no_stat\": \"<string>\",\n      \"active\": \"<string>\",\n      \"footnotes\": \"<string>\",\n      \"lacslink_code\": \"<string>\",\n      \"lacslink_indicator\": \"<string>\",\n      \"suitelink_match\": \"<string>\",\n      \"enhanced_match\": \"<string>\"\n    },\n    \"component-analysis\": {\n      \"status\": \"<string>\",\n      \"change\": \"<string>\"\n    }\n  }\n]",
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-20c1da59-b389-4620-b803-0ab0043fff96"
+            },
+            {
+              "id": "11f53e4a-ce80-4d93-b89f-e700f1fe5bf9",
+              "name": "Bad Request (Malformed Payload): A GET request lacked a street field, or the request body of a POST request contained malformed JSON. (example: submitting an integer value in the ZIP Code field when a string is expected)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?input_id=<string>&street=<string>&street2=<string>&secondary=<string>&city=<string>&state=<string>&zipcode=<string>&lastline=<string>&addressee=<string>&urbanization=<string>&candidates=<string>&match=<string>&format=<string>&county_source=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street** *Example: 1600+amphitheatre+pkwy* The street line of the address, or the entire address('freeform' input).",
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street2** *Example: Leave it on the front porch* Any extra address information.",
+                      "key": "street2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Secondary** *Example: Apt 52* Apartment, suite, or office number.",
+                      "key": "secondary",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**City** *Example: Provo* The city name.",
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**State** *Example: UT* State name or two-letter abbreviation.",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Zip code** *Example: 84604* The ZIP Code.",
+                      "key": "zipcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Last Line** *Example: Provo, UT 84604* City, state, and ZIP Code combined.",
+                      "key": "lastline",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Addressee** *Example: John Doe* The name of the recipient, firm, or company at this address.",
+                      "key": "addressee",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Urbanization** Only used with Puerto Rico.",
+                      "key": "urbanization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Candidates** *Example: 1* The maximum number of valid addresses returned when the input is ambiguous (Max Value: 10).",
+                      "key": "candidates",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Match Type** *Example: invalid* The match output strategy to be employted for this lookup. Valid values are: **strict**: The API will ONLY return candidates that are valid USPS addresses. **range**: The API will return candidates that are valid USPS addresses, as well as invalid addresses with primary numbers that fall within a valid range for the street. **invalid**: The API will return a single candidate for every properly submitted address, even if invalid or ambiguous.",
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format to be employed for this lookup, with an appropriate product subscription. Valid values are: default  The API will return the address in the default format. project-usa  The API will return the address in Project US@ format.",
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The authoritative source to be used for the county information of the address. Valid values are: postal  The API will return county information based on the postal delivery information of the address. This is the default option. geographic  The API will return county information based on the physical location of the address.",
+                      "key": "county_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Component Analysis is available in the US Address Verification 42-day Free Trial and certain custom plans. If you have a subscription that allows for component analysis details, to return the component analysis details include the features parameters as features=components-analysis.",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-11f53e4a-ce80-4d93-b89f-e700f1fe5bf9"
+            },
+            {
+              "id": "c899274e-b3bd-4c62-ae85-face08ce995e",
+              "name": "Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?input_id=<string>&street=<string>&street2=<string>&secondary=<string>&city=<string>&state=<string>&zipcode=<string>&lastline=<string>&addressee=<string>&urbanization=<string>&candidates=<string>&match=<string>&format=<string>&county_source=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street** *Example: 1600+amphitheatre+pkwy* The street line of the address, or the entire address('freeform' input).",
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street2** *Example: Leave it on the front porch* Any extra address information.",
+                      "key": "street2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Secondary** *Example: Apt 52* Apartment, suite, or office number.",
+                      "key": "secondary",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**City** *Example: Provo* The city name.",
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**State** *Example: UT* State name or two-letter abbreviation.",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Zip code** *Example: 84604* The ZIP Code.",
+                      "key": "zipcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Last Line** *Example: Provo, UT 84604* City, state, and ZIP Code combined.",
+                      "key": "lastline",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Addressee** *Example: John Doe* The name of the recipient, firm, or company at this address.",
+                      "key": "addressee",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Urbanization** Only used with Puerto Rico.",
+                      "key": "urbanization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Candidates** *Example: 1* The maximum number of valid addresses returned when the input is ambiguous (Max Value: 10).",
+                      "key": "candidates",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Match Type** *Example: invalid* The match output strategy to be employted for this lookup. Valid values are: **strict**: The API will ONLY return candidates that are valid USPS addresses. **range**: The API will return candidates that are valid USPS addresses, as well as invalid addresses with primary numbers that fall within a valid range for the street. **invalid**: The API will return a single candidate for every properly submitted address, even if invalid or ambiguous.",
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format to be employed for this lookup, with an appropriate product subscription. Valid values are: default  The API will return the address in the default format. project-usa  The API will return the address in Project US@ format.",
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The authoritative source to be used for the county information of the address. Valid values are: postal  The API will return county information based on the postal delivery information of the address. This is the default option. geographic  The API will return county information based on the physical location of the address.",
+                      "key": "county_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Component Analysis is available in the US Address Verification 42-day Free Trial and certain custom plans. If you have a subscription that allows for component analysis details, to return the component analysis details include the features parameters as features=components-analysis.",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-c899274e-b3bd-4c62-ae85-face08ce995e"
+            },
+            {
+              "id": "4f53c186-34e6-4104-9234-394bfa6a7e68",
+              "name": "Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?input_id=<string>&street=<string>&street2=<string>&secondary=<string>&city=<string>&state=<string>&zipcode=<string>&lastline=<string>&addressee=<string>&urbanization=<string>&candidates=<string>&match=<string>&format=<string>&county_source=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street** *Example: 1600+amphitheatre+pkwy* The street line of the address, or the entire address('freeform' input).",
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street2** *Example: Leave it on the front porch* Any extra address information.",
+                      "key": "street2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Secondary** *Example: Apt 52* Apartment, suite, or office number.",
+                      "key": "secondary",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**City** *Example: Provo* The city name.",
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**State** *Example: UT* State name or two-letter abbreviation.",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Zip code** *Example: 84604* The ZIP Code.",
+                      "key": "zipcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Last Line** *Example: Provo, UT 84604* City, state, and ZIP Code combined.",
+                      "key": "lastline",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Addressee** *Example: John Doe* The name of the recipient, firm, or company at this address.",
+                      "key": "addressee",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Urbanization** Only used with Puerto Rico.",
+                      "key": "urbanization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Candidates** *Example: 1* The maximum number of valid addresses returned when the input is ambiguous (Max Value: 10).",
+                      "key": "candidates",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Match Type** *Example: invalid* The match output strategy to be employted for this lookup. Valid values are: **strict**: The API will ONLY return candidates that are valid USPS addresses. **range**: The API will return candidates that are valid USPS addresses, as well as invalid addresses with primary numbers that fall within a valid range for the street. **invalid**: The API will return a single candidate for every properly submitted address, even if invalid or ambiguous.",
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format to be employed for this lookup, with an appropriate product subscription. Valid values are: default  The API will return the address in the default format. project-usa  The API will return the address in Project US@ format.",
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The authoritative source to be used for the county information of the address. Valid values are: postal  The API will return county information based on the postal delivery information of the address. This is the default option. geographic  The API will return county information based on the physical location of the address.",
+                      "key": "county_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Component Analysis is available in the US Address Verification 42-day Free Trial and certain custom plans. If you have a subscription that allows for component analysis details, to return the component analysis details include the features parameters as features=components-analysis.",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-4f53c186-34e6-4104-9234-394bfa6a7e68"
+            },
+            {
+              "id": "7c7edf7d-5847-4769-a602-9637a78f5868",
+              "name": "Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an auth",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?input_id=<string>&street=<string>&street2=<string>&secondary=<string>&city=<string>&state=<string>&zipcode=<string>&lastline=<string>&addressee=<string>&urbanization=<string>&candidates=<string>&match=<string>&format=<string>&county_source=<string>&features=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street** *Example: 1600+amphitheatre+pkwy* The street line of the address, or the entire address('freeform' input).",
+                      "key": "street",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Street2** *Example: Leave it on the front porch* Any extra address information.",
+                      "key": "street2",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Secondary** *Example: Apt 52* Apartment, suite, or office number.",
+                      "key": "secondary",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**City** *Example: Provo* The city name.",
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**State** *Example: UT* State name or two-letter abbreviation.",
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Zip code** *Example: 84604* The ZIP Code.",
+                      "key": "zipcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Last Line** *Example: Provo, UT 84604* City, state, and ZIP Code combined.",
+                      "key": "lastline",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Addressee** *Example: John Doe* The name of the recipient, firm, or company at this address.",
+                      "key": "addressee",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Urbanization** Only used with Puerto Rico.",
+                      "key": "urbanization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Candidates** *Example: 1* The maximum number of valid addresses returned when the input is ambiguous (Max Value: 10).",
+                      "key": "candidates",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "**Match Type** *Example: invalid* The match output strategy to be employted for this lookup. Valid values are: **strict**: The API will ONLY return candidates that are valid USPS addresses. **range**: The API will return candidates that are valid USPS addresses, as well as invalid addresses with primary numbers that fall within a valid range for the street. **invalid**: The API will return a single candidate for every properly submitted address, even if invalid or ambiguous.",
+                      "key": "match",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The output format to be employed for this lookup, with an appropriate product subscription. Valid values are: default  The API will return the address in the default format. project-usa  The API will return the address in Project US@ format.",
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The authoritative source to be used for the county information of the address. Valid values are: postal  The API will return county information based on the postal delivery information of the address. This is the default option. geographic  The API will return county information based on the physical location of the address.",
+                      "key": "county_source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Component Analysis is available in the US Address Verification 42-day Free Trial and certain custom plans. If you have a subscription that allows for component analysis details, to return the component analysis details include the features parameters as features=components-analysis.",
+                      "key": "features",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-7c7edf7d-5847-4769-a602-9637a78f5868"
+            }
+          ],
+          "createdAt": "2026-07-28T02:56:47.000Z",
+          "updatedAt": "2026-07-28T02:56:47.000Z",
+          "uid": "35240-3bd2f33e-18d9-4eca-844c-a39183a459ad"
+        },
+        {
+          "name": "Multiple Address Validation",
+          "id": "3cb8b960-5023-4c06-ba7a-75d597f63e1e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "auth-id",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "query",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                "key": "Host",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/street-address",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "street-address"
+              ]
+            },
+            "description": "A POST request allows a larger volume of data (MAX: 100 addresses or 32K per request) to be sent in the HTTP Request Body. In this case, the data should be encoded as a JSON array where each element in the array is a JSON object with field names identical to those in the field listing below. Here's a sample request with two addresses being sent (line breaks added for readability):\n```bash\ncurl -v 'https://us-street.api.smarty.com/street-address?\n  auth-id=YOUR+AUTH-ID+HERE&\n  auth-token=YOUR+AUTH-TOKEN+HERE&'\n  -H \"Content-Type: application/json; charset=utf-8\"\n  --data-binary '\n  [\n    {\n      \"street\":\"1 Santa Claus\",\n      \"city\":\"North Pole\",\n      \"state\":\"AK\",\n      \"candidates\":10\n    },\n    {\n      \"addressee\":\"Apple Inc\",\n      \"street\":\"1 infinite loop\",\n      \"city\":\"cupertino\",\n      \"state\":\"CA\",\n      \"zipcode\":\"95014\",\n      \"candidates\":10\n    }\n  ]'\n```\n"
+          },
+          "response": [
+            {
+              "id": "601bbed9-f492-428e-b0d9-9a486196a0ec",
+              "name": "OK (success!): A JSON array containing zero or more address matches for the input provided with the request. If none of the submitted addresses validate, the array will be empty ([]). The structure of the response is the same for both GET and POST request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"input_id\": \"<string>\",\n    \"input_index\": \"<integer>\",\n    \"candidate_index\": \"<integer>\",\n    \"addressee\": \"<string>\",\n    \"delivery_line_1\": \"<string>\",\n    \"delivery_line_2\": \"<string>\",\n    \"last_line\": \"<string>\",\n    \"delivery_point_barcode\": \"<string>\",\n    \"smarty_key\": \"<string>\",\n    \"components\": {\n      \"urbanization\": \"<string>\",\n      \"primary_number\": \"<string>\",\n      \"street_name\": \"<string>\",\n      \"street_predirection\": \"<string>\",\n      \"street_postdirection\": \"<string>\",\n      \"street_suffix\": \"<string>\",\n      \"secondary_number\": \"<string>\",\n      \"secondary_designator\": \"<string>\",\n      \"extra_secondary_number\": \"<string>\",\n      \"extra_secondary_designator\": \"<string>\",\n      \"pmb_designator\": \"<string>\",\n      \"pmb_number\": \"<string>\",\n      \"city_name\": \"<string>\",\n      \"default_city_name\": \"<string>\",\n      \"state_abbreviation\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"plus4_code\": \"<string>\",\n      \"delivery_point\": \"<string>\",\n      \"delivery_point_check_digit\": \"<string>\"\n    },\n    \"metadata\": {\n      \"record_type\": \"<string>\",\n      \"zip_type\": \"<string>\",\n      \"county_fips\": \"<string>\",\n      \"county_name\": \"<string>\",\n      \"ews_match\": \"<string>\",\n      \"carrier_route\": \"<string>\",\n      \"congressional_district\": \"<string>\",\n      \"building_default_indicator\": \"<string>\",\n      \"rdi\": \"<string>\",\n      \"elot_sequence\": \"<string>\",\n      \"elot_sort\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"coordinate_license\": \"<integer>\",\n      \"precision\": \"<string>\",\n      \"time_zone\": \"<string>\",\n      \"utc_offset\": \"<number>\",\n      \"dst\": \"<string>\"\n    },\n    \"analysis\": {\n      \"dpv_match_code\": \"<string>\",\n      \"dpv_footnotes\": \"<string>\",\n      \"dpv_cmra\": \"<string>\",\n      \"dpv_vacant\": \"<string>\",\n      \"dpv_no_stat\": \"<string>\",\n      \"active\": \"<string>\",\n      \"footnotes\": \"<string>\",\n      \"lacslink_code\": \"<string>\",\n      \"lacslink_indicator\": \"<string>\",\n      \"suitelink_match\": \"<string>\",\n      \"enhanced_match\": \"<string>\"\n    },\n    \"component-analysis\": {\n      \"status\": \"<string>\",\n      \"change\": \"<string>\"\n    }\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"input_index\": \"<integer>\",\n    \"candidate_index\": \"<integer>\",\n    \"addressee\": \"<string>\",\n    \"delivery_line_1\": \"<string>\",\n    \"delivery_line_2\": \"<string>\",\n    \"last_line\": \"<string>\",\n    \"delivery_point_barcode\": \"<string>\",\n    \"smarty_key\": \"<string>\",\n    \"components\": {\n      \"urbanization\": \"<string>\",\n      \"primary_number\": \"<string>\",\n      \"street_name\": \"<string>\",\n      \"street_predirection\": \"<string>\",\n      \"street_postdirection\": \"<string>\",\n      \"street_suffix\": \"<string>\",\n      \"secondary_number\": \"<string>\",\n      \"secondary_designator\": \"<string>\",\n      \"extra_secondary_number\": \"<string>\",\n      \"extra_secondary_designator\": \"<string>\",\n      \"pmb_designator\": \"<string>\",\n      \"pmb_number\": \"<string>\",\n      \"city_name\": \"<string>\",\n      \"default_city_name\": \"<string>\",\n      \"state_abbreviation\": \"<string>\",\n      \"zipcode\": \"<string>\",\n      \"plus4_code\": \"<string>\",\n      \"delivery_point\": \"<string>\",\n      \"delivery_point_check_digit\": \"<string>\"\n    },\n    \"metadata\": {\n      \"record_type\": \"<string>\",\n      \"zip_type\": \"<string>\",\n      \"county_fips\": \"<string>\",\n      \"county_name\": \"<string>\",\n      \"ews_match\": \"<string>\",\n      \"carrier_route\": \"<string>\",\n      \"congressional_district\": \"<string>\",\n      \"building_default_indicator\": \"<string>\",\n      \"rdi\": \"<string>\",\n      \"elot_sequence\": \"<string>\",\n      \"elot_sort\": \"<string>\",\n      \"latitude\": \"<number>\",\n      \"longitude\": \"<number>\",\n      \"coordinate_license\": \"<integer>\",\n      \"precision\": \"<string>\",\n      \"time_zone\": \"<string>\",\n      \"utc_offset\": \"<number>\",\n      \"dst\": \"<string>\"\n    },\n    \"analysis\": {\n      \"dpv_match_code\": \"<string>\",\n      \"dpv_footnotes\": \"<string>\",\n      \"dpv_cmra\": \"<string>\",\n      \"dpv_vacant\": \"<string>\",\n      \"dpv_no_stat\": \"<string>\",\n      \"active\": \"<string>\",\n      \"footnotes\": \"<string>\",\n      \"lacslink_code\": \"<string>\",\n      \"lacslink_indicator\": \"<string>\",\n      \"suitelink_match\": \"<string>\",\n      \"enhanced_match\": \"<string>\"\n    },\n    \"component-analysis\": {\n      \"status\": \"<string>\",\n      \"change\": \"<string>\"\n    }\n  }\n]",
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-601bbed9-f492-428e-b0d9-9a486196a0ec"
+            },
+            {
+              "id": "6b316e05-b186-4fc9-9362-c77d90570103",
+              "name": "Bad Request (Malformed Payload): A GET request lacked a street field, or the request body of a POST request contained malformed JSON. (example: submitting an integer value in the ZIP Code field when a string is expected)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-6b316e05-b186-4fc9-9362-c77d90570103"
+            },
+            {
+              "id": "0f20881e-24c3-48dd-83bb-58b52e79f292",
+              "name": "Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-0f20881e-24c3-48dd-83bb-58b52e79f292"
+            },
+            {
+              "id": "51191a73-4f50-4a20-b03c-59ad927c95d7",
+              "name": "Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-51191a73-4f50-4a20-b03c-59ad927c95d7"
+            },
+            {
+              "id": "8255dd54-85bd-4f0e-874e-97bffc9e18a9",
+              "name": "Request Entity too large: The maxmimum size for a request body to this API is 32K (32,768 bytes).",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-8255dd54-85bd-4f0e-874e-97bffc9e18a9"
+            },
+            {
+              "id": "8b169992-8a00-4f82-b94c-bab5134d3014",
+              "name": "Unprocessable entity: A POST request lacked a street field.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-8b169992-8a00-4f82-b94c-bab5134d3014"
+            },
+            {
+              "id": "54a8c2c3-9a5b-4ad0-9bb8-c6b8e07d3060",
+              "name": "Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an auth",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host of the resource being requested. Optionally, it can also specify a non-default port number.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  },\n  {\n    \"input_id\": \"<string>\",\n    \"street\": \"<string>\",\n    \"street2\": \"<string>\",\n    \"secondary\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"zipcode\": \"<string>\",\n    \"lastline\": \"<string>\",\n    \"addressee\": \"<string>\",\n    \"urbanization\": \"<string>\",\n    \"candidates\": \"<integer>\",\n    \"match\": \"strict\",\n    \"format\": \"<string>\",\n    \"county_source\": \"<string>\",\n    \"features\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/street-address?auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "street-address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:47.000Z",
+              "updatedAt": "2026-07-28T02:56:47.000Z",
+              "uid": "35240-54a8c2c3-9a5b-4ad0-9bb8-c6b8e07d3060"
+            }
+          ],
+          "createdAt": "2026-07-28T02:56:47.000Z",
+          "updatedAt": "2026-07-28T02:56:47.000Z",
+          "uid": "35240-3cb8b960-5023-4c06-ba7a-75d597f63e1e"
+        }
+      ],
+      "id": "bdfa30ea-f935-46d3-8b4b-6f92c93a145c",
+      "createdAt": "2026-07-28T02:56:47.000Z",
+      "updatedAt": "2026-07-28T02:56:47.000Z",
+      "uid": "35240-bdfa30ea-f935-46d3-8b4b-6f92c93a145c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://international-autocomplete.api.smarty.com"
+    }
+  ]
+}

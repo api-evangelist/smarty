@@ -1,0 +1,2125 @@
+{
+  "info": {
+    "_postman_id": "1c609235-fbc8-4972-bf2d-ec2aaa0bef01",
+    "name": "International Address Autocomplete Lookup API",
+    "description": "This API returns suggestions that are fully verified global addresses.\nUses fuzzy logic during searching to:\nAllow for missing directionals and street suffixes.\nAllow substitution of street suffixes and unit designators. E.g., ST is accepted for AVE; APT is accepted for UNIT, etc.\nAllow full or partial spelling of street suffixes and unit designators. E.g., ST can be spelled as STR or STREET and still match.\nFilters and preferences allow for multiple cities in a single country.\nNote: Effective with the adoption of the V2 version of International Address Autocomplete, lookup usage will be based on the final selection of an address rather than per keystroke.\n\nBy default, the character set returned will be the native set for that country. If any latin characters are provided in the input (excluding numerics), the latin set will be returned. Character sets include:\nCyrillic\nGreek\nHebrew\nKanji (Japanese)\nSimplified Chinese\nArabic\nThai\nHangul (Korean)\n\nSupports the following 242 countries: \nAfghanistan\tAFG\nAlbania\tALB\nAlgeria\tDZA\nAndorra\tAND\nAngola\tAGO\nAnguilla\tAIA\nAntarctica\tATA\nAntigua and Barbuda\tATG\nArgentina\tARG\nArmenia\tARM\nAruba\tABW\nAustralia\tAUS\nAustria\tAUT\nAzerbaijan\tAZE\nBahamas\tBHS\nBahrain\tBHR\nBangladesh\tBGD\nBarbados\tBRB\nBelarus\tBLR\nBelgium\tBEL\nBelize\tBLZ\nBenin\tBEN\nBermuda\tBMU\nBhutan\tBTN\nBolivia\tBOL\nBonaire, Sint Eustatius and Saba\tBES\nBosnia and Herzegovina\tBIH\nBotswana\tBWA\nBouvet Island\tBVT\nBrazil\tBRA\nBritish Indian Ocean Territory\tIOT\nBrunei Darussalam\tBRN\nBulgaria\tBGR\nBurkina Faso\tBFA\nBurundi\tBDI\nCambodia\tKHM\nCameroon\tCMR\nCanada\tCAN\nCabo Verde\tCPV\nCayman Islands\tCYM\nCentral African Republic\tCAF\nChad\tTCD\nChile\tCHL\nChina\tCHN\nChristmas Island\tCXR\nCocos (Keeling) Islands\tCCK\nColombia\tCOL\nComoros\tCOM\nCongo\tCOG\nDemocratic Republic of the Congo\tCOD\nCook Islands\tCOK\nCosta Rica\tCRI\nCroatia\tHRV\nCuba\tCUB\nCura\u00e7ao\tCUW\nCyprus\tCYP\nCzechia\tCZE\nIvory Coast\tCIV\nDenmark\tDNK\nDjibouti\tDJI\nDominica\tDMA\nDominican Republic\tDOM\nEcuador\tECU\nEgypt\tEGY\nEl Salvador\tSLV\nEquatorial Guinea\tGNQ\nEritrea\tERI\nEstonia\tEST\nEswatini\tSWZ\nEthiopia\tETH\nFalkland Islands\tFLK\nFaroe Islands\tFRO\nFiji\tFJI\nFinland\tFIN\nFrance\tFRA\nFrench Guiana\tGUF\nFrench Polynesia\tPYF\nFrench Southern Territories\tATF\nGabon\tGAB\nGambia\tGMB\nGeorgia\tGEO\nGermany\tDEU\nGhana\tGHA\nGibraltar\tGIB\nGreece\tGRC\nGreenland\tGRL\nGrenada\tGRD\nGuadeloupe\tGLP\nGuatemala\tGTM\nGuernsey\tGGY\nGuinea\tGIN\nGuinea-Bissau\tGNB\nGuyana\tGUY\nHaiti\tHTI\nHeard Island and McDonald Islands\tHMD\nHoly See\tVAT\nHonduras\tHND\nHong Kong\tHKG\nHungary\tHUN\nIceland\tISL\nIndia\tIND\nIndonesia\tIDN\nIslamic Republic of Iran\tIRN\nIraq\tIRQ\nIreland\tIRL\nIsle of Man\tIMN\nIsrael\tISR\nItaly\tITA\nJamaica\tJAM\nJapan\tJPN\nJersey\tJEY\nJordan\tJOR\nKazakhstan\tKAZ\nKenya\tKEN\nKiribati\tKIR\nDemocratic People's Republic of Korea (North Korea)\tPRK\nRepublic of Korea\tKOR\nKosovo\tXKX\nKuwait\tKWT\nKyrgyzstan\tKGZ\nLao People's Democratic Republic\tLAO\nLatvia\tLVA\nLebanon\tLBN\nLesotho\tLSO\nLiberia\tLBR\nLibya\tLBY\nLiechtenstein\tLIE\nLithuania\tLTU\nLuxembourg\tLUX\nMacao\tMAC\nRepublic of North Macedonia\tMKD\nMadagascar\tMDG\nMalawi\tMWI\nMalaysia\tMYS\nMaldives\tMDV\nMali\tMLI\nMalta\tMLT\nMartinique\tMTQ\nMauritania\tMRT\nMauritius\tMUS\nMayotte\tMYT\nMexico\tMEX\nFederated States of Micronesia\tFSM\nRepublic of Moldova\tMDA\nMonaco\tMCO\nMongolia\tMNG\nMontenegro\tMNE\nMontserrat\tMSR\nMorocco\tMAR\nMozambique\tMOZ\nMyanmar\tMMR\nNamibia\tNAM\nNauru\tNRU\nNepal\tNPL\nNetherlands\tNLD\nNew Caledonia\tNCL\nNew Zealand\tNZL\nNicaragua\tNIC\nNiger\tNER\nNigeria\tNGA\nNiue\tNIU\nNorfolk Island\tNFK\nNorway\tNOR\nOman\tOMN\nPakistan\tPAK\nPalau\tPLW\nState of Palestine\tPSE\nPanama\tPAN\nPapua New Guinea\tPNG\nParaguay\tPRY\nPeru\tPER\nPhilippines\tPHL\nPitcairn\tPCN\nPoland\tPOL\nPortugal\tPRT\nQatar\tQAT\nSouth Sudan\tSSD\nRomania\tROU\nRussian Federation\tRUS\nRwanda\tRWA\nR\u00e9union\tREU\nSaint Barth\u00e9lemy\tBLM\nSaint Helena, Ascension and Tristan da Cunha\tSHN\nSaint Kitts and Nevis\tKNA\nSaint Lucia\tLCA\nSaint Martin\tMAF\nSaint Pierre and Miquelon\tSPM\nSaint Vincent and the Grenadines\tVCT\nSamoa\tWSM\nSan Marino\tSMR\nSao Tome and Principe\tSTP\nSaudi Arabia\tSAU\nSenegal\tSEN\nSerbia\tSRB\nSeychelles\tSYC\nSierra Leone\tSLE\nSingapore\tSGP\nSint Maarten (Dutch)\tSXM\nSlovakia\tSVK\nSlovenia\tSVN\nSolomon Islands\tSLB\nSomalia\tSOM\nSouth Africa\tZAF\nSouth Georgia and the South Sandwich Islands\tSGS\nSpain\tESP\nSri Lanka\tLKA\nSudan\tSDN\nSuriname\tSUR\nSvalbard and Jan Mayen Islands\tSJM\nSweden\tSWE\nSwitzerland\tCHE\nSyrian Arab Republic\tSYR\nTaiwan\tTWN\nTajikistan\tTJK\nUnited Republic of Tanzania\tTZA\nThailand\tTHA\nTimor-Leste\tTLS\nTogo\tTGO\nTokelau\tTKL\nTonga\tTON\nTrinidad and Tobago\tTTO\nTunisia\tTUN\nT\u00fcrkiye (Turkey)\tTUR\nTurkmenistan\tTKM\nTurks and Caicos Islands\tTCA\nTuvalu\tTUV\nUganda\tUGA\nUkraine\tUKR\nUnited Arab Emirates\tARE\nUnited Kingdom\tGBR\nUruguay\tURY\nUzbekistan\tUZB\nVanuatu\tVUT\nBolivarian Republic of Venezuela\tVEN\nViet Nam\tVNM\nBritish Virgin Islands\tVGB\nWallis and Futuna\tWLF\nWestern Sahara\tESH\nYemen\tYEM\nZambia\tZMB\nZimbabwe\tZWE\n\u00c5land Islands\tALA\n\n\nContact Support:\n Name: Smarty Support\n Email: support@smartystreets.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:56:44.000Z",
+    "updatedAt": "2026-07-28T02:56:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1c609235-fbc8-4972-bf2d-ec2aaa0bef01"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "lookup",
+          "item": [
+            {
+              "name": "{addressId}",
+              "item": [
+                {
+                  "name": "Get Autocomplete Suggestions",
+                  "id": "b5d77577-f457-4654-9029-454047434459",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "auth-id",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                        "key": "Host",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                        "key": "Referer",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lookup/:addressId?country=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lookup",
+                        ":addressId"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                          "key": "max_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                          "key": "max_group_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                          "key": "geolocation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                          "key": "include_only_locality",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                          "key": "include_only_postal_code",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7dbc23ca-476a-4aa0-89ae-bb66880f706b",
+                          "key": "addressId",
+                          "value": "<string>",
+                          "description": "(Required) The Address ID is used to get further information about a particular result. This value will be supplied by a previous call to the API. This parameter should not be supplied when the search query parameter is used."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "5d0c4757-b72b-4eb0-818b-6efa9f8323b4",
+                      "name": "OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                            "key": "Host",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                            "key": "Referer",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lookup/:addressId?country=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lookup",
+                            ":addressId"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                              "key": "country",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                              "key": "max_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                              "key": "max_group_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                              "key": "geolocation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                              "key": "include_only_locality",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                              "key": "include_only_postal_code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "auth-id",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "addressId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"candidates\": [\n    {\n      \"street\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"administrative_area_short\": \"<string>\",\n      \"administrative_area_long\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country_iso3\": \"<string>\"\n    },\n    {\n      \"street\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"administrative_area\": \"<string>\",\n      \"administrative_area_short\": \"<string>\",\n      \"administrative_area_long\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country_iso3\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:56:45.000Z",
+                      "updatedAt": "2026-07-28T02:56:45.000Z",
+                      "uid": "35240-5d0c4757-b72b-4eb0-818b-6efa9f8323b4"
+                    },
+                    {
+                      "id": "d8cad929-e057-4349-a3b1-35e468855793",
+                      "name": "Bad Request (Malformed Payload): The request was malformed in some way and could not be parsed.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                            "key": "Host",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                            "key": "Referer",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lookup/:addressId?country=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lookup",
+                            ":addressId"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                              "key": "country",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                              "key": "max_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                              "key": "max_group_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                              "key": "geolocation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                              "key": "include_only_locality",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                              "key": "include_only_postal_code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "auth-id",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "addressId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:56:45.000Z",
+                      "updatedAt": "2026-07-28T02:56:45.000Z",
+                      "uid": "35240-d8cad929-e057-4349-a3b1-35e468855793"
+                    },
+                    {
+                      "id": "5485ab94-c44d-466c-9598-916abfbae2e8",
+                      "name": "Unauthorized: The embedded key was provided incorrectly or did not match any existing, active embedded keys. Or the host in the referer header did not match a host assigned to your embedded key.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                            "key": "Host",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                            "key": "Referer",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lookup/:addressId?country=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lookup",
+                            ":addressId"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                              "key": "country",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                              "key": "max_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                              "key": "max_group_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                              "key": "geolocation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                              "key": "include_only_locality",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                              "key": "include_only_postal_code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "auth-id",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "addressId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:56:45.000Z",
+                      "updatedAt": "2026-07-28T02:56:45.000Z",
+                      "uid": "35240-5485ab94-c44d-466c-9598-916abfbae2e8"
+                    },
+                    {
+                      "id": "473e24f4-c775-4253-8f2b-5e9433f49ccb",
+                      "name": "Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                            "key": "Host",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                            "key": "Referer",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lookup/:addressId?country=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lookup",
+                            ":addressId"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                              "key": "country",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                              "key": "max_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                              "key": "max_group_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                              "key": "geolocation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                              "key": "include_only_locality",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                              "key": "include_only_postal_code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "auth-id",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "addressId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Payment Required",
+                      "code": 402,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:56:45.000Z",
+                      "updatedAt": "2026-07-28T02:56:45.000Z",
+                      "uid": "35240-473e24f4-c775-4253-8f2b-5e9433f49ccb"
+                    },
+                    {
+                      "id": "68d26496-0419-42ac-978b-ca8acad8c7e5",
+                      "name": "Unprocessable Entity (Unsuitable parameters): Returns errors describing what needs to be corrected.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                            "key": "Host",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                            "key": "Referer",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lookup/:addressId?country=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lookup",
+                            ":addressId"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                              "key": "country",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                              "key": "max_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                              "key": "max_group_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                              "key": "geolocation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                              "key": "include_only_locality",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                              "key": "include_only_postal_code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "auth-id",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "addressId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:56:45.000Z",
+                      "updatedAt": "2026-07-28T02:56:45.000Z",
+                      "uid": "35240-68d26496-0419-42ac-978b-ca8acad8c7e5"
+                    },
+                    {
+                      "id": "c8e8f310-486e-4468-94be-684fb094122f",
+                      "name": "Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. You can avoid this error by adding your IP address as an authorized host for the embedded key in ques",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                            "key": "Host",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                            "key": "Referer",
+                            "value": "<string>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lookup/:addressId?country=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lookup",
+                            ":addressId"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                              "key": "country",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                              "key": "max_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                              "key": "max_group_results",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                              "key": "geolocation",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                              "key": "include_only_locality",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                              "key": "include_only_postal_code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "auth-id",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "addressId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:56:45.000Z",
+                      "updatedAt": "2026-07-28T02:56:45.000Z",
+                      "uid": "35240-c8e8f310-486e-4468-94be-684fb094122f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:56:45.000Z",
+                  "updatedAt": "2026-07-28T02:56:45.000Z",
+                  "uid": "35240-b5d77577-f457-4654-9029-454047434459"
+                }
+              ],
+              "id": "377735bb-7a0f-4797-a19a-bf8fac00d356",
+              "createdAt": "2026-07-28T02:56:44.000Z",
+              "updatedAt": "2026-07-28T02:56:44.000Z",
+              "uid": "35240-377735bb-7a0f-4797-a19a-bf8fac00d356"
+            },
+            {
+              "name": "Get Autocomplete Suggestions",
+              "id": "1cd0c7a5-175e-40f4-93b1-4c5375fda083",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "auth-id",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                    "key": "Referer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/lookup?country=<string>&search=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.",
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                      "key": "max_results",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                      "key": "max_group_results",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                      "key": "geolocation",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                      "key": "include_only_locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                      "key": "include_only_postal_code",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f4001086-929c-4c33-8488-2594895e9302",
+                  "name": "OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                        "key": "Host",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                        "key": "Referer",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lookup?country=<string>&search=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lookup"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                          "key": "max_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                          "key": "max_group_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                          "key": "geolocation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                          "key": "include_only_locality",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                          "key": "include_only_postal_code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "auth-id",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"candidates\": [\n    {\n      \"entries\": \"<integer>\",\n      \"address_text\": \"<string>\",\n      \"address_id\": \"<string>\"\n    },\n    {\n      \"entries\": \"<integer>\",\n      \"address_text\": \"<string>\",\n      \"address_id\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:56:45.000Z",
+                  "updatedAt": "2026-07-28T02:56:45.000Z",
+                  "uid": "35240-f4001086-929c-4c33-8488-2594895e9302"
+                },
+                {
+                  "id": "a7bae207-9471-4a61-9d65-315cbd414ec5",
+                  "name": "Bad Request (Malformed Payload): The request was malformed in some way and could not be parsed.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                        "key": "Host",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                        "key": "Referer",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lookup?country=<string>&search=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lookup"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                          "key": "max_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                          "key": "max_group_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                          "key": "geolocation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                          "key": "include_only_locality",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                          "key": "include_only_postal_code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "auth-id",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:56:45.000Z",
+                  "updatedAt": "2026-07-28T02:56:45.000Z",
+                  "uid": "35240-a7bae207-9471-4a61-9d65-315cbd414ec5"
+                },
+                {
+                  "id": "f32bcde5-a93d-4771-988e-dbf275dcedb1",
+                  "name": "Unauthorized: The embedded key was provided incorrectly or did not match any existing, active embedded keys. Or the host in the referer header did not match a host assigned to your embedded key.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                        "key": "Host",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                        "key": "Referer",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lookup?country=<string>&search=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lookup"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                          "key": "max_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                          "key": "max_group_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                          "key": "geolocation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                          "key": "include_only_locality",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                          "key": "include_only_postal_code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "auth-id",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:56:45.000Z",
+                  "updatedAt": "2026-07-28T02:56:45.000Z",
+                  "uid": "35240-f32bcde5-a93d-4771-988e-dbf275dcedb1"
+                },
+                {
+                  "id": "70d62360-6caf-42f1-9aca-1f56a16af304",
+                  "name": "Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                        "key": "Host",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                        "key": "Referer",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lookup?country=<string>&search=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lookup"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                          "key": "max_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                          "key": "max_group_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                          "key": "geolocation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                          "key": "include_only_locality",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                          "key": "include_only_postal_code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "auth-id",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Payment Required",
+                  "code": 402,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:56:45.000Z",
+                  "updatedAt": "2026-07-28T02:56:45.000Z",
+                  "uid": "35240-70d62360-6caf-42f1-9aca-1f56a16af304"
+                },
+                {
+                  "id": "0719d996-1c0b-490f-bbd9-5a03a532515b",
+                  "name": "Unprocessable Entity (Unsuitable parameters): Returns errors describing what needs to be corrected.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                        "key": "Host",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                        "key": "Referer",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lookup?country=<string>&search=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lookup"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                          "key": "max_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                          "key": "max_group_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                          "key": "geolocation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                          "key": "include_only_locality",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                          "key": "include_only_postal_code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "auth-id",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:56:45.000Z",
+                  "updatedAt": "2026-07-28T02:56:45.000Z",
+                  "uid": "35240-0719d996-1c0b-490f-bbd9-5a03a532515b"
+                },
+                {
+                  "id": "81e494df-ee2f-4cec-a43d-2b0461f66228",
+                  "name": "Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. You can avoid this error by adding your IP address as an authorized host for the embedded key in ques",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com",
+                        "key": "Host",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com",
+                        "key": "Referer",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lookup?country=<string>&search=<string>&max_results=<integer>&max_group_results=<integer>&geolocation=<string>&include_only_locality=<string>&include_only_postal_code=<string>&auth-id=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lookup"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.",
+                          "key": "search",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return; range [1, 10]. Default: 5",
+                          "key": "max_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].",
+                          "key": "max_group_results",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request.",
+                          "key": "geolocation",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles",
+                          "key": "include_only_locality",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201",
+                          "key": "include_only_postal_code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "auth-id",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:56:45.000Z",
+                  "updatedAt": "2026-07-28T02:56:45.000Z",
+                  "uid": "35240-81e494df-ee2f-4cec-a43d-2b0461f66228"
+                }
+              ],
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-1cd0c7a5-175e-40f4-93b1-4c5375fda083"
+            }
+          ],
+          "id": "c798788f-bae9-4c0d-bdba-f3b77e2662b1",
+          "createdAt": "2026-07-28T02:56:44.000Z",
+          "updatedAt": "2026-07-28T02:56:44.000Z",
+          "uid": "35240-c798788f-bae9-4c0d-bdba-f3b77e2662b1"
+        }
+      ],
+      "id": "5c265b13-d72b-4f8f-a2a1-668fcc73f2ff",
+      "createdAt": "2026-07-28T02:56:44.000Z",
+      "updatedAt": "2026-07-28T02:56:44.000Z",
+      "uid": "35240-5c265b13-d72b-4f8f-a2a1-668fcc73f2ff"
+    },
+    {
+      "name": "lookup",
+      "item": [
+        {
+          "name": "Search country and locality/administrative area/postal code",
+          "id": "16bf2da9-8391-4f31-b08f-060752972bd8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                "key": "Host",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "lookup"
+              ],
+              "query": [
+                {
+                  "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                  "key": "input_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The city name",
+                  "key": "locality",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                  "key": "administrative_area",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                  "key": "postal_code",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                  "key": "license",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "To send one (and only one) input to the API, simply encode the field names from the table below along with their corresponding values as query string parameters in the URL of your request. Here's an example that uses locality, administrative_area, postal_code, and country fields:\n```bash\n  curl -v 'https://international-postal-code.api.smarty.com/lookup?\n    \tauth-id=YOUR+AUTH-ID+HERE&\n    \tauth-token=YOUR+AUTH-TOKEN+HERE&\n\n    \tlocality=Sao+Paulo&\n    \tadministrative_area=SP&\n    \tpostal_code=02516-040&\n    \tcountry=Brazil'\n```\nPlease note that all query string parameter values must be url-encoded (spaces become + or %20, for example) to ensure that the data is transferred correctly. A common mistake we see is a non-encoded pound sign (#) like in an apartment number (# 409). This character, when properly encoded in a URL, becomes %23. When not encoded this character functions as the fragment identifier, which is ignored by our API servers.\n"
+          },
+          "response": [
+            {
+              "id": "c6298ad0-a79a-4d4e-ae05-b3a507913112",
+              "name": "OK(success!), The response body will be a JSON array containing zero or more matches for the input provided with the request. The structure of the response is the same for both GET and POST requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                      "key": "license",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"input_id\": \"<string>\",\n  \"administrative_area\": \"<string>\",\n  \"super_administrative_area\": \"<string>\",\n  \"sub_administrative_area\": \"<string>\",\n  \"locality\": \"<string>\",\n  \"dependent_locality\": \"<string>\",\n  \"dependent_locality_name\": \"<string>\",\n  \"double_dependent_locality\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"postal_code_extra\": \"<string>\",\n  \"country_iso_3\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-c6298ad0-a79a-4d4e-ae05-b3a507913112"
+            },
+            {
+              "id": "1a1536f0-6b85-4fc7-9fb0-215a4aedd88c",
+              "name": "Bad Request (Malformed Payload): The request body of a POST request contained no lookups or contained malformed JSON.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                      "key": "license",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-1a1536f0-6b85-4fc7-9fb0-215a4aedd88c"
+            },
+            {
+              "id": "0c8c823a-f59d-4c10-ba12-c1019f949038",
+              "name": "Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                      "key": "license",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-0c8c823a-f59d-4c10-ba12-c1019f949038"
+            },
+            {
+              "id": "9f2c1684-4c1d-4180-9b75-eb9de4a927be",
+              "name": "Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                      "key": "license",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-9f2c1684-4c1d-4180-9b75-eb9de4a927be"
+            },
+            {
+              "id": "9b16b905-64c5-44f9-a171-d79352dcb3f3",
+              "name": "Unprocessable Entity: A GET request lacked required fields.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                      "key": "license",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-9b16b905-64c5-44f9-a171-d79352dcb3f3"
+            },
+            {
+              "id": "a96ffb70-afdf-493a-beb7-a55260dee256",
+              "name": "'Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an aut",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                      "key": "license",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-a96ffb70-afdf-493a-beb7-a55260dee256"
+            },
+            {
+              "id": "75bff80c-2b75-4acb-ad99-04a347cbce0e",
+              "name": "Gateway Timeout: Our own upstream data provider did not repond in a timely fashion, and the request failed. A serious, yet rare occurrence indeed.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: international-postal-code.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?input_id=<string>&country=<string>&locality=<string>&administrative_area=<string>&postal_code=<string>&license=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "A unique identifier for this address used in your application; this field will be copied to the output",
+                      "key": "input_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) This must be entered with every address. Country Name or ISO classification (ISO-3, ISO-2, ISO-N). Address validation will fail if this is missing. (e.g. Brazil, BRA, BR, or 076)",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The city name",
+                      "key": "locality",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The state or province name or abbreviation. (e.g. Alberta or AB)",
+                      "key": "administrative_area",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The postal code (e.g. T4B 5M7). You may submit a postal code preefix to widen your search. (e.g. T4B 5)",
+                      "key": "postal_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The license or licenses (comma-separated) to use for this lookup. Valid values can be found in the account dashboard under the appropriate subscription. If multiple licenses are specified, they are considered in left-to-right order.",
+                      "key": "license",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-75bff80c-2b75-4acb-ad99-04a347cbce0e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:56:45.000Z",
+          "updatedAt": "2026-07-28T02:56:45.000Z",
+          "uid": "35240-16bf2da9-8391-4f31-b08f-060752972bd8"
+        },
+        {
+          "name": "Search for a batch of ZIPCodes",
+          "id": "f9cff1b6-747d-49cc-89f9-6ff4a60dea0f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com",
+                "key": "Host",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "<string>",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/lookup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "lookup"
+              ]
+            },
+            "description": "HTTP POST: Multiple Inputs\\n\\nA POST request allows a larger volume of data (MAX: 100 inputs or 16K per request) to be sent in the HTTP request body. In this case, the data should be encoded as a JSON array where each element in the array is a JSON object with field names identical to those in the field listing below. Here's a sample request with three inputs being sent:\n```\ncurl -v 'https://us-zipcode.api.smarty.com/lookup?\n        auth-id=YOUR+AUTH-ID+HERE&\n        auth-token=YOUR+AUTH-TOKEN+HERE'\n    -H \"Content-Type: application/json; charset=utf-8\"\n    --data-binary '\n    [\n      {\n        \"city\":\"North Pole\",\n        \"state\":\"AK\"\n      },\n      {\n        \"zipcode\":\"12345\"\n      },\n      {\n        \"city\":\"cupertino\",\n        \"state\":\"CA\",\n        \"zipcode\":\"95014\"\n      }\n    ]'        \n```\nNote: When POSTing JSON, always make sure to add a Content-Type of application/json; charset=utf-8.\"\n"
+          },
+          "response": [
+            {
+              "id": "2e52c46a-5c8d-4fd0-814c-4e97470b5d62",
+              "name": "OK (success!): The response body will be a JSON array containing zero or more matches for the input provided with the request. The structure of the response is the same for both GET and POST requests.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json; charset=utf-8"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/lookup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"input_index\": \"<integer>\",\n    \"input_id\": \"<string>\",\n    \"city_states\": [\n      {\n        \"city\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"mailable_city\": \"<boolean>\"\n      },\n      {\n        \"city\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"mailable_city\": \"<boolean>\"\n      }\n    ],\n    \"zipcodes\": [\n      {\n        \"zipcode\": \"<string>\",\n        \"zipcode_type\": \"<string>\",\n        \"default_city\": \"<string>\",\n        \"county_fips\": \"<string>\",\n        \"county_name\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\",\n        \"precision\": \"<string>\",\n        \"alternate_counties\": [\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          },\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"zipcode\": \"<string>\",\n        \"zipcode_type\": \"<string>\",\n        \"default_city\": \"<string>\",\n        \"county_fips\": \"<string>\",\n        \"county_name\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\",\n        \"precision\": \"<string>\",\n        \"alternate_counties\": [\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          },\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"status\": \"<string>\",\n    \"reason\": \"<string>\"\n  },\n  {\n    \"input_index\": \"<integer>\",\n    \"input_id\": \"<string>\",\n    \"city_states\": [\n      {\n        \"city\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"mailable_city\": \"<boolean>\"\n      },\n      {\n        \"city\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"mailable_city\": \"<boolean>\"\n      }\n    ],\n    \"zipcodes\": [\n      {\n        \"zipcode\": \"<string>\",\n        \"zipcode_type\": \"<string>\",\n        \"default_city\": \"<string>\",\n        \"county_fips\": \"<string>\",\n        \"county_name\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\",\n        \"precision\": \"<string>\",\n        \"alternate_counties\": [\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          },\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"zipcode\": \"<string>\",\n        \"zipcode_type\": \"<string>\",\n        \"default_city\": \"<string>\",\n        \"county_fips\": \"<string>\",\n        \"county_name\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"state\": \"<string>\",\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\",\n        \"precision\": \"<string>\",\n        \"alternate_counties\": [\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          },\n          {\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"state\": \"<string>\"\n          }\n        ]\n      }\n    ],\n    \"status\": \"<string>\",\n    \"reason\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-2e52c46a-5c8d-4fd0-814c-4e97470b5d62"
+            },
+            {
+              "id": "5d958d40-0f75-4078-a541-196c896ef77d",
+              "name": "Bad Request (Malformed Payload): The request body of a POST request contained no lookups or contained malformed JSON.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/lookup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-5d958d40-0f75-4078-a541-196c896ef77d"
+            },
+            {
+              "id": "b216e41b-80b3-4edb-ad67-b24d289b56f4",
+              "name": "Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/lookup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-b216e41b-80b3-4edb-ad67-b24d289b56f4"
+            },
+            {
+              "id": "bc47e0df-2fc3-435c-b088-a59b5aeec688",
+              "name": "Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/lookup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-bc47e0df-2fc3-435c-b088-a59b5aeec688"
+            },
+            {
+              "id": "7fcad051-3799-4f47-b24c-815af263aef1",
+              "name": "Request Entity Too Large: The maximum size for a request body to this API is 16K (16,384 bytes).",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/lookup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ]
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-7fcad051-3799-4f47-b24c-815af263aef1"
+            },
+            {
+              "id": "c13eb488-aead-484d-9e12-2cf37a851917",
+              "name": "Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an auth",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<string>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/lookup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:45.000Z",
+              "updatedAt": "2026-07-28T02:56:45.000Z",
+              "uid": "35240-c13eb488-aead-484d-9e12-2cf37a851917"
+            }
+          ],
+          "createdAt": "2026-07-28T02:56:45.000Z",
+          "updatedAt": "2026-07-28T02:56:45.000Z",
+          "uid": "35240-f9cff1b6-747d-49cc-89f9-6ff4a60dea0f"
+        }
+      ],
+      "id": "2941b7df-2bc5-4053-b126-eeb5d4510925",
+      "createdAt": "2026-07-28T02:56:44.000Z",
+      "updatedAt": "2026-07-28T02:56:44.000Z",
+      "uid": "35240-2941b7df-2bc5-4053-b126-eeb5d4510925"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://international-autocomplete.api.smarty.com"
+    }
+  ]
+}

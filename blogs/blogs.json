@@ -2,10 +2,6 @@
   "repo": "smarty",
   "feeds": [
     {
-      "source": "https://www.smarty.com/blog/feed.xml",
-      "error": "HTTPError"
-    },
-    {
       "source": "https://www.linkedin.com/company/smarty-digital-llc",
       "feed_url": "https://www.linkedin.com/company/smarty-digital-llc",
       "title": "",
@@ -14,5 +10,5 @@
     }
   ],
   "post_count": 1,
-  "fetched": "2026-07-11T11:50:51Z"
+  "fetched": "2026-08-01T15:49:00Z"
 }

@@ -1,0 +1,476 @@
+{
+  "info": {
+    "_postman_id": "cb3f1ec9-c11c-455b-bfdf-9a5fcfef4915",
+    "name": "International Address Autocomplete Lookup reverse-geo API",
+    "description": "This API returns suggestions that are fully verified global addresses.\nUses fuzzy logic during searching to:\nAllow for missing directionals and street suffixes.\nAllow substitution of street suffixes and unit designators. E.g., ST is accepted for AVE; APT is accepted for UNIT, etc.\nAllow full or partial spelling of street suffixes and unit designators. E.g., ST can be spelled as STR or STREET and still match.\nFilters and preferences allow for multiple cities in a single country.\nNote: Effective with the adoption of the V2 version of International Address Autocomplete, lookup usage will be based on the final selection of an address rather than per keystroke.\n\nBy default, the character set returned will be the native set for that country. If any latin characters are provided in the input (excluding numerics), the latin set will be returned. Character sets include:\nCyrillic\nGreek\nHebrew\nKanji (Japanese)\nSimplified Chinese\nArabic\nThai\nHangul (Korean)\n\nSupports the following 242 countries: \nAfghanistan\tAFG\nAlbania\tALB\nAlgeria\tDZA\nAndorra\tAND\nAngola\tAGO\nAnguilla\tAIA\nAntarctica\tATA\nAntigua and Barbuda\tATG\nArgentina\tARG\nArmenia\tARM\nAruba\tABW\nAustralia\tAUS\nAustria\tAUT\nAzerbaijan\tAZE\nBahamas\tBHS\nBahrain\tBHR\nBangladesh\tBGD\nBarbados\tBRB\nBelarus\tBLR\nBelgium\tBEL\nBelize\tBLZ\nBenin\tBEN\nBermuda\tBMU\nBhutan\tBTN\nBolivia\tBOL\nBonaire, Sint Eustatius and Saba\tBES\nBosnia and Herzegovina\tBIH\nBotswana\tBWA\nBouvet Island\tBVT\nBrazil\tBRA\nBritish Indian Ocean Territory\tIOT\nBrunei Darussalam\tBRN\nBulgaria\tBGR\nBurkina Faso\tBFA\nBurundi\tBDI\nCambodia\tKHM\nCameroon\tCMR\nCanada\tCAN\nCabo Verde\tCPV\nCayman Islands\tCYM\nCentral African Republic\tCAF\nChad\tTCD\nChile\tCHL\nChina\tCHN\nChristmas Island\tCXR\nCocos (Keeling) Islands\tCCK\nColombia\tCOL\nComoros\tCOM\nCongo\tCOG\nDemocratic Republic of the Congo\tCOD\nCook Islands\tCOK\nCosta Rica\tCRI\nCroatia\tHRV\nCuba\tCUB\nCura\u00e7ao\tCUW\nCyprus\tCYP\nCzechia\tCZE\nIvory Coast\tCIV\nDenmark\tDNK\nDjibouti\tDJI\nDominica\tDMA\nDominican Republic\tDOM\nEcuador\tECU\nEgypt\tEGY\nEl Salvador\tSLV\nEquatorial Guinea\tGNQ\nEritrea\tERI\nEstonia\tEST\nEswatini\tSWZ\nEthiopia\tETH\nFalkland Islands\tFLK\nFaroe Islands\tFRO\nFiji\tFJI\nFinland\tFIN\nFrance\tFRA\nFrench Guiana\tGUF\nFrench Polynesia\tPYF\nFrench Southern Territories\tATF\nGabon\tGAB\nGambia\tGMB\nGeorgia\tGEO\nGermany\tDEU\nGhana\tGHA\nGibraltar\tGIB\nGreece\tGRC\nGreenland\tGRL\nGrenada\tGRD\nGuadeloupe\tGLP\nGuatemala\tGTM\nGuernsey\tGGY\nGuinea\tGIN\nGuinea-Bissau\tGNB\nGuyana\tGUY\nHaiti\tHTI\nHeard Island and McDonald Islands\tHMD\nHoly See\tVAT\nHonduras\tHND\nHong Kong\tHKG\nHungary\tHUN\nIceland\tISL\nIndia\tIND\nIndonesia\tIDN\nIslamic Republic of Iran\tIRN\nIraq\tIRQ\nIreland\tIRL\nIsle of Man\tIMN\nIsrael\tISR\nItaly\tITA\nJamaica\tJAM\nJapan\tJPN\nJersey\tJEY\nJordan\tJOR\nKazakhstan\tKAZ\nKenya\tKEN\nKiribati\tKIR\nDemocratic People's Republic of Korea (North Korea)\tPRK\nRepublic of Korea\tKOR\nKosovo\tXKX\nKuwait\tKWT\nKyrgyzstan\tKGZ\nLao People's Democratic Republic\tLAO\nLatvia\tLVA\nLebanon\tLBN\nLesotho\tLSO\nLiberia\tLBR\nLibya\tLBY\nLiechtenstein\tLIE\nLithuania\tLTU\nLuxembourg\tLUX\nMacao\tMAC\nRepublic of North Macedonia\tMKD\nMadagascar\tMDG\nMalawi\tMWI\nMalaysia\tMYS\nMaldives\tMDV\nMali\tMLI\nMalta\tMLT\nMartinique\tMTQ\nMauritania\tMRT\nMauritius\tMUS\nMayotte\tMYT\nMexico\tMEX\nFederated States of Micronesia\tFSM\nRepublic of Moldova\tMDA\nMonaco\tMCO\nMongolia\tMNG\nMontenegro\tMNE\nMontserrat\tMSR\nMorocco\tMAR\nMozambique\tMOZ\nMyanmar\tMMR\nNamibia\tNAM\nNauru\tNRU\nNepal\tNPL\nNetherlands\tNLD\nNew Caledonia\tNCL\nNew Zealand\tNZL\nNicaragua\tNIC\nNiger\tNER\nNigeria\tNGA\nNiue\tNIU\nNorfolk Island\tNFK\nNorway\tNOR\nOman\tOMN\nPakistan\tPAK\nPalau\tPLW\nState of Palestine\tPSE\nPanama\tPAN\nPapua New Guinea\tPNG\nParaguay\tPRY\nPeru\tPER\nPhilippines\tPHL\nPitcairn\tPCN\nPoland\tPOL\nPortugal\tPRT\nQatar\tQAT\nSouth Sudan\tSSD\nRomania\tROU\nRussian Federation\tRUS\nRwanda\tRWA\nR\u00e9union\tREU\nSaint Barth\u00e9lemy\tBLM\nSaint Helena, Ascension and Tristan da Cunha\tSHN\nSaint Kitts and Nevis\tKNA\nSaint Lucia\tLCA\nSaint Martin\tMAF\nSaint Pierre and Miquelon\tSPM\nSaint Vincent and the Grenadines\tVCT\nSamoa\tWSM\nSan Marino\tSMR\nSao Tome and Principe\tSTP\nSaudi Arabia\tSAU\nSenegal\tSEN\nSerbia\tSRB\nSeychelles\tSYC\nSierra Leone\tSLE\nSingapore\tSGP\nSint Maarten (Dutch)\tSXM\nSlovakia\tSVK\nSlovenia\tSVN\nSolomon Islands\tSLB\nSomalia\tSOM\nSouth Africa\tZAF\nSouth Georgia and the South Sandwich Islands\tSGS\nSpain\tESP\nSri Lanka\tLKA\nSudan\tSDN\nSuriname\tSUR\nSvalbard and Jan Mayen Islands\tSJM\nSweden\tSWE\nSwitzerland\tCHE\nSyrian Arab Republic\tSYR\nTaiwan\tTWN\nTajikistan\tTJK\nUnited Republic of Tanzania\tTZA\nThailand\tTHA\nTimor-Leste\tTLS\nTogo\tTGO\nTokelau\tTKL\nTonga\tTON\nTrinidad and Tobago\tTTO\nTunisia\tTUN\nT\u00fcrkiye (Turkey)\tTUR\nTurkmenistan\tTKM\nTurks and Caicos Islands\tTCA\nTuvalu\tTUV\nUganda\tUGA\nUkraine\tUKR\nUnited Arab Emirates\tARE\nUnited Kingdom\tGBR\nUruguay\tURY\nUzbekistan\tUZB\nVanuatu\tVUT\nBolivarian Republic of Venezuela\tVEN\nViet Nam\tVNM\nBritish Virgin Islands\tVGB\nWallis and Futuna\tWLF\nWestern Sahara\tESH\nYemen\tYEM\nZambia\tZMB\nZimbabwe\tZWE\n\u00c5land Islands\tALA\n\n\nContact Support:\n Name: Smarty Support\n Email: support@smartystreets.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:56:45.000Z",
+    "updatedAt": "2026-07-28T02:56:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cb3f1ec9-c11c-455b-bfdf-9a5fcfef4915"
+  },
+  "item": [
+    {
+      "name": "lookup",
+      "item": [
+        {
+          "name": "Convert Coordinates to Nearest Addresses",
+          "id": "f4f2c24c-21c0-4b68-a426-98dd3b691869",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "auth-id",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "query",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically.",
+                "key": "Host",
+                "value": "<string>"
+              },
+              {
+                "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser, or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually.",
+                "key": "Referer",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/lookup?latitude=<number>&longitude=<number>&source=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "lookup"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0",
+                  "key": "latitude",
+                  "value": "<number>"
+                },
+                {
+                  "description": "(Required) Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0",
+                  "key": "longitude",
+                  "value": "<number>"
+                },
+                {
+                  "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal",
+                  "key": "source",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "This api runs Smarty's reverse geocoding algorithms to convert latitudinal and longitudinal coordinates into the closest street addresses at lightning speed! Enter your auth-id and auth-token or just a Smarty embedded-key along with your coordinates and you are off!"
+          },
+          "response": [
+            {
+              "id": "95712daf-c0e7-4be6-b20f-f21f0c58f63b",
+              "name": "Valid reverse geocoding response containing the results of the search. Each object in the results list will contain an Address object, Coordinate object, and an optional distance field. The distance field is left blank where there is an exact match.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser, or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually.",
+                    "key": "Referer",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?latitude=<number>&longitude=<number>&source=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0",
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0",
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"zipcode\": \"<string>\",\n        \"smarty_key\": \"<string>\",\n        \"street\": \"<string>\",\n        \"source\": \"<string>\"\n      },\n      \"coordinate\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\",\n        \"license\": \"<integer>\",\n        \"accuracy\": \"<string>\"\n      },\n      \"distance\": \"<number>\"\n    },\n    {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"state_abbreviation\": \"<string>\",\n        \"zipcode\": \"<string>\",\n        \"smarty_key\": \"<string>\",\n        \"street\": \"<string>\",\n        \"source\": \"<string>\"\n      },\n      \"coordinate\": {\n        \"latitude\": \"<number>\",\n        \"longitude\": \"<number>\",\n        \"license\": \"<integer>\",\n        \"accuracy\": \"<string>\"\n      },\n      \"distance\": \"<number>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:56:46.000Z",
+              "updatedAt": "2026-07-28T02:56:46.000Z",
+              "uid": "35240-95712daf-c0e7-4be6-b20f-f21f0c58f63b"
+            },
+            {
+              "id": "0aa4af45-ae06-4a80-a9d6-e348c62c7498",
+              "name": "Bad Request, The request body was blank or otherwise malformed.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser, or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually.",
+                    "key": "Referer",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?latitude=<number>&longitude=<number>&source=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0",
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0",
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:46.000Z",
+              "updatedAt": "2026-07-28T02:56:46.000Z",
+              "uid": "35240-0aa4af45-ae06-4a80-a9d6-e348c62c7498"
+            },
+            {
+              "id": "2e8bb324-64fe-4a21-9069-1e8ab16fd43b",
+              "name": "Unauthorized, The credentials were provided incorrectly or did not match any existing, active credentials.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser, or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually.",
+                    "key": "Referer",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?latitude=<number>&longitude=<number>&source=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0",
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0",
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:46.000Z",
+              "updatedAt": "2026-07-28T02:56:46.000Z",
+              "uid": "35240-2e8bb324-64fe-4a21-9069-1e8ab16fd43b"
+            },
+            {
+              "id": "a18992d6-df9c-4808-842e-60b8860b7b65",
+              "name": "Payment Required, There is no active subscription for the account associated with the credentials submitted with the request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser, or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually.",
+                    "key": "Referer",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?latitude=<number>&longitude=<number>&source=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0",
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0",
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:46.000Z",
+              "updatedAt": "2026-07-28T02:56:46.000Z",
+              "uid": "35240-a18992d6-df9c-4808-842e-60b8860b7b65"
+            },
+            {
+              "id": "6bae0674-b81e-455a-898e-4da1ada30fc6",
+              "name": "Unprocessable Entity (Unsuitable Parameters), Returns errors describing what needs to be corrected.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser, or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually.",
+                    "key": "Referer",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?latitude=<number>&longitude=<number>&source=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0",
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0",
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:46.000Z",
+              "updatedAt": "2026-07-28T02:56:46.000Z",
+              "uid": "35240-6bae0674-b81e-455a-898e-4da1ada30fc6"
+            },
+            {
+              "id": "cd7d6fed-4023-4896-b10c-554177788540",
+              "name": "Too Many Requests, When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an auth",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically.",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "description": "The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser, or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually.",
+                    "key": "Referer",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lookup?latitude=<number>&longitude=<number>&source=<string>&auth-id=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lookup"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0",
+                      "key": "latitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "(Required) Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0",
+                      "key": "longitude",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal",
+                      "key": "source",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "auth-id",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:56:46.000Z",
+              "updatedAt": "2026-07-28T02:56:46.000Z",
+              "uid": "35240-cd7d6fed-4023-4896-b10c-554177788540"
+            }
+          ],
+          "createdAt": "2026-07-28T02:56:46.000Z",
+          "updatedAt": "2026-07-28T02:56:46.000Z",
+          "uid": "35240-f4f2c24c-21c0-4b68-a426-98dd3b691869"
+        }
+      ],
+      "id": "42361140-3135-475a-be7d-ca79208c6ede",
+      "createdAt": "2026-07-28T02:56:46.000Z",
+      "updatedAt": "2026-07-28T02:56:46.000Z",
+      "uid": "35240-42361140-3135-475a-be7d-ca79208c6ede"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://international-autocomplete.api.smarty.com"
+    }
+  ]
+}

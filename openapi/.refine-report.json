@@ -1,0 +1,24 @@
+{
+  "provider": "smarty",
+  "sources": [
+    "smarty-lookup-api-openapi.yml",
+    "smarty-reverse-geo-api-openapi.yml",
+    "smarty-street-address-api-openapi.yml",
+    "smarty-us-enrichment-api-openapi.yml",
+    "smarty-us-extract-api-api-openapi.yml",
+    "smarty-verify-api-openapi.yml"
+  ],
+  "outputs": [
+    "smarty-lookup-api-openapi.yml",
+    "smarty-reverse-geo-api-openapi.yml",
+    "smarty-street-address-api-openapi.yml",
+    "smarty-us-enrichment-api-openapi.yml",
+    "smarty-us-extract-api-api-openapi.yml",
+    "smarty-verify-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
