@@ -1,0 +1,548 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Address Autocomplete Lookup us-enrichment API",
+    "version": "0.9"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "us-enrichment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Property Lookup by Smartykey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/:smartykey/property",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "smartykey",
+                "value": "",
+                "type": "path",
+                "description": "The unique id associated with the address you are looking for."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Contains all property data attributes including tax assessor and recorder data. Recorder data will be last available financial transaction for the property. When requesting the financial feature, the result will contain historical financial data pertaining to the property and property owner."
+        },
+        {
+          "info": {
+            "name": "Property Lookup by Search Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/search/property",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              },
+              {
+                "name": "freeform",
+                "value": "",
+                "type": "query",
+                "description": "A full address."
+              },
+              {
+                "name": "street",
+                "value": "",
+                "type": "query",
+                "description": "The street line of the address, or the entire address. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "The city name or a city, state, and ZIP Code combined. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state name or abbreviation. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "zipcode",
+                "value": "",
+                "type": "query",
+                "description": "The ZIP Code. You may also need to provide values for other component search fields."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Contains all property data attributes including tax assessor and recorder data. Recorder data will be last available financial transaction for the property. When requesting the financial feature, the result will contain historical financial data pertaining to the property and property owner."
+        },
+        {
+          "info": {
+            "name": "US Census Block and Tract Lookup by Smartykey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/:smarykey/geo-reference/:dataset?",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "smartykey",
+                "value": "",
+                "type": "path",
+                "description": "The unique id associated with the address you are looking for."
+              },
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The Census Block and Tract Data product provides useful geographic data for geocoded addresses, such as census block id. Request legacy data, such as the 2010 and 2020 census, by specifying a data subset of 2010 or 2020. For example: To return 2010 census data, specify geo-reference/2010. To request the latest census information available, simply specify geo-reference with no trailing subset. The census version will be returned in the data_set_version property in the response."
+        },
+        {
+          "info": {
+            "name": "US Census Block and Tract Data Lookup by Search Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/search/geo-reference/:dataset?",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataset",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              },
+              {
+                "name": "freeform",
+                "value": "",
+                "type": "query",
+                "description": "A full address."
+              },
+              {
+                "name": "street",
+                "value": "",
+                "type": "query",
+                "description": "The street line of the address, or the entire address. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "The city name or a city, state, and ZIP Code combined. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state name or abbreviation. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "zipcode",
+                "value": "",
+                "type": "query",
+                "description": "The ZIP Code. You may also need to provide values for other component search fields."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The Census Block and Tract Data product provides useful geographic data for geocoded addresses, such as census block id. Request legacy data, such as the 2010 and 2020 census, by specifying a data subset of 2010 or 2020. For example: To return 2010 census data, specify geo-reference/2010. To request the latest census information available, simply specify geo-reference with no trailing subset. The census version will be returned in the data_set_version property in the response."
+        },
+        {
+          "info": {
+            "name": "US Secondary Data Lookup by Smartykey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/:smartykey/secondary",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "smartykey",
+                "value": "",
+                "type": "path",
+                "description": "The unique id associated with the address you are looking for."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The secondary data product returns all secondaries and aliases associated with a SmartyKey. The SmartyKey can be that of the root address, any of the aliases, or any of the secondaries. Each will return the same related data."
+        },
+        {
+          "info": {
+            "name": "US Secondary Data Lookup by Search Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/search/secondary",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              },
+              {
+                "name": "freeform",
+                "value": "",
+                "type": "query",
+                "description": "A full address."
+              },
+              {
+                "name": "street",
+                "value": "",
+                "type": "query",
+                "description": "The street line of the address, or the entire address. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "The city name or a city, state, and ZIP Code combined. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state name or abbreviation. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "zipcode",
+                "value": "",
+                "type": "query",
+                "description": "The ZIP Code. You may also need to provide values for other component search fields."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The secondary data product returns all secondaries and aliases associated with a SmartyKey. Each will return the same related data."
+        },
+        {
+          "info": {
+            "name": "US Secondary Data Lookup by Smartykey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/:smartykey/secondary/count",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "smartykey",
+                "value": "",
+                "type": "path",
+                "description": "The unique id associated with the address you are looking for."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The secondary data product returns all secondaries and aliases associated with a SmartyKey. The SmartyKey can be that of the root address, any of the aliases, or any of the secondaries. Each will return the same related data. The count subset only returns the number of secondaries associated with the SmartyKey. Detailed data is not returned."
+        },
+        {
+          "info": {
+            "name": "US Secondary Data Lookup by Search Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup/search/secondary/count",
+            "headers": [
+              {
+                "name": "Content-type",
+                "value": ""
+              },
+              {
+                "name": "ETag",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128"
+              },
+              {
+                "name": "freeform",
+                "value": "",
+                "type": "query",
+                "description": "A full address."
+              },
+              {
+                "name": "street",
+                "value": "",
+                "type": "query",
+                "description": "The street line of the address, or the entire address. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "The city name or a city, state, and ZIP Code combined. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state name or abbreviation. You may also need to provide values for other component search fields."
+              },
+              {
+                "name": "zipcode",
+                "value": "",
+                "type": "query",
+                "description": "The ZIP Code. You may also need to provide values for other component search fields."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "The secondary data product returns all secondaries and aliases associated with a SmartyKey. Each will return the same related data. The count subset only returns the number of secondaries associated with the SmartyKey. Detailed data is not returned."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Address Autocomplete Lookup street-address API",
+    "version": "0.9"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "street-address",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Single Address Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/street-address",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "Host",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "input_id",
+                "value": "",
+                "type": "query",
+                "description": "**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output"
+              },
+              {
+                "name": "street",
+                "value": "",
+                "type": "query",
+                "description": "**Street** *Example: 1600+amphitheatre+pkwy* The street line of the address, or the entire address('freeform' input)."
+              },
+              {
+                "name": "street2",
+                "value": "",
+                "type": "query",
+                "description": "**Street2** *Example: Leave it on the front porch* Any extra address information."
+              },
+              {
+                "name": "secondary",
+                "value": "",
+                "type": "query",
+                "description": "**Secondary** *Example: Apt 52* Apartment, suite, or office number."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "**City** *Example: Provo* The city name."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "**State** *Example: UT* State name or two-letter abbreviation."
+              },
+              {
+                "name": "zipcode",
+                "value": "",
+                "type": "query",
+                "description": "**Zip code** *Example: 84604* The ZIP Code."
+              },
+              {
+                "name": "lastline",
+                "value": "",
+                "type": "query",
+                "description": "**Last Line** *Example: Provo, UT 84604* City, state, and ZIP Code combined."
+              },
+              {
+                "name": "addressee",
+                "value": "",
+                "type": "query",
+                "description": "**Addressee** *Example: John Doe* The name of the recipient, firm, or company at this address."
+              },
+              {
+                "name": "urbanization",
+                "value": "",
+                "type": "query",
+                "description": "**Urbanization** Only used with Puerto Rico."
+              },
+              {
+                "name": "candidates",
+                "value": "",
+                "type": "query",
+                "description": "**Candidates** *Example: 1* The maximum number of valid addresses returned when the input is ambiguous (Max Value: 10)."
+              },
+              {
+                "name": "match",
+                "value": "",
+                "type": "query",
+                "description": "**Match Type** *Example: invalid* The match output strategy to be employted for this lookup. Valid values are: **strict**: The API will ONLY return candidates that are valid USPS addresses. **range**: The API will return candidates that are valid USPS addresses, as well as invalid addresses with primary numbers that fall within a valid range for the street. **invalid**: The API will return a single candidate for every properly submitted address, even if invalid or ambiguous."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The output format to be employed for this lookup, with an appropriate product subscription. Valid values are: default  The API will return the address in the default format. project-usa  The API will return the address in Project US@ format."
+              },
+              {
+                "name": "county_source",
+                "value": "",
+                "type": "query",
+                "description": "The authoritative source to be used for the county information of the address. Valid values are: postal  The API will return county information based on the postal delivery information of the address. This is the default option. geographic  The API will return county information based on the physical location of the address."
+              },
+              {
+                "name": "features",
+                "value": "",
+                "type": "query",
+                "description": "Component Analysis is available in the US Address Verification 42-day Free Trial and certain custom plans. If you have a subscription that allows for component analysis details, to return the component analysis details include the features parameters as features=components-analysis."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "To send one (and only one) address to our API, simply encode the input field names from the table below along with the corresponding input values as query string parameters in the URL of your request. Here's an example that uses the street, city, state, and candidates fields (line breaks added for readability):\n```\ncurl -v 'https://us-street.api.smarty.com/street-address?\n  auth-id=YOUR+AUTH-ID+HERE&\n  auth-token=YOUR+AUTH-TOKEN+HERE&\n  street=1600+amphitheatre+pkwy&\n  city=mountain+view&\n  stat"
+        },
+        {
+          "info": {
+            "name": "Multiple Address Validation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://international-autocomplete.api.smarty.com/street-address",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "Host",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "A POST request allows a larger volume of data (MAX: 100 addresses or 32K per request) to be sent in the HTTP Request Body. In this case, the data should be encoded as a JSON array where each element in the array is a JSON object with field names identical to those in the field listing below. Here's a sample request with two addresses being sent (line breaks added for readability):\n```bash\ncurl -v 'https://us-street.api.smarty.com/street-address?\n  auth-id=YOUR+AUTH-ID+HERE&\n  auth-token=YOUR+AUT"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

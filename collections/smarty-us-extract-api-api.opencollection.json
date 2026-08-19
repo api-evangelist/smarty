@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Address Autocomplete Lookup US Extract API API",
+    "version": "0.9"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "US Extract API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Extract an Address from Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://international-autocomplete.api.smarty.com/",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": ""
+              },
+              {
+                "name": "Host",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "html",
+                "value": "",
+                "type": "query",
+                "description": "HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false."
+              },
+              {
+                "name": "aggressive",
+                "value": "",
+                "type": "query",
+                "description": "Aggressive mode may use more lookups on your account, but it can find addresses in populous cities without needing a state and ZIP Code , as well as finding addresses in some messy inputs. Default: false"
+              },
+              {
+                "name": "addr_line_breaks",
+                "value": "",
+                "type": "query",
+                "description": "This parameter specifies if addresses in your input will ever have line breaks. Default: true"
+              },
+              {
+                "name": "addr_per_line",
+                "value": "",
+                "type": "query",
+                "description": "Limits the extractor to a certain number of addresses per input line. Generally, you will not need this parameter unless you are submitting structured data that you know will only have a certain number of addresses per line. Set to 0 (default) for no limit."
+              },
+              {
+                "name": "license",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the license or licenses (comma separated) to use for this lookup. Valid values cn be found in your Subscriptions Page. If multiple licenses are specified, they are considered to be in left to right order. As a default, this value is derived."
+              },
+              {
+                "name": "match",
+                "value": "",
+                "type": "query",
+                "description": "The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for a larger volume of data (up to 100 inputs or 16K per request)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

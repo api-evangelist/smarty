@@ -1,0 +1,659 @@
+{
+  "item": [
+    {
+      "id": "701dac4d-652b-4962-93c7-e8d429a6c127",
+      "name": "US Extract API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91dff596-ab1b-4d44-ab8e-9d4c16f08bbe",
+          "name": "Extract an Address from Data",
+          "request": {
+            "name": "Extract an Address from Data",
+            "description": {
+              "content": "Search for a larger volume of data (up to 100 inputs or 16K per request)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "html",
+                  "value": "<boolean>",
+                  "description": "HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false."
+                },
+                {
+                  "disabled": false,
+                  "key": "aggressive",
+                  "value": "<boolean>",
+                  "description": "Aggressive mode may use more lookups on your account, but it can find addresses in populous cities without needing a state and ZIP Code , as well as finding addresses in some messy inputs. Default: false"
+                },
+                {
+                  "disabled": false,
+                  "key": "addr_line_breaks",
+                  "value": "<boolean>",
+                  "description": "This parameter specifies if addresses in your input will ever have line breaks. Default: true"
+                },
+                {
+                  "disabled": false,
+                  "key": "addr_per_line",
+                  "value": "<string>",
+                  "description": "Limits the extractor to a certain number of addresses per input line. Generally, you will not need this parameter unless you are submitting structured data that you know will only have a certain number of addresses per line. Set to 0 (default) for no limit."
+                },
+                {
+                  "disabled": false,
+                  "key": "license",
+                  "value": "<string>",
+                  "description": "Specifies the license or licenses (comma separated) to use for this lookup. Valid values cn be found in your Subscriptions Page. If multiple licenses are specified, they are considered to be in left to right order. As a default, this value is derived."
+                },
+                {
+                  "disabled": false,
+                  "key": "match",
+                  "value": "<string>",
+                  "description": "The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                "key": "Host",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json; charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"meta\": {\n    \"lines\": \"<integer>\",\n    \"unicode\": \"<boolean>\",\n    \"address_count\": \"<integer>\",\n    \"verified_count\": \"<integer>\",\n    \"bytes\": \"<integer>\",\n    \"character_count\": \"<integer>\"\n  },\n  \"addresses\": [\n    {\n      \"text\": \"<string>\",\n      \"verified\": \"<boolean>\",\n      \"line\": \"<integer>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\",\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"<string>\",\n      \"verified\": \"<boolean>\",\n      \"line\": \"<integer>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\",\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c08d677-2b01-4de9-92fb-e4e5445b6dc8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggressive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_line_breaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_per_line",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"lines\": 6,\n    \"unicode\": false,\n    \"address_count\": 1,\n    \"verified_count\": 1,\n    \"bytes\": 53,\n    \"character_count\": 53\n  },\n  \"addresses\": [\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"meta\": {\n      \"lines\": 6,\n      \"unicode\": false,\n      \"address_count\": 1,\n      \"verified_count\": 1,\n      \"bytes\": 53,\n      \"character_count\": 53\n    },\n    \"addresses\": [\n      {\n        \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n        \"verified\": true,\n        \"line\": 4,\n        \"start\": 16,\n        \"end\": 49,\n        \"api_output\": [\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n        \"verified\": true,\n        \"line\": 4,\n        \"start\": 16,\n        \"end\": 49,\n        \"api_output\": [\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"meta\": {\n      \"lines\": 6,\n      \"unicode\": false,\n      \"address_count\": 1,\n      \"verified_count\": 1,\n      \"bytes\": 53,\n      \"character_count\": 53\n    },\n    \"addresses\": [\n      {\n        \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n        \"verified\": true,\n        \"line\": 4,\n        \"start\": 16,\n        \"end\": 49,\n        \"api_output\": [\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n        \"verified\": true,\n        \"line\": 4,\n        \"start\": 16,\n        \"end\": 49,\n        \"api_output\": [\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"input_id\": \"<string>\",\n            \"input_index\": \"<integer>\",\n            \"candidate_index\": \"<integer>\",\n            \"addressee\": \"<string>\",\n            \"delivery_line_1\": \"<string>\",\n            \"delivery_line_2\": \"<string>\",\n            \"last_line\": \"<string>\",\n            \"delivery_point_barcode\": \"<string>\",\n            \"smarty_key\": \"<string>\",\n            \"components\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metadata\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"analysis\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01dbd094-b5e9-4076-adb9-384d05a7a17e",
+              "name": "Bad Request (Malformed Payload)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggressive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_line_breaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_per_line",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"lines\": 6,\n    \"unicode\": false,\n    \"address_count\": 1,\n    \"verified_count\": 1,\n    \"bytes\": 53,\n    \"character_count\": 53\n  },\n  \"addresses\": [\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "897776c7-7464-4bc4-b03e-bc14211555b1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggressive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_line_breaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_per_line",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"lines\": 6,\n    \"unicode\": false,\n    \"address_count\": 1,\n    \"verified_count\": 1,\n    \"bytes\": 53,\n    \"character_count\": 53\n  },\n  \"addresses\": [\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db750f21-abbd-400c-95cf-810f7ddbeed9",
+              "name": "Payment Required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggressive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_line_breaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_per_line",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"lines\": 6,\n    \"unicode\": false,\n    \"address_count\": 1,\n    \"verified_count\": 1,\n    \"bytes\": 53,\n    \"character_count\": 53\n  },\n  \"addresses\": [\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "089e78f6-05ef-4797-a86b-0df30fdbab59",
+              "name": "Request Entity Too Large",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggressive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_line_breaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_per_line",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"lines\": 6,\n    \"unicode\": false,\n    \"address_count\": 1,\n    \"verified_count\": 1,\n    \"bytes\": 53,\n    \"character_count\": 53\n  },\n  \"addresses\": [\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Request Entity Too Large",
+              "code": 413,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce5345a7-b366-410d-aa37-9d7fed75c2df",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggressive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_line_breaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_per_line",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"lines\": 6,\n    \"unicode\": false,\n    \"address_count\": 1,\n    \"verified_count\": 1,\n    \"bytes\": 53,\n    \"character_count\": 53\n  },\n  \"addresses\": [\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "252023a0-1277-4416-b399-8ceb2c930593",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "html",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "aggressive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_line_breaks",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "addr_per_line",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8",
+                    "key": "Content-Type",
+                    "value": "string"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com",
+                    "key": "Host",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"meta\": {\n    \"lines\": 6,\n    \"unicode\": false,\n    \"address_count\": 1,\n    \"verified_count\": 1,\n    \"bytes\": 53,\n    \"character_count\": 53\n  },\n  \"addresses\": [\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"text\": \"5732 Lincoln Drive Minneapolis MN\",\n      \"verified\": true,\n      \"line\": 4,\n      \"start\": 16,\n      \"end\": 49,\n      \"api_output\": [\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        },\n        {\n          \"input_id\": \"<string>\",\n          \"input_index\": \"<integer>\",\n          \"candidate_index\": \"<integer>\",\n          \"addressee\": \"<string>\",\n          \"delivery_line_1\": \"<string>\",\n          \"delivery_line_2\": \"<string>\",\n          \"last_line\": \"<string>\",\n          \"delivery_point_barcode\": \"<string>\",\n          \"smarty_key\": \"<string>\",\n          \"components\": {\n            \"urbanization\": \"<string>\",\n            \"primary_number\": \"<string>\",\n            \"street_name\": \"<string>\",\n            \"street_predirection\": \"<string>\",\n            \"street_postdirection\": \"<string>\",\n            \"street_suffix\": \"<string>\",\n            \"secondary_number\": \"<string>\",\n            \"secondary_designator\": \"<string>\",\n            \"extra_secondary_number\": \"<string>\",\n            \"extra_secondary_designator\": \"<string>\",\n            \"pmb_designator\": \"<string>\",\n            \"pmb_number\": \"<string>\",\n            \"city_name\": \"<string>\",\n            \"default_city_name\": \"<string>\",\n            \"state_abbreviation\": \"<string>\",\n            \"zipcode\": \"<string>\",\n            \"plus4_code\": \"<string>\",\n            \"delivery_point\": \"<string>\",\n            \"delivery_point_check_digit\": \"<string>\"\n          },\n          \"metadata\": {\n            \"record_type\": \"<string>\",\n            \"zip_type\": \"<string>\",\n            \"county_fips\": \"<string>\",\n            \"county_name\": \"<string>\",\n            \"ews_match\": \"<string>\",\n            \"carrier_route\": \"<string>\",\n            \"congressional_district\": \"<string>\",\n            \"building_default_indicator\": \"<string>\",\n            \"rdi\": \"<string>\",\n            \"elot_sequence\": \"<string>\",\n            \"elot_sort\": \"<string>\",\n            \"latitude\": \"<number>\",\n            \"longitude\": \"<number>\",\n            \"coordinate_license\": \"<integer>\",\n            \"precision\": \"<string>\",\n            \"time_zone\": \"<string>\",\n            \"utc_offset\": \"<number>\",\n            \"dst\": \"<string>\"\n          },\n          \"analysis\": {\n            \"dpv_match_code\": \"<string>\",\n            \"dpv_footnotes\": \"<string>\",\n            \"dpv_cmra\": \"<string>\",\n            \"dpv_vacant\": \"<string>\",\n            \"dpv_no_stat\": \"<string>\",\n            \"active\": \"<string>\",\n            \"footnotes\": \"<string>\",\n            \"lacslink_code\": \"<string>\",\n            \"lacslink_indicator\": \"<string>\",\n            \"suitelink_match\": \"<string>\",\n            \"enhanced_match\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://international-autocomplete.api.smarty.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c9a2e28a-1428-4892-b464-d3ed355a4c60",
+    "name": "International Address Autocomplete Lookup US Extract API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API returns suggestions that are fully verified global addresses.\nUses fuzzy logic during searching to:\nAllow for missing directionals and street suffixes.\nAllow substitution of street suffixes and unit designators. E.g., ST is accepted for AVE; APT is accepted for UNIT, etc.\nAllow full or partial spelling of street suffixes and unit designators. E.g., ST can be spelled as STR or STREET and still match.\nFilters and preferences allow for multiple cities in a single country.\nNote: Effective with the adoption of the V2 version of International Address Autocomplete, lookup usage will be based on the final selection of an address rather than per keystroke.\n\nBy default, the character set returned will be the native set for that country. If any latin characters are provided in the input (excluding numerics), the latin set will be returned. Character sets include:\nCyrillic\nGreek\nHebrew\nKanji (Japanese)\nSimplified Chinese\nArabic\nThai\nHangul (Korean)\n\nSupports the following 242 countries: \nAfghanistan\tAFG\nAlbania\tALB\nAlgeria\tDZA\nAndorra\tAND\nAngola\tAGO\nAnguilla\tAIA\nAntarctica\tATA\nAntigua and Barbuda\tATG\nArgentina\tARG\nArmenia\tARM\nAruba\tABW\nAustralia\tAUS\nAustria\tAUT\nAzerbaijan\tAZE\nBahamas\tBHS\nBahrain\tBHR\nBangladesh\tBGD\nBarbados\tBRB\nBelarus\tBLR\nBelgium\tBEL\nBelize\tBLZ\nBenin\tBEN\nBermuda\tBMU\nBhutan\tBTN\nBolivia\tBOL\nBonaire, Sint Eustatius and Saba\tBES\nBosnia and Herzegovina\tBIH\nBotswana\tBWA\nBouvet Island\tBVT\nBrazil\tBRA\nBritish Indian Ocean Territory\tIOT\nBrunei Darussalam\tBRN\nBulgaria\tBGR\nBurkina Faso\tBFA\nBurundi\tBDI\nCambodia\tKHM\nCameroon\tCMR\nCanada\tCAN\nCabo Verde\tCPV\nCayman Islands\tCYM\nCentral African Republic\tCAF\nChad\tTCD\nChile\tCHL\nChina\tCHN\nChristmas Island\tCXR\nCocos (Keeling) Islands\tCCK\nColombia\tCOL\nComoros\tCOM\nCongo\tCOG\nDemocratic Republic of the Congo\tCOD\nCook Islands\tCOK\nCosta Rica\tCRI\nCroatia\tHRV\nCuba\tCUB\nCuraçao\tCUW\nCyprus\tCYP\nCzechia\tCZE\nIvory Coast\tCIV\nDenmark\tDNK\nDjibouti\tDJI\nDominica\tDMA\nDominican Republic\tDOM\nEcuador\tECU\nEgypt\tEGY\nEl Salvador\tSLV\nEquatorial Guinea\tGNQ\nEritrea\tERI\nEstonia\tEST\nEswatini\tSWZ\nEthiopia\tETH\nFalkland Islands\tFLK\nFaroe Islands\tFRO\nFiji\tFJI\nFinland\tFIN\nFrance\tFRA\nFrench Guiana\tGUF\nFrench Polynesia\tPYF\nFrench Southern Territories\tATF\nGabon\tGAB\nGambia\tGMB\nGeorgia\tGEO\nGermany\tDEU\nGhana\tGHA\nGibraltar\tGIB\nGreece\tGRC\nGreenland\tGRL\nGrenada\tGRD\nGuadeloupe\tGLP\nGuatemala\tGTM\nGuernsey\tGGY\nGuinea\tGIN\nGuinea-Bissau\tGNB\nGuyana\tGUY\nHaiti\tHTI\nHeard Island and McDonald Islands\tHMD\nHoly See\tVAT\nHonduras\tHND\nHong Kong\tHKG\nHungary\tHUN\nIceland\tISL\nIndia\tIND\nIndonesia\tIDN\nIslamic Republic of Iran\tIRN\nIraq\tIRQ\nIreland\tIRL\nIsle of Man\tIMN\nIsrael\tISR\nItaly\tITA\nJamaica\tJAM\nJapan\tJPN\nJersey\tJEY\nJordan\tJOR\nKazakhstan\tKAZ\nKenya\tKEN\nKiribati\tKIR\nDemocratic People's Republic of Korea (North Korea)\tPRK\nRepublic of Korea\tKOR\nKosovo\tXKX\nKuwait\tKWT\nKyrgyzstan\tKGZ\nLao People's Democratic Republic\tLAO\nLatvia\tLVA\nLebanon\tLBN\nLesotho\tLSO\nLiberia\tLBR\nLibya\tLBY\nLiechtenstein\tLIE\nLithuania\tLTU\nLuxembourg\tLUX\nMacao\tMAC\nRepublic of North Macedonia\tMKD\nMadagascar\tMDG\nMalawi\tMWI\nMalaysia\tMYS\nMaldives\tMDV\nMali\tMLI\nMalta\tMLT\nMartinique\tMTQ\nMauritania\tMRT\nMauritius\tMUS\nMayotte\tMYT\nMexico\tMEX\nFederated States of Micronesia\tFSM\nRepublic of Moldova\tMDA\nMonaco\tMCO\nMongolia\tMNG\nMontenegro\tMNE\nMontserrat\tMSR\nMorocco\tMAR\nMozambique\tMOZ\nMyanmar\tMMR\nNamibia\tNAM\nNauru\tNRU\nNepal\tNPL\nNetherlands\tNLD\nNew Caledonia\tNCL\nNew Zealand\tNZL\nNicaragua\tNIC\nNiger\tNER\nNigeria\tNGA\nNiue\tNIU\nNorfolk Island\tNFK\nNorway\tNOR\nOman\tOMN\nPakistan\tPAK\nPalau\tPLW\nState of Palestine\tPSE\nPanama\tPAN\nPapua New Guinea\tPNG\nParaguay\tPRY\nPeru\tPER\nPhilippines\tPHL\nPitcairn\tPCN\nPoland\tPOL\nPortugal\tPRT\nQatar\tQAT\nSouth Sudan\tSSD\nRomania\tROU\nRussian Federation\tRUS\nRwanda\tRWA\nRéunion\tREU\nSaint Barthélemy\tBLM\nSaint Helena, Ascension and Tristan da Cunha\tSHN\nSaint Kitts and Nevis\tKNA\nSaint Lucia\tLCA\nSaint Martin\tMAF\nSaint Pierre and Miquelon\tSPM\nSaint Vincent and the Grenadines\tVCT\nSamoa\tWSM\nSan Marino\tSMR\nSao Tome and Principe\tSTP\nSaudi Arabia\tSAU\nSenegal\tSEN\nSerbia\tSRB\nSeychelles\tSYC\nSierra Leone\tSLE\nSingapore\tSGP\nSint Maarten (Dutch)\tSXM\nSlovakia\tSVK\nSlovenia\tSVN\nSolomon Islands\tSLB\nSomalia\tSOM\nSouth Africa\tZAF\nSouth Georgia and the South Sandwich Islands\tSGS\nSpain\tESP\nSri Lanka\tLKA\nSudan\tSDN\nSuriname\tSUR\nSvalbard and Jan Mayen Islands\tSJM\nSweden\tSWE\nSwitzerland\tCHE\nSyrian Arab Republic\tSYR\nTaiwan\tTWN\nTajikistan\tTJK\nUnited Republic of Tanzania\tTZA\nThailand\tTHA\nTimor-Leste\tTLS\nTogo\tTGO\nTokelau\tTKL\nTonga\tTON\nTrinidad and Tobago\tTTO\nTunisia\tTUN\nTürkiye (Turkey)\tTUR\nTurkmenistan\tTKM\nTurks and Caicos Islands\tTCA\nTuvalu\tTUV\nUganda\tUGA\nUkraine\tUKR\nUnited Arab Emirates\tARE\nUnited Kingdom\tGBR\nUruguay\tURY\nUzbekistan\tUZB\nVanuatu\tVUT\nBolivarian Republic of Venezuela\tVEN\nViet Nam\tVNM\nBritish Virgin Islands\tVGB\nWallis and Futuna\tWLF\nWestern Sahara\tESH\nYemen\tYEM\nZambia\tZMB\nZimbabwe\tZWE\nÅland Islands\tALA\n\n\nContact Support:\n Name: Smarty Support\n Email: support@smartystreets.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "International Address Autocomplete Lookup reverse-geo API",
+    "version": "0.9"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "reverse-geo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Convert Coordinates to Nearest Addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://international-autocomplete.api.smarty.com/lookup",
+            "headers": [
+              {
+                "name": "Host",
+                "value": ""
+              },
+              {
+                "name": "Referer",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude portion of the coordinate. The latitude must be specified as a decimal between -90.0 and 90.0"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude portion of the coordinate. The longitude must be specified as a decimal between -180.0 and 180.0"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "Includes all results from alternate data sources. Allowed values are: all - will include non-postal addresses in the results; postal - will limit the results to postal addresses only. If this parameter is used, an additional field named soruce will be returned for each result. Default: postal"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "auth-id",
+              "value": "{{auth-id}}",
+              "placement": "query"
+            }
+          },
+          "docs": "This api runs Smarty's reverse geocoding algorithms to convert latitudinal and longitudinal coordinates into the closest street addresses at lightning speed! Enter your auth-id and auth-token or just a Smarty embedded-key along with your coordinates and you are off!"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
