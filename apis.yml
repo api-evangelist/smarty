@@ -76,34 +76,6 @@ apis:
     url: https://www.smarty.com/docs/cloud/international-autocomplete-api
   - type: Documentation
     url: https://www.smarty.com/docs/cloud/international-postal-code-api
-- aid: smarty:smarty-reverse-geo-api
-  name: Smarty reverse-geo API
-  description: Operation invlovling reverse geocoding
-  humanURL: https://www.smarty.com/products/apis/us-street-api
-  baseURL: https://us-street.api.smarty.com/street-address
-  tags:
-  - reverse-geo
-  properties:
-  - type: OpenAPI
-    url: openapi/smarty-reverse-geo-api-openapi.yml
-  - type: Documentation
-    url: https://www.smarty.com/docs/apis/us-street-api/reference
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/us-autocomplete-pro-api
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/us-zipcode-api
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/us-reverse-geo-api
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/us-enrichment-api
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/us-extract-api
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/international-street-api
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/international-autocomplete-api
-  - type: Documentation
-    url: https://www.smarty.com/docs/cloud/international-postal-code-api
 - aid: smarty:smarty-street-address-api
   name: Smarty street-address API
   description: The street-address API from Smarty — 1 operation(s) for street-address.
