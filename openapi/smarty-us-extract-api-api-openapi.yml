@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: US-Extract US Extract API
-  description: "So you don't like playing 'Wheres Waldo' to find addresses in sentences? The SmartyStreets US-Extract RESTful API has your back. \n"
+  description: So you don't like playing 'Wheres Waldo' to find addresses in sentences? The SmartyStreets US-Extract RESTful API has your back.
   termsOfService: https://www.smarty.com/legal/terms-of-service
   license:
     url: https://www.smarty.com/legal/terms-of-service
@@ -65,63 +65,6 @@ paths:
       tags:
       - US Extract API
 components:
-  parameters:
-    match:
-      name: match
-      in: query
-      required: false
-      schema:
-        type: string
-      description: 'The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict'
-    html:
-      name: html
-      in: query
-      required: false
-      schema:
-        type: boolean
-      description: HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false.
-    Content-Type:
-      name: Content-Type
-      in: header
-      required: true
-      schema:
-        type: string
-      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8'
-    addr_line_breaks:
-      name: addr_line_breaks
-      in: query
-      required: false
-      schema:
-        type: boolean
-      description: 'This parameter specifies if addresses in your input will ever have line breaks. Default: true'
-    aggressive:
-      name: aggressive
-      in: query
-      required: false
-      schema:
-        type: boolean
-      description: 'Aggressive mode may use more lookups on your account, but it can find addresses in populous cities without needing a state and ZIP Code , as well as finding addresses in some messy inputs. Default: false'
-    Host:
-      name: Host
-      in: header
-      required: true
-      schema:
-        type: string
-      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com'
-    addr_per_line:
-      name: addr_per_line
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Limits the extractor to a certain number of addresses per input line. Generally, you will not need this parameter unless you are submitting structured data that you know will only have a certain number of addresses per line. Set to 0 (default) for no limit.
-    license:
-      name: license
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Specifies the license or licenses (comma separated) to use for this lookup. Valid values cn be found in your Subscriptions Page. If multiple licenses are specified, they are considered to be in left to right order. As a default, this value is derived.
   schemas:
     ComponentsObject:
       title: Components Object
@@ -204,35 +147,6 @@ components:
           type: string
           description: Correction character, or check digit, for the 11-digit barcode
           maxLength: 1
-    Addresses:
-      title: Addresses
-      type: object
-      properties:
-        text:
-          type: string
-          example: 5732 Lincoln Drive Minneapolis MN
-          description: The actual input text
-        verified:
-          type: boolean
-          example: true
-          description: Was the address verified successfully
-        line:
-          type: integer
-          description: The starting line of the text in the input
-          example: 4
-        start:
-          type: integer
-          description: The starting character index of the text
-          example: 16
-        end:
-          type: integer
-          description: The ending character index of the text
-          example: 49
-        api_output:
-          type: array
-          description: The actual response from the US Street API
-          items:
-            $ref: '#/components/schemas/APIOutput'
     AnalysisObject:
       title: Analysis Object
       type: object
@@ -431,42 +345,35 @@ components:
           $ref: '#/components/schemas/MetadataObject'
         analysis:
           $ref: '#/components/schemas/AnalysisObject'
-    '200':
-      title: Successful response
+    Addresses:
+      title: Addresses
       type: object
       properties:
-        meta:
-          type: object
-          properties:
-            lines:
-              type: integer
-              example: 6
-              description: total lines of input received
-            unicode:
-              type: boolean
-              example: false
-              description: Did the text have unicode characters or was it plain ASCII?
-            address_count:
-              type: integer
-              example: 1
-              description: Amount of addresses found in the input
-            verified_count:
-              type: integer
-              example: 1
-              description: Amount of valid addresses found
-            bytes:
-              type: integer
-              example: 53
-              description: Length of input in bytes
-            character_count:
-              type: integer
-              example: 53
-              description: Length of input in Characters
-        addresses:
+        text:
+          type: string
+          example: 5732 Lincoln Drive Minneapolis MN
+          description: The actual input text
+        verified:
+          type: boolean
+          example: true
+          description: Was the address verified successfully
+        line:
+          type: integer
+          description: The starting line of the text in the input
+          example: 4
+        start:
+          type: integer
+          description: The starting character index of the text
+          example: 16
+        end:
+          type: integer
+          description: The ending character index of the text
+          example: 49
+        api_output:
           type: array
-          description: Array of addresses extracted from the input
+          description: The actual response from the US Street API
           items:
-            $ref: '#/components/schemas/Addresses'
+            $ref: '#/components/schemas/APIOutput'
     MetadataObject:
       title: Metadata Object
       type: object
@@ -540,6 +447,99 @@ components:
           maxLength: 5
           description: "Indicates if the time zone \"obeys,\" or, in other words, adjusts their clocks forward and back with the seasons. This information is particularly useful to determine time in other time zones with areas that may or may not use daylight saving time - for example, Arizona, Hawaii, and, of all places, Indiana. \n\ntrue — Time zone observes daylight saving time. \n\nIf dst is absent from the response, then time zone does not observe daylight saving time."
       description: Object representing the different metadata of a verified address
+    '200':
+      title: Successful response
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            lines:
+              type: integer
+              example: 6
+              description: total lines of input received
+            unicode:
+              type: boolean
+              example: false
+              description: Did the text have unicode characters or was it plain ASCII?
+            address_count:
+              type: integer
+              example: 1
+              description: Amount of addresses found in the input
+            verified_count:
+              type: integer
+              example: 1
+              description: Amount of valid addresses found
+            bytes:
+              type: integer
+              example: 53
+              description: Length of input in bytes
+            character_count:
+              type: integer
+              example: 53
+              description: Length of input in Characters
+        addresses:
+          type: array
+          description: Array of addresses extracted from the input
+          items:
+            $ref: '#/components/schemas/Addresses'
+  parameters:
+    html:
+      name: html
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false.
+    addr_line_breaks:
+      name: addr_line_breaks
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: 'This parameter specifies if addresses in your input will ever have line breaks. Default: true'
+    addr_per_line:
+      name: addr_per_line
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Limits the extractor to a certain number of addresses per input line. Generally, you will not need this parameter unless you are submitting structured data that you know will only have a certain number of addresses per line. Set to 0 (default) for no limit.
+    Host:
+      name: Host
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com'
+    aggressive:
+      name: aggressive
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: 'Aggressive mode may use more lookups on your account, but it can find addresses in populous cities without needing a state and ZIP Code , as well as finding addresses in some messy inputs. Default: false'
+    match:
+      name: match
+      in: query
+      required: false
+      schema:
+        type: string
+      description: 'The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict'
+    Content-Type:
+      name: Content-Type
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8'
+    license:
+      name: license
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Specifies the license or licenses (comma separated) to use for this lookup. Valid values cn be found in your Subscriptions Page. If multiple licenses are specified, they are considered to be in left to right order. As a default, this value is derived.
   securitySchemes:
     auth_id:
       type: apiKey

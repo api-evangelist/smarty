@@ -315,14 +315,97 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 components:
+  parameters:
+    content-type:
+      name: Content-type
+      in: header
+      schema:
+        type: string
+        example: application/json
+      description: The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner.
+    dataset:
+      name: dataset
+      in: path
+      required: false
+      schema:
+        type: string
+        enum:
+        - '2010'
+        - '2020'
+    features:
+      name: features
+      in: query
+      schema:
+        type: string
+      description: 'A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128'
+    etag:
+      name: ETag
+      in: header
+      schema:
+        type: string
+        example: AUHQQBIPBQDAYAA
+      description: 'The ETag header provides the ability to check if a record has been updated since the last query. Every query to the API will return an ETag header which represents a hash of the record in the response. This value may be stored and used in subsequent queries for that same record. If the record data has NOT been updated since the last query, it will return a 304 (Not Modified) and the client will not be charged for the query. (The 304 response does not contain a body.) If the record data HAS been updated, the latest version of the record will be returned along with a new ETag value. Important: Only the latest ETag value is valid for each record. This feature is NOT designed to retrieve past record versions. Also note that the ETag value will change if ANY data in the record has been updated, regardless of which attributes are requested using the include and exclude parameters.'
+    state:
+      name: state
+      in: query
+      schema:
+        type: string
+      description: The state name or abbreviation. You may also need to provide values for other component search fields.
+    street:
+      name: street
+      in: query
+      schema:
+        type: string
+      description: The street line of the address, or the entire address. You may also need to provide values for other component search fields.
+    city:
+      name: city
+      in: query
+      schema:
+        type: string
+      description: The city name or a city, state, and ZIP Code combined. You may also need to provide values for other component search fields.
+    zipcode:
+      name: zipcode
+      in: query
+      schema:
+        type: string
+      description: The ZIP Code. You may also need to provide values for other component search fields.
+    include:
+      name: include
+      in: query
+      schema:
+        type: string
+      description: List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response.
+    exclude:
+      name: exclude
+      in: query
+      schema:
+        type: string
+      description: List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase.
+    freeform:
+      name: freeform
+      in: query
+      schema:
+        type: string
+      description: A full address.
+    smartykey:
+      name: smartykey
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The unique id associated with the address you are looking for.
   schemas:
-    SecondaryCountResponseSmartyKey:
+    Secondaries:
       type: object
       properties:
         smarty_key:
           type: string
-        count:
-          type: integer
+        secondary_designator:
+          type: string
+        secondary_number:
+          type: string
+        plus4_code:
+          type: string
     Alias:
       type: object
       properties:
@@ -344,83 +427,153 @@ components:
           type: number
         plus4_code:
           type: number
-    SecondaryResponseSmartyKey:
+    GroupLocationAttributes:
       type: object
+      description: Location attributes in the Principal Dataset records.
       properties:
-        smarty_key:
+        block1:
           type: string
-        root_address:
-          $ref: '#/components/schemas/RootAddress'
-        aliases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Alias'
-        secondaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Secondaries'
-    Secondaries:
+        block2:
+          type: string
+        carrier_route_code:
+          type: string
+        cbsa_code:
+          type: string
+        cbsa_name:
+          type: string
+        census_block:
+          type: string
+        census_block_group:
+          type: string
+        census_fips_place_code:
+          type: string
+        census_tract:
+          type: string
+        city:
+          type: string
+        combined_statistical_area:
+          type: string
+        congressional_district:
+          type: string
+        elevation_feet:
+          type: string
+        fips_code:
+          type: string
+        geo_quality:
+          type: string
+        house_number:
+          type: string
+        land_use_code:
+          type: string
+        land_use_group:
+          type: string
+        land_use_standard:
+          type: string
+        latitude:
+          type: string
+        legal_description:
+          type: string
+        legal_unit:
+          type: string
+        longitude:
+          type: string
+        lot_1:
+          type: string
+        lot_2:
+          type: string
+        lot_3:
+          type: string
+        metro_division:
+          type: string
+        minor_civil_division_code:
+          type: string
+        minor_civil_division_name:
+          type: string
+        msa_code:
+          type: string
+        msa_name:
+          type: string
+        neighborhood_code:
+          type: string
+        parcel_account_number:
+          type: string
+        parcel_map_book:
+          type: string
+        parcel_map_page:
+          type: string
+        parcel_number_alternate:
+          type: string
+        parcel_number_formatted:
+          type: string
+        parcel_number_previous:
+          type: string
+        parcel_number_year_added:
+          type: string
+        parcel_number_year_change:
+          type: string
+        parcel_raw_number:
+          type: string
+        phase_name:
+          type: string
+        post_direction:
+          type: string
+        pre_direction:
+          type: string
+        property_address_full:
+          type: string
+        quarter:
+          type: string
+        quarter_quarter:
+          type: string
+        range:
+          type: string
+        section:
+          type: string
+        situs_county:
+          type: string
+        situs_state:
+          type: string
+        state:
+          type: string
+        street_name:
+          type: string
+        street_predirection:
+          type: string
+        street_postdirection:
+          type: string
+        street_suffix:
+          type: string
+        subdivision:
+          type: string
+        tax_jurisdiction:
+          type: string
+        township:
+          type: string
+        tract_number:
+          type: string
+        unit_designator:
+          type: string
+        unit_value:
+          type: string
+        zip_4:
+          type: string
+        zipcode:
+          type: string
+        zoning:
+          type: string
+    CensusCountyDivision:
       type: object
-      properties:
-        smarty_key:
-          type: string
-        secondary_designator:
-          type: string
-        secondary_number:
-          type: string
-        plus4_code:
-          type: string
-    PropertyResponseSearch:
-      properties:
-        smarty_key:
-          type: string
-        data_set_name:
-          type: string
-        data_subset_name:
-          type: string
-        matched_address:
-          $ref: '#/components/schemas/MatchedAddress'
-        attributes:
-          oneOf:
-          - allOf:
-            - $ref: '#/components/schemas/GroupStructuralAttributes'
-            - $ref: '#/components/schemas/GroupLocationAttributes'
-          - $ref: '#/components/schemas/GroupFinancialAttributes'
-    SecondaryCountResponseSearch:
-      type: object
-      properties:
-        smarty_key:
-          type: string
-        matched_address:
-          $ref: '#/components/schemas/MatchedAddress'
-        count:
-          type: integer
-    Place:
-      type: object
-      description: The Bureau of the Census defines a place as a concentration of population. It consists of a geographical boundary.
+      description: The county subdivision identifier and name (equivalent to townships).
       properties:
         accuracy:
           type: string
           description: Represents the accuracy of the geocode associated with the SmartyKey. Less than Zip9 accuracy will be inferred. Otherwise, it will be exact.
         code:
           type: string
-          description: A 7-digit code that identifies the place. The first 2 digits identify the state. The last 5 identify the place within the state.
+          description: The 10-digit census id code of the CCD.
         name:
           type: string
-          description: The name of the place boundary.
-        type:
-          type: string
-          description: Indicates if the Census Place is incorporated or unincorporated.
-    CoreBasedStatArea:
-      type: object
-      description: Refers collectively to metropolitan statistical areas and micropolitan statistical areas. CBSAs consist of the county or counties (or equivalent entities) associated with at least one core (urban area) with a population of at least 10,000, plus adjacent counties having a high degree of social and economic integration with the core as measured through commuting ties.
-      properties:
-        code:
-          type: string
-          description: A 5-digit unique id of the CBSA (e.g. 39340)
-        name:
-          type: string
-          description: The name of the CBSA (e.g. Provo-Orem, UT)
+          description: The name of the census county division.
     FinancialHistoryEntry:
       type: array
       items:
@@ -511,6 +664,120 @@ components:
             type: string
           transfer_amount:
             type: string
+    SecondaryCountResponseSmartyKey:
+      type: object
+      properties:
+        smarty_key:
+          type: string
+        count:
+          type: integer
+    CensusBlockAndTractResponseSmartyKey:
+      properties:
+        smarty_key:
+          type: string
+        data_set_name:
+          type: string
+        data_set_version:
+          type: string
+        attributes:
+          type: object
+          properties:
+            census_block:
+              $ref: '#/components/schemas/CensusBlock'
+            census_county_division:
+              $ref: '#/components/schemas/CensusCountyDivision'
+            census_tract:
+              $ref: '#/components/schemas/CensusTract'
+            core_based_stat_area:
+              $ref: '#/components/schemas/CoreBasedStatArea'
+            place:
+              $ref: '#/components/schemas/Place'
+    PropertyResponseSmartyKey:
+      properties:
+        smarty_key:
+          type: string
+        data_set_name:
+          type: string
+        data_subset_name:
+          type: string
+        attributes:
+          oneOf:
+          - allOf:
+            - $ref: '#/components/schemas/GroupStructuralAttributes'
+            - $ref: '#/components/schemas/GroupLocationAttributes'
+          - $ref: '#/components/schemas/GroupFinancialAttributes'
+    SecondaryResponseSmartyKey:
+      type: object
+      properties:
+        smarty_key:
+          type: string
+        root_address:
+          $ref: '#/components/schemas/RootAddress'
+        aliases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alias'
+        secondaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Secondaries'
+    RootAddress:
+      type: object
+      properties:
+        secondary_count:
+          type: integer
+        smarty_key:
+          type: string
+        primary_number:
+          type: string
+        street_name:
+          type: string
+        street_suffix:
+          type: string
+        city_name:
+          type: string
+        state_abbreviation:
+          type: string
+        zipcode:
+          type: string
+        plus4_code:
+          type: string
+    SecondaryCountResponseSearch:
+      type: object
+      properties:
+        smarty_key:
+          type: string
+        matched_address:
+          $ref: '#/components/schemas/MatchedAddress'
+        count:
+          type: integer
+    SecondaryResponseSearch:
+      type: object
+      properties:
+        smarty_key:
+          type: string
+        matched_address:
+          $ref: '#/components/schemas/MatchedAddress'
+        root_address:
+          $ref: '#/components/schemas/RootAddress'
+        aliases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alias'
+        secondaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/Secondaries'
+    CoreBasedStatArea:
+      type: object
+      description: Refers collectively to metropolitan statistical areas and micropolitan statistical areas. CBSAs consist of the county or counties (or equivalent entities) associated with at least one core (urban area) with a population of at least 10,000, plus adjacent counties having a high degree of social and economic integration with the core as measured through commuting ties.
+      properties:
+        code:
+          type: string
+          description: A 5-digit unique id of the CBSA (e.g. 39340)
+        name:
+          type: string
+          description: The name of the CBSA (e.g. Provo-Orem, UT)
     GroupFinancialAttributes:
       type: object
       description: Financial attributes in the Financial Dataset records.
@@ -795,6 +1062,50 @@ components:
           type: string
         widow_tax_exemption:
           type: string
+    CensusBlock:
+      type: object
+      description: An id of up to 15 characters that identifies a geographical area for statistical analysis.
+      properties:
+        accuracy:
+          type: string
+          description: Represents the accuracy of the geocode associated with the SmartyKey which was used to find the block. Values are block, tract, or county.
+        geoid:
+          type: string
+          description: 'The census geoid can have different meanings based on the accuracy field.
+
+            If geocode accuracy is parcel or rooftop, the id is the 15 character block id.
+
+            If geocode accuracy is zip9, the id is the census tract id. (first 11 digits of block id)
+
+            If geocode accuracy is less than zip9, the id is the county FIPS. (first 5 digits of block id)'
+    MatchedAddress:
+      type: object
+      description: The address that the search matched to.
+      properties:
+        street:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipcode:
+          type: string
+    Place:
+      type: object
+      description: The Bureau of the Census defines a place as a concentration of population. It consists of a geographical boundary.
+      properties:
+        accuracy:
+          type: string
+          description: Represents the accuracy of the geocode associated with the SmartyKey. Less than Zip9 accuracy will be inferred. Otherwise, it will be exact.
+        code:
+          type: string
+          description: A 7-digit code that identifies the place. The first 2 digits identify the state. The last 5 identify the place within the state.
+        name:
+          type: string
+          description: The name of the place boundary.
+        type:
+          type: string
+          description: Indicates if the Census Place is incorporated or unincorporated.
     CensusTract:
       type: string
       description: Geographic entities within counties (or the statistical equivalent of counties).
@@ -802,178 +1113,22 @@ components:
         code:
           type: string
           description: Census tracts within a county are identified by a 4-digit basic code between 0001 and 9999, and may have a 2-digit suffix ranging from .01 to .98; (e.g. 6059.02)
-    GroupLocationAttributes:
-      type: object
-      description: Location attributes in the Principal Dataset records.
-      properties:
-        block1:
-          type: string
-        block2:
-          type: string
-        carrier_route_code:
-          type: string
-        cbsa_code:
-          type: string
-        cbsa_name:
-          type: string
-        census_block:
-          type: string
-        census_block_group:
-          type: string
-        census_fips_place_code:
-          type: string
-        census_tract:
-          type: string
-        city:
-          type: string
-        combined_statistical_area:
-          type: string
-        congressional_district:
-          type: string
-        elevation_feet:
-          type: string
-        fips_code:
-          type: string
-        geo_quality:
-          type: string
-        house_number:
-          type: string
-        land_use_code:
-          type: string
-        land_use_group:
-          type: string
-        land_use_standard:
-          type: string
-        latitude:
-          type: string
-        legal_description:
-          type: string
-        legal_unit:
-          type: string
-        longitude:
-          type: string
-        lot_1:
-          type: string
-        lot_2:
-          type: string
-        lot_3:
-          type: string
-        metro_division:
-          type: string
-        minor_civil_division_code:
-          type: string
-        minor_civil_division_name:
-          type: string
-        msa_code:
-          type: string
-        msa_name:
-          type: string
-        neighborhood_code:
-          type: string
-        parcel_account_number:
-          type: string
-        parcel_map_book:
-          type: string
-        parcel_map_page:
-          type: string
-        parcel_number_alternate:
-          type: string
-        parcel_number_formatted:
-          type: string
-        parcel_number_previous:
-          type: string
-        parcel_number_year_added:
-          type: string
-        parcel_number_year_change:
-          type: string
-        parcel_raw_number:
-          type: string
-        phase_name:
-          type: string
-        post_direction:
-          type: string
-        pre_direction:
-          type: string
-        property_address_full:
-          type: string
-        quarter:
-          type: string
-        quarter_quarter:
-          type: string
-        range:
-          type: string
-        section:
-          type: string
-        situs_county:
-          type: string
-        situs_state:
-          type: string
-        state:
-          type: string
-        street_name:
-          type: string
-        street_predirection:
-          type: string
-        street_postdirection:
-          type: string
-        street_suffix:
-          type: string
-        subdivision:
-          type: string
-        tax_jurisdiction:
-          type: string
-        township:
-          type: string
-        tract_number:
-          type: string
-        unit_designator:
-          type: string
-        unit_value:
-          type: string
-        zip_4:
-          type: string
-        zipcode:
-          type: string
-        zoning:
-          type: string
-    SecondaryResponseSearch:
-      type: object
-      properties:
-        smarty_key:
-          type: string
-        matched_address:
-          $ref: '#/components/schemas/MatchedAddress'
-        root_address:
-          $ref: '#/components/schemas/RootAddress'
-        aliases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Alias'
-        secondaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/Secondaries'
-    CensusBlockAndTractResponseSmartyKey:
+    PropertyResponseSearch:
       properties:
         smarty_key:
           type: string
         data_set_name:
           type: string
-        data_set_version:
+        data_subset_name:
           type: string
+        matched_address:
+          $ref: '#/components/schemas/MatchedAddress'
         attributes:
-          type: object
-          properties:
-            census_block:
-              $ref: '#/components/schemas/CensusBlock'
-            census_county_division:
-              $ref: '#/components/schemas/CensusCountyDivision'
-            census_tract:
-              $ref: '#/components/schemas/CensusTract'
-            core_based_stat_area:
-              $ref: '#/components/schemas/CoreBasedStatArea'
-            place:
-              $ref: '#/components/schemas/Place'
+          oneOf:
+          - allOf:
+            - $ref: '#/components/schemas/GroupStructuralAttributes'
+            - $ref: '#/components/schemas/GroupLocationAttributes'
+          - $ref: '#/components/schemas/GroupFinancialAttributes'
     GroupStructuralAttributes:
       type: object
       description: Structural attributes in the Principal Dataset records.
@@ -1286,56 +1441,6 @@ components:
           type: string
         year_built:
           type: string
-    CensusBlock:
-      type: object
-      description: An id of up to 15 characters that identifies a geographical area for statistical analysis.
-      properties:
-        accuracy:
-          type: string
-          description: Represents the accuracy of the geocode associated with the SmartyKey which was used to find the block. Values are block, tract, or county.
-        geoid:
-          type: string
-          description: 'The census geoid can have different meanings based on the accuracy field.
-
-            If geocode accuracy is parcel or rooftop, the id is the 15 character block id.
-
-            If geocode accuracy is zip9, the id is the census tract id. (first 11 digits of block id)
-
-            If geocode accuracy is less than zip9, the id is the county FIPS. (first 5 digits of block id)'
-    RootAddress:
-      type: object
-      properties:
-        secondary_count:
-          type: integer
-        smarty_key:
-          type: string
-        primary_number:
-          type: string
-        street_name:
-          type: string
-        street_suffix:
-          type: string
-        city_name:
-          type: string
-        state_abbreviation:
-          type: string
-        zipcode:
-          type: string
-        plus4_code:
-          type: string
-    CensusCountyDivision:
-      type: object
-      description: The county subdivision identifier and name (equivalent to townships).
-      properties:
-        accuracy:
-          type: string
-          description: Represents the accuracy of the geocode associated with the SmartyKey. Less than Zip9 accuracy will be inferred. Otherwise, it will be exact.
-        code:
-          type: string
-          description: The 10-digit census id code of the CCD.
-        name:
-          type: string
-          description: The name of the census county division.
     CensusBlockAndTractResponseSearch:
       properties:
         smarty_key:
@@ -1359,32 +1464,6 @@ components:
               $ref: '#/components/schemas/CoreBasedStatArea'
             place:
               $ref: '#/components/schemas/Place'
-    MatchedAddress:
-      type: object
-      description: The address that the search matched to.
-      properties:
-        street:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        zipcode:
-          type: string
-    PropertyResponseSmartyKey:
-      properties:
-        smarty_key:
-          type: string
-        data_set_name:
-          type: string
-        data_subset_name:
-          type: string
-        attributes:
-          oneOf:
-          - allOf:
-            - $ref: '#/components/schemas/GroupStructuralAttributes'
-            - $ref: '#/components/schemas/GroupLocationAttributes'
-          - $ref: '#/components/schemas/GroupFinancialAttributes'
   responses:
     SecondaryCountResponseSearch:
       description: Ok Response
@@ -1395,6 +1474,27 @@ components:
             items:
               type: object
               $ref: '#/components/schemas/SecondaryCountResponseSearch'
+    UnprocessableContent:
+      description: 'Unprocessable content: Some parameter values are not correct. Detailed messages will describe the problem.
+
+        '
+    NotModified:
+      description: 'The requested ETag header represents the latest data available.
+
+        '
+    CensusBlockAndTractResponseSearch:
+      description: Ok Response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              $ref: '#/components/schemas/CensusBlockAndTractResponseSearch'
+    Unauthorized:
+      description: 'Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.
+
+        '
     SecondaryResponseSmartyKey:
       description: Ok Response
       content:
@@ -1404,15 +1504,6 @@ components:
             items:
               type: object
               $ref: '#/components/schemas/SecondaryResponseSmartyKey'
-    PropertyResponseSmartyKey:
-      description: Ok Response
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              type: object
-              $ref: '#/components/schemas/PropertyResponseSmartyKey'
     PropertyResponseSearch:
       description: Ok Response
       content:
@@ -1426,10 +1517,19 @@ components:
       description: 'Request entity too large: The request body was larger than 64 Kilobytes.
 
         '
-    NotModified:
-      description: 'The requested ETag header represents the latest data available.
+    BadRequest:
+      description: 'Bad Request (Malformed Payload): A GET request lacked a street field, or the request body of a POST request contained malformed JSON. (example: submitting an integer value in the ZIP Code field when a string is expected)
 
         '
+    PropertyResponseSmartyKey:
+      description: Ok Response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              $ref: '#/components/schemas/PropertyResponseSmartyKey'
     SecondaryResponseSearch:
       description: Ok Response
       content:
@@ -1439,23 +1539,6 @@ components:
             items:
               type: object
               $ref: '#/components/schemas/SecondaryResponseSearch'
-    TooManyRequests:
-      description: 'Too Many Requests: We restrict the number of requests coming from a given source over too short of a time.
-
-        '
-    CensusBlockAndTractResponseSearch:
-      description: Ok Response
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              type: object
-              $ref: '#/components/schemas/CensusBlockAndTractResponseSearch'
-    BadRequest:
-      description: 'Bad Request (Malformed Payload): A GET request lacked a street field, or the request body of a POST request contained malformed JSON. (example: submitting an integer value in the ZIP Code field when a string is expected)
-
-        '
     SecondaryCountResponseSmartyKey:
       description: Ok Response
       content:
@@ -1465,14 +1548,6 @@ components:
             items:
               type: object
               $ref: '#/components/schemas/SecondaryCountResponseSmartyKey'
-    PaymentRequired:
-      description: 'Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.
-
-        '
-    Unauthorized:
-      description: 'Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.
-
-        '
     CensusBlockAndTractResponseSmartyKey:
       description: Ok Response
       content:
@@ -1482,89 +1557,14 @@ components:
             items:
               type: object
               $ref: '#/components/schemas/CensusBlockAndTractResponseSmartyKey'
-    UnprocessableContent:
-      description: 'Unprocessable content: Some parameter values are not correct. Detailed messages will describe the problem.
+    PaymentRequired:
+      description: 'Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.
 
         '
-  parameters:
-    state:
-      name: state
-      in: query
-      schema:
-        type: string
-      description: The state name or abbreviation. You may also need to provide values for other component search fields.
-    include:
-      name: include
-      in: query
-      schema:
-        type: string
-      description: List of attributes that are allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase. If the record in the response does not have a value for that attribute, it will not be included in the response.
-    etag:
-      name: ETag
-      in: header
-      schema:
-        type: string
-        example: AUHQQBIPBQDAYAA
-      description: 'The ETag header provides the ability to check if a record has been updated since the last query. Every query to the API will return an ETag header which represents a hash of the record in the response. This value may be stored and used in subsequent queries for that same record. If the record data has NOT been updated since the last query, it will return a 304 (Not Modified) and the client will not be charged for the query. (The 304 response does not contain a body.) If the record data HAS been updated, the latest version of the record will be returned along with a new ETag value. Important: Only the latest ETag value is valid for each record. This feature is NOT designed to retrieve past record versions. Also note that the ETag value will change if ANY data in the record has been updated, regardless of which attributes are requested using the include and exclude parameters.'
-    exclude:
-      name: exclude
-      in: query
-      schema:
-        type: string
-      description: List of attributes that are not allowed to be included in the response. This list can include Group names and Attribute names separated by commas. All values must be lowercase.
-    freeform:
-      name: freeform
-      in: query
-      schema:
-        type: string
-      description: A full address.
-    zipcode:
-      name: zipcode
-      in: query
-      schema:
-        type: string
-      description: The ZIP Code. You may also need to provide values for other component search fields.
-    street:
-      name: street
-      in: query
-      schema:
-        type: string
-      description: The street line of the address, or the entire address. You may also need to provide values for other component search fields.
-    features:
-      name: features
-      in: query
-      schema:
-        type: string
-      description: 'A comma-separated list of features. These may require a special plan that allows the feature to be used. EXAMPLE: Feature Value: financial; Description: Return the financial_history attribute. This is applicalbe only to property requests. Default: 128'
-    dataset:
-      name: dataset
-      in: path
-      required: false
-      schema:
-        type: string
-        enum:
-        - '2010'
-        - '2020'
-    content-type:
-      name: Content-type
-      in: header
-      schema:
-        type: string
-        example: application/json
-      description: The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner.
-    smartykey:
-      name: smartykey
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The unique id associated with the address you are looking for.
-    city:
-      name: city
-      in: query
-      schema:
-        type: string
-      description: The city name or a city, state, and ZIP Code combined. You may also need to provide values for other component search fields.
+    TooManyRequests:
+      description: 'Too Many Requests: We restrict the number of requests coming from a given source over too short of a time.
+
+        '
   securitySchemes:
     auth-id:
       name: auth-id

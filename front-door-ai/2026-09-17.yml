@@ -1,0 +1,29 @@
+# Front Door AI Index — smarty — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: smarty
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.smarty.com
+  final_host: www.smarty.com
+  ownership: own
+  owner: smarty
+  shares_host_with:
+  - us-autocomplete
+  - us-extract
+  - us-street-address
+  - us-zipcode
+  inherited_from: null
+  verdict: scored
+  score: 1
+  host_score: 1
+  density: 1.16
+  words: 862
+  tiers:
+    agentic: 1
+    core: 0
+    model: 0
+  ambiguous: 0
+  top_terms:
+    MCP: 1
