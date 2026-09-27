@@ -222,96 +222,7 @@ paths:
     servers:
     - url: https://us-zipcode.api.smarty.com
 components:
-  responses:
-    '200':
-      description: 'OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.'
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              candidates:
-                type: array
-                items:
-                  $ref: '#/components/schemas/candidate'
-    detailed_200:
-      description: 'OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.'
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              candidates:
-                type: array
-                items:
-                  $ref: '#/components/schemas/detailed_candidate'
-    '402':
-      description: 'Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.'
-    '413':
-      description: 'Request Entity Too Large: The maximum size for a request body to this API is 16K (16,384 bytes).'
-    '401':
-      description: 'Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.'
-    '429':
-      description: 'Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an authorized host for the embedded key in question.'
-    '400':
-      description: 'Bad Request (Malformed Payload): The request body of a POST request contained no lookups or contained malformed JSON.'
   parameters:
-    include_only_locality:
-      name: include_only_locality
-      in: query
-      required: false
-      schema:
-        type: string
-      description: 'Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles'
-    Host:
-      name: Host
-      in: header
-      required: true
-      schema:
-        type: string
-      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com'
-    include_only_postal_code:
-      name: include_only_postal_code
-      in: query
-      required: false
-      schema:
-        type: string
-      description: 'Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201'
-    address_id:
-      name: addressId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The Address ID is used to get further information about a particular result. This value will be supplied by a previous call to the API. This parameter should not be supplied when the search query parameter is used.
-    max_results:
-      name: max_results
-      in: query
-      required: false
-      schema:
-        type: integer
-      description: 'Maximum number of address suggestions to return; range [1, 10]. Default: 5'
-    search:
-      name: search
-      in: query
-      required: true
-      schema:
-        type: string
-      description: The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.
-    geolocation:
-      name: geolocation
-      in: query
-      required: false
-      schema:
-        type: string
-      description: "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request."
-    country:
-      name: country
-      in: query
-      required: true
-      schema:
-        type: string
-      description: The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.
     Referer:
       name: Referer
       in: header
@@ -319,6 +230,55 @@ components:
         type: string
       description: 'The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com'
       required: false
+    address_id:
+      name: addressId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The Address ID is used to get further information about a particular result. This value will be supplied by a previous call to the API. This parameter should not be supplied when the search query parameter is used.
+    include_only_locality:
+      name: include_only_locality
+      in: query
+      required: false
+      schema:
+        type: string
+      description: 'Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles'
+    max_results:
+      name: max_results
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: 'Maximum number of address suggestions to return; range [1, 10]. Default: 5'
+    country:
+      name: country
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.
+    include_only_postal_code:
+      name: include_only_postal_code
+      in: query
+      required: false
+      schema:
+        type: string
+      description: 'Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201'
+    geolocation:
+      name: geolocation
+      in: query
+      required: false
+      schema:
+        type: string
+      description: "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request."
+    search:
+      name: search
+      in: query
+      required: true
+      schema:
+        type: string
+      description: The part of the address that has already been typed. Maximum character count is 32 characters. Required when address ID is not specified in the URL.
     max_group_results:
       name: max_group_results
       in: query
@@ -326,6 +286,26 @@ components:
       schema:
         type: integer
       description: Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].
+    Host:
+      name: Host
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com'
+    city:
+      name: city
+      in: query
+      description: The city name
+      schema:
+        type: string
+    input_id:
+      name: input_id
+      in: query
+      example: 867-5309
+      description: '**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output'
+      schema:
+        type: string
     state:
       name: state
       in: query
@@ -339,25 +319,6 @@ components:
       schema:
         type: string
       description: 'The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com'
-    city:
-      name: city
-      in: query
-      description: The city name
-      schema:
-        type: string
-    zipcode:
-      name: zipcode
-      in: query
-      description: '**Zip code** *Example: 84604* The ZIP Code.'
-      schema:
-        type: string
-    input_id:
-      name: input_id
-      in: query
-      example: 867-5309
-      description: '**Input ID** *Example: 867-5309* A unique identifier for this address used in your application; this field will be copied to the output'
-      schema:
-        type: string
     Content-Type:
       name: Content-Type
       in: header
@@ -365,6 +326,45 @@ components:
       schema:
         type: string
       description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. EX: Content-Type: application/json; charset=utf-8'
+    zipcode:
+      name: zipcode
+      in: query
+      description: '**Zip code** *Example: 84604* The ZIP Code.'
+      schema:
+        type: string
+  responses:
+    detailed_200:
+      description: 'OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              candidates:
+                type: array
+                items:
+                  $ref: '#/components/schemas/detailed_candidate'
+    '200':
+      description: 'OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              candidates:
+                type: array
+                items:
+                  $ref: '#/components/schemas/candidate'
+    '413':
+      description: 'Request Entity Too Large: The maximum size for a request body to this API is 16K (16,384 bytes).'
+    '402':
+      description: 'Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.'
+    '400':
+      description: 'Bad Request (Malformed Payload): The request body of a POST request contained no lookups or contained malformed JSON.'
+    '401':
+      description: 'Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.'
+    '429':
+      description: 'Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an authorized host for the embedded key in question.'
   schemas:
     detailed_candidate:
       title: detailed_candidate
@@ -406,6 +406,79 @@ components:
       - entries: 12
         address_text: 123 Main St Winnipeg, MB, R3C
         address_id: PD4DPC8DOjE4AzI9Uig2MTE2Lzo4UjI+NjEgLCtSTk1M
+    Root:
+      title: Successful response
+      type: object
+      description: 'OK (success!): The response body will be a JSON array containing zero or more matches for the input provided with the request. The structure of the response is the same for both GET and POST requests.'
+      properties:
+        input_index:
+          type: integer
+        input_id:
+          type: string
+          description: A unique identifier for this address used in your application; this field will be copied into the output.
+        city_states:
+          type: array
+          description: A list of cities and their states that match the input
+          items:
+            $ref: '#/components/schemas/CityStates'
+        zipcodes:
+          type: array
+          description: A list of ZIP Codes that match the input
+          items:
+            $ref: '#/components/schemas/ZIPCodes'
+        status:
+          type: string
+          description: For a lookup with no matches, status classifies the kind of failure and always comes with a reason
+        reason:
+          type: string
+          description: "For a lookup with no matches, reason explains why the lookup failed\n\nblank\tBlank lookup (you must provide a ZIP Code and/or City/State combination).\ninvalid_state\tInvalid State name or abbreviation.\ninvalid_city\tInvalid City for the given State.\ninvalid_zipcode\tInvalid ZIP Code.\nconflict\tConflicting ZIP Code/City/State information."
+    LookupManyArray:
+      type: string
+    CityStates:
+      title: CityStates
+      type: object
+      properties:
+        city:
+          type: string
+          example: Provo
+          description: The name of a city
+        state_abbreviation:
+          type: string
+          example: UT
+          description: The official, two-letter state abbreviation
+        state:
+          type: string
+          example: Utah
+          description: The state name
+        mailable_city:
+          type: boolean
+          description: A boolean value indicating whether or not the city name is an approved USPS mailing name
+    AlternateCounties:
+      title: AlternateCounties
+      type: object
+      properties:
+        county_fips:
+          type: string
+          example: '49051'
+          description: The county FIPS Code
+        county_name:
+          type: string
+          example: Utah
+          description: 'The name of the county in which the ZIP Code is located
+
+
+            Note: The county name listed here pertains to the 5-digit ZIP Code, not necessarily the city.'
+        state_abbreviation:
+          type: string
+          example: UT
+          description: The official, two-letter state abbreviation
+        state:
+          type: string
+          example: Utah
+          description: The state name
+      description: 'The county FIPS codes, county names, state abbreviations, and states, that share the same ZIP Code. Note: The county names listed here pertain to the 5-digit ZIP Code, not necessarily the city.
+
+        '
     ZIPCodes:
       title: ZIPCodes
       type: object
@@ -466,79 +539,6 @@ components:
           description: 'The county FIPS codes, county names, state abbreviations, and states, that share the same ZIP Code. Note: The county names listed here pertain to the 5-digit ZIP Code, not necessarily the city.'
           items:
             $ref: '#/components/schemas/AlternateCounties'
-    CityStates:
-      title: CityStates
-      type: object
-      properties:
-        city:
-          type: string
-          example: Provo
-          description: The name of a city
-        state_abbreviation:
-          type: string
-          example: UT
-          description: The official, two-letter state abbreviation
-        state:
-          type: string
-          example: Utah
-          description: The state name
-        mailable_city:
-          type: boolean
-          description: A boolean value indicating whether or not the city name is an approved USPS mailing name
-    AlternateCounties:
-      title: AlternateCounties
-      type: object
-      properties:
-        county_fips:
-          type: string
-          example: '49051'
-          description: The county FIPS Code
-        county_name:
-          type: string
-          example: Utah
-          description: 'The name of the county in which the ZIP Code is located
-
-
-            Note: The county name listed here pertains to the 5-digit ZIP Code, not necessarily the city.'
-        state_abbreviation:
-          type: string
-          example: UT
-          description: The official, two-letter state abbreviation
-        state:
-          type: string
-          example: Utah
-          description: The state name
-      description: 'The county FIPS codes, county names, state abbreviations, and states, that share the same ZIP Code. Note: The county names listed here pertain to the 5-digit ZIP Code, not necessarily the city.
-
-        '
-    Root:
-      title: Successful response
-      type: object
-      description: 'OK (success!): The response body will be a JSON array containing zero or more matches for the input provided with the request. The structure of the response is the same for both GET and POST requests.'
-      properties:
-        input_index:
-          type: integer
-        input_id:
-          type: string
-          description: A unique identifier for this address used in your application; this field will be copied into the output.
-        city_states:
-          type: array
-          description: A list of cities and their states that match the input
-          items:
-            $ref: '#/components/schemas/CityStates'
-        zipcodes:
-          type: array
-          description: A list of ZIP Codes that match the input
-          items:
-            $ref: '#/components/schemas/ZIPCodes'
-        status:
-          type: string
-          description: For a lookup with no matches, status classifies the kind of failure and always comes with a reason
-        reason:
-          type: string
-          description: "For a lookup with no matches, reason explains why the lookup failed\n\nblank\tBlank lookup (you must provide a ZIP Code and/or City/State combination).\ninvalid_state\tInvalid State name or abbreviation.\ninvalid_city\tInvalid City for the given State.\ninvalid_zipcode\tInvalid ZIP Code.\nconflict\tConflicting ZIP Code/City/State information."
-    LookupManyArray:
-      type: string
   securitySchemes:
     auth-id:
       type: apiKey

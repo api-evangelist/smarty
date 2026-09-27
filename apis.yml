@@ -43,6 +43,7 @@ tags:
 - Location Data
 - International Address
 - US Address
+- Geospatial
 url: https://raw.githubusercontent.com/api-evangelist/smarty/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-09-16'
@@ -77,7 +78,7 @@ apis:
   - type: Documentation
     url: https://www.smarty.com/docs/cloud/international-postal-code-api
 - aid: smarty:smarty-street-address-api
-  name: Smarty street-address API
+  name: Smarty Street Address API
   description: The street-address API from Smarty — 1 operation(s) for street-address.
   humanURL: https://www.smarty.com/products/apis/us-street-api
   baseURL: https://us-street.api.smarty.com/street-address
@@ -105,7 +106,7 @@ apis:
   - type: Documentation
     url: https://www.smarty.com/docs/cloud/international-postal-code-api
 - aid: smarty:smarty-us-enrichment-api
-  name: Smarty us-enrichment API
+  name: Smarty Us Enrichment API
   description: The us-enrichment API from Smarty — 8 operation(s) for us-enrichment.
   humanURL: https://www.smarty.com/products/apis/us-street-api
   baseURL: https://us-street.api.smarty.com/street-address
