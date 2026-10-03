@@ -66,34 +66,6 @@ paths:
       - US Extract API
 components:
   parameters:
-    html:
-      name: html
-      in: query
-      required: false
-      schema:
-        type: boolean
-      description: HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false.
-    match:
-      name: match
-      in: query
-      required: false
-      schema:
-        type: string
-      description: 'The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict'
-    addr_per_line:
-      name: addr_per_line
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Limits the extractor to a certain number of addresses per input line. Generally, you will not need this parameter unless you are submitting structured data that you know will only have a certain number of addresses per line. Set to 0 (default) for no limit.
-    Content-Type:
-      name: Content-Type
-      in: header
-      required: true
-      schema:
-        type: string
-      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8'
     license:
       name: license
       in: query
@@ -101,20 +73,13 @@ components:
       schema:
         type: string
       description: Specifies the license or licenses (comma separated) to use for this lookup. Valid values cn be found in your Subscriptions Page. If multiple licenses are specified, they are considered to be in left to right order. As a default, this value is derived.
-    addr_line_breaks:
-      name: addr_line_breaks
+    addr_per_line:
+      name: addr_per_line
       in: query
       required: false
       schema:
-        type: boolean
-      description: 'This parameter specifies if addresses in your input will ever have line breaks. Default: true'
-    Host:
-      name: Host
-      in: header
-      required: true
-      schema:
         type: string
-      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com'
+      description: Limits the extractor to a certain number of addresses per input line. Generally, you will not need this parameter unless you are submitting structured data that you know will only have a certain number of addresses per line. Set to 0 (default) for no limit.
     aggressive:
       name: aggressive
       in: query
@@ -122,7 +87,88 @@ components:
       schema:
         type: boolean
       description: 'Aggressive mode may use more lookups on your account, but it can find addresses in populous cities without needing a state and ZIP Code , as well as finding addresses in some messy inputs. Default: false'
+    addr_line_breaks:
+      name: addr_line_breaks
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: 'This parameter specifies if addresses in your input will ever have line breaks. Default: true'
+    Content-Type:
+      name: Content-Type
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8'
+    match:
+      name: match
+      in: query
+      required: false
+      schema:
+        type: string
+      description: 'The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict'
+    html:
+      name: html
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false.
+    Host:
+      name: Host
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com'
   schemas:
+    APIOutput:
+      title: APIOutput
+      type: object
+      properties:
+        input_id:
+          type: string
+          maxLength: 36
+          description: Any unique identifier that you use to reference the input address; the output will be identical to the input.
+        input_index:
+          type: integer
+          description: 'The order in which this address was submitted with the others
+
+            (0 if alone)'
+        candidate_index:
+          type: integer
+          description: "An input address can match multiple valid addresses. This ties the candidates to the input index. \n(e.g., \"1 Rosedale Street Baltimore Maryland\" will return multiple candidates.)"
+        addressee:
+          type: string
+          description: The name of the person or company at this address. This value is taken directly from the addressee input field. Very rarely, this field might be filled automatically based on the USPS address record.
+          maxLength: 64
+        delivery_line_1:
+          type: string
+          description: "Contains the first delivery line (usually the street address). This can include any of the following: \n- urbanization (Puerto Rico only)\n- primary number\n- street predirection\n- street name\n- street suffix\n- street postdirection\n- secondary designator\n- secondary number\n- extra secondary designator\n- extra secondary number\n- PMB designator\n- PMB number"
+          maxLength: 64
+        delivery_line_2:
+          type: string
+          description: The second delivery line (if needed). It is common for this field to remain empty, but it may contain a private mailbox number.
+          maxLength: 64
+        last_line:
+          type: string
+          description: City, state, and ZIP Code combined
+          maxLength: 64
+        delivery_point_barcode:
+          type: string
+          description: 12-digit POSTNET™ barcode; consists of 5-digit ZIP Code, 4-digit add-on code, 2-digit delivery point, and 1-digit check digit.
+          maxLength: 12
+        smarty_key:
+          type: string
+          description: Smarty's unique identifier for an address. This identifier will only be displayed when an address is submitted with the match parameter set to enhanced, with an appropriate product subscription.
+          maxLength: 10
+        components:
+          $ref: '#/components/schemas/ComponentsObject'
+        metadata:
+          $ref: '#/components/schemas/MetadataObject'
+        analysis:
+          $ref: '#/components/schemas/AnalysisObject'
     AnalysisObject:
       title: Analysis Object
       type: object
@@ -275,6 +321,71 @@ components:
 
             ignored-input — The provided input contained information that was not used for a match.'
       description: Object representing the different metadata of a verified address
+    '200':
+      title: Successful response
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            lines:
+              type: integer
+              example: 6
+              description: total lines of input received
+            unicode:
+              type: boolean
+              example: false
+              description: Did the text have unicode characters or was it plain ASCII?
+            address_count:
+              type: integer
+              example: 1
+              description: Amount of addresses found in the input
+            verified_count:
+              type: integer
+              example: 1
+              description: Amount of valid addresses found
+            bytes:
+              type: integer
+              example: 53
+              description: Length of input in bytes
+            character_count:
+              type: integer
+              example: 53
+              description: Length of input in Characters
+        addresses:
+          type: array
+          description: Array of addresses extracted from the input
+          items:
+            $ref: '#/components/schemas/Addresses'
+    Addresses:
+      title: Addresses
+      type: object
+      properties:
+        text:
+          type: string
+          example: 5732 Lincoln Drive Minneapolis MN
+          description: The actual input text
+        verified:
+          type: boolean
+          example: true
+          description: Was the address verified successfully
+        line:
+          type: integer
+          description: The starting line of the text in the input
+          example: 4
+        start:
+          type: integer
+          description: The starting character index of the text
+          example: 16
+        end:
+          type: integer
+          description: The ending character index of the text
+          example: 49
+        api_output:
+          type: array
+          description: The actual response from the US Street API
+          items:
+            $ref: '#/components/schemas/APIOutput'
     MetadataObject:
       title: Metadata Object
       type: object
@@ -429,117 +540,6 @@ components:
           type: string
           description: Correction character, or check digit, for the 11-digit barcode
           maxLength: 1
-    APIOutput:
-      title: APIOutput
-      type: object
-      properties:
-        input_id:
-          type: string
-          maxLength: 36
-          description: Any unique identifier that you use to reference the input address; the output will be identical to the input.
-        input_index:
-          type: integer
-          description: 'The order in which this address was submitted with the others
-
-            (0 if alone)'
-        candidate_index:
-          type: integer
-          description: "An input address can match multiple valid addresses. This ties the candidates to the input index. \n(e.g., \"1 Rosedale Street Baltimore Maryland\" will return multiple candidates.)"
-        addressee:
-          type: string
-          description: The name of the person or company at this address. This value is taken directly from the addressee input field. Very rarely, this field might be filled automatically based on the USPS address record.
-          maxLength: 64
-        delivery_line_1:
-          type: string
-          description: "Contains the first delivery line (usually the street address). This can include any of the following: \n- urbanization (Puerto Rico only)\n- primary number\n- street predirection\n- street name\n- street suffix\n- street postdirection\n- secondary designator\n- secondary number\n- extra secondary designator\n- extra secondary number\n- PMB designator\n- PMB number"
-          maxLength: 64
-        delivery_line_2:
-          type: string
-          description: The second delivery line (if needed). It is common for this field to remain empty, but it may contain a private mailbox number.
-          maxLength: 64
-        last_line:
-          type: string
-          description: City, state, and ZIP Code combined
-          maxLength: 64
-        delivery_point_barcode:
-          type: string
-          description: 12-digit POSTNET™ barcode; consists of 5-digit ZIP Code, 4-digit add-on code, 2-digit delivery point, and 1-digit check digit.
-          maxLength: 12
-        smarty_key:
-          type: string
-          description: Smarty's unique identifier for an address. This identifier will only be displayed when an address is submitted with the match parameter set to enhanced, with an appropriate product subscription.
-          maxLength: 10
-        components:
-          $ref: '#/components/schemas/ComponentsObject'
-        metadata:
-          $ref: '#/components/schemas/MetadataObject'
-        analysis:
-          $ref: '#/components/schemas/AnalysisObject'
-    Addresses:
-      title: Addresses
-      type: object
-      properties:
-        text:
-          type: string
-          example: 5732 Lincoln Drive Minneapolis MN
-          description: The actual input text
-        verified:
-          type: boolean
-          example: true
-          description: Was the address verified successfully
-        line:
-          type: integer
-          description: The starting line of the text in the input
-          example: 4
-        start:
-          type: integer
-          description: The starting character index of the text
-          example: 16
-        end:
-          type: integer
-          description: The ending character index of the text
-          example: 49
-        api_output:
-          type: array
-          description: The actual response from the US Street API
-          items:
-            $ref: '#/components/schemas/APIOutput'
-    '200':
-      title: Successful response
-      type: object
-      properties:
-        meta:
-          type: object
-          properties:
-            lines:
-              type: integer
-              example: 6
-              description: total lines of input received
-            unicode:
-              type: boolean
-              example: false
-              description: Did the text have unicode characters or was it plain ASCII?
-            address_count:
-              type: integer
-              example: 1
-              description: Amount of addresses found in the input
-            verified_count:
-              type: integer
-              example: 1
-              description: Amount of valid addresses found
-            bytes:
-              type: integer
-              example: 53
-              description: Length of input in bytes
-            character_count:
-              type: integer
-              example: 53
-              description: Length of input in Characters
-        addresses:
-          type: array
-          description: Array of addresses extracted from the input
-          items:
-            $ref: '#/components/schemas/Addresses'
   securitySchemes:
     auth_id:
       type: apiKey
