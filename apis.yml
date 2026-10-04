@@ -190,6 +190,9 @@ apis:
   - type: Documentation
     url: https://www.smarty.com/docs/cloud/international-postal-code-api
 common:
+- type: CapabilityMap
+  url: capabilities/smarty-capability-edges.yml
+  name: Smarty Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/smarty/overview
 - type: AgenticAccess
