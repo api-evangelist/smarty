@@ -223,17 +223,6 @@ paths:
     - url: https://us-zipcode.api.smarty.com
 components:
   responses:
-    '200':
-      description: 'OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.'
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              candidates:
-                type: array
-                items:
-                  $ref: '#/components/schemas/candidate'
     detailed_200:
       description: 'OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.'
       content:
@@ -245,31 +234,42 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/detailed_candidate'
-    '402':
-      description: 'Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.'
+    '200':
+      description: 'OK (success!): The response body is a JSON object with a candidates array containing candidates based on the supplied input parameters.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              candidates:
+                type: array
+                items:
+                  $ref: '#/components/schemas/candidate'
     '429':
       description: 'Too Many Requests: When using public embedded key authentication, we restrict the number of requests coming from a given source over too short of a time. If you use embedded key authentication, you can avoid this error by adding your IP address as an authorized host for the embedded key in question.'
-    '401':
-      description: 'Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.'
-    '413':
-      description: 'Request Entity Too Large: The maximum size for a request body to this API is 16K (16,384 bytes).'
     '400':
       description: 'Bad Request (Malformed Payload): The request body of a POST request contained no lookups or contained malformed JSON.'
+    '413':
+      description: 'Request Entity Too Large: The maximum size for a request body to this API is 16K (16,384 bytes).'
+    '401':
+      description: 'Unauthorized: The credentials were provided incorrectly or did not match any existing, active credentials.'
+    '402':
+      description: 'Payment Required: There is no active subscription for the account associated with the credentials submitted with the request.'
   parameters:
-    address_id:
-      name: addressId
-      in: path
+    country:
+      name: country
+      in: query
       required: true
       schema:
         type: string
-      description: The Address ID is used to get further information about a particular result. This value will be supplied by a previous call to the API. This parameter should not be supplied when the search query parameter is used.
-    max_group_results:
-      name: max_group_results
-      in: query
-      required: false
+      description: The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.
+    Host:
+      name: Host
+      in: header
+      required: true
       schema:
-        type: integer
-      description: Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].
+        type: string
+      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com'
     include_only_locality:
       name: include_only_locality
       in: query
@@ -277,6 +277,13 @@ components:
       schema:
         type: string
       description: 'Limit the results to only the locality provided. A locality is a significant population center (i.e. city, town, or village). When this parameter is used, include_only_postal_code cannot be used. Separate multiple values with a comma. Example: Paris,Versailles'
+    max_group_results:
+      name: max_group_results
+      in: query
+      required: false
+      schema:
+        type: integer
+      description: Maximum number of address suggestions to return when expanding address groups with an Address ID; range [1, 100].
     include_only_postal_code:
       name: include_only_postal_code
       in: query
@@ -284,13 +291,20 @@ components:
       schema:
         type: string
       description: 'Limit the results to only the postal codes provided. When this parameter is used, include_only_locality cannot be used. Separate multiple values with a comma. Example: 29200,29201'
-    max_results:
-      name: max_results
+    geolocation:
+      name: geolocation
       in: query
       required: false
       schema:
-        type: integer
-      description: 'Maximum number of address suggestions to return; range [1, 10]. Default: 5'
+        type: string
+      description: "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request."
+    address_id:
+      name: addressId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The Address ID is used to get further information about a particular result. This value will be supplied by a previous call to the API. This parameter should not be supplied when the search query parameter is used.
     search:
       name: search
       in: query
@@ -305,33 +319,27 @@ components:
         type: string
       description: 'The Referer is required when an embedded key is used for authentication. Its value is in the form of a URL, where the host component must match a host value assigned to your embedded key. Note: Some HTTP clients such as a browser or programming language HTTP libraries will add this header automatically. However some interfaces such as cURL do not, so you may need to add it manually. Ex: Referer: https://mycoolwebsite.com'
       required: false
-    geolocation:
-      name: geolocation
+    max_results:
+      name: max_results
       in: query
       required: false
       schema:
-        type: string
-      description: "Bias (prefer) results based on the location of the sender's IP address (IPv4 only). Valid value: on \n Supported countries: CAN, AUS, DEU. If the request to the API goes through a proxy, you will need to set an X-Forwarded-For header specifying the desired IP address for the request."
-    Host:
+        type: integer
+      description: 'Maximum number of address suggestions to return; range [1, 10]. Default: 5'
+    Host_2:
       name: Host
       in: header
       required: true
       schema:
         type: string
-      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Note: Most HTTP clients such as the browser, or programming language HTTP libraries will add this header automatically. Ex: Host: us-autocomplete-pro.api.smarty.com'
-    country:
-      name: country
-      in: query
+      description: 'The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com'
+    Content-Type:
+      name: Content-Type
+      in: header
       required: true
       schema:
         type: string
-      description: The ISO3 Alpha-3 country code where the desired address is located. Only uppercase values are allowed. See supported country codes (https://www.smarty.com/docs/cloud/international-address-autocomplete-api#supported-country-codes). Maximum length is 3 bytes.
-    city:
-      name: city
-      in: query
-      description: The city name
-      schema:
-        type: string
+      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. EX: Content-Type: application/json; charset=utf-8'
     input_id:
       name: input_id
       in: query
@@ -351,21 +359,27 @@ components:
       description: '**State** *Example: UT* State name or two-letter abbreviation. Must be paired with ''city'' if no ZIPCode is provided.'
       schema:
         type: string
-    Content-Type:
-      name: Content-Type
-      in: header
-      required: true
+    city:
+      name: city
+      in: query
+      description: The city name
       schema:
         type: string
-      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. EX: Content-Type: application/json; charset=utf-8'
-    Host_2:
-      name: Host
-      in: header
-      required: true
-      schema:
-        type: string
-      description: 'The Host request header field specifies the internet host and port number of the resource being requested. EX: Host: us-zipcode.api.smarty.com'
   schemas:
+    candidate:
+      title: candidate
+      type: object
+      properties:
+        entries:
+          type: integer
+        address_text:
+          type: string
+        address_id:
+          type: string
+      examples:
+      - entries: 12
+        address_text: 123 Main St Winnipeg, MB, R3C
+        address_id: PD4DPC8DOjE4AzI9Uig2MTE2Lzo4UjI+NjEgLCtSTk1M
     detailed_candidate:
       title: detailed_candidate
       type: object
@@ -392,20 +406,6 @@ components:
         administrative_area_long: New Brunswick
         postal_code: E3A 1C7
         country_iso3: CAN
-    candidate:
-      title: candidate
-      type: object
-      properties:
-        entries:
-          type: integer
-        address_text:
-          type: string
-        address_id:
-          type: string
-      examples:
-      - entries: 12
-        address_text: 123 Main St Winnipeg, MB, R3C
-        address_id: PD4DPC8DOjE4AzI9Uig2MTE2Lzo4UjI+NjEgLCtSTk1M
     ZIPCodes:
       title: ZIPCodes
       type: object
@@ -492,6 +492,8 @@ components:
         reason:
           type: string
           description: "For a lookup with no matches, reason explains why the lookup failed\n\nblank\tBlank lookup (you must provide a ZIP Code and/or City/State combination).\ninvalid_state\tInvalid State name or abbreviation.\ninvalid_city\tInvalid City for the given State.\ninvalid_zipcode\tInvalid ZIP Code.\nconflict\tConflicting ZIP Code/City/State information."
+    LookupManyArray:
+      type: string
     CityStates:
       title: CityStates
       type: object
@@ -511,8 +513,6 @@ components:
         mailable_city:
           type: boolean
           description: A boolean value indicating whether or not the city name is an approved USPS mailing name
-    LookupManyArray:
-      type: string
     AlternateCounties:
       title: AlternateCounties
       type: object

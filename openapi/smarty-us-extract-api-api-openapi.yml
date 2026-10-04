@@ -66,6 +66,34 @@ paths:
       - US Extract API
 components:
   parameters:
+    html:
+      name: html
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false.
+    Host:
+      name: Host
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com'
+    addr_line_breaks:
+      name: addr_line_breaks
+      in: query
+      required: false
+      schema:
+        type: boolean
+      description: 'This parameter specifies if addresses in your input will ever have line breaks. Default: true'
+    Content-Type:
+      name: Content-Type
+      in: header
+      required: true
+      schema:
+        type: string
+      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8'
     license:
       name: license
       in: query
@@ -87,20 +115,6 @@ components:
       schema:
         type: boolean
       description: 'Aggressive mode may use more lookups on your account, but it can find addresses in populous cities without needing a state and ZIP Code , as well as finding addresses in some messy inputs. Default: false'
-    addr_line_breaks:
-      name: addr_line_breaks
-      in: query
-      required: false
-      schema:
-        type: boolean
-      description: 'This parameter specifies if addresses in your input will ever have line breaks. Default: true'
-    Content-Type:
-      name: Content-Type
-      in: header
-      required: true
-      schema:
-        type: string
-      description: 'The purpose of the Content-Type field is to describe the data contained in the body fully enough that the receiving user agent can pick an appropriate agent or mechanism to present the data to the user, or otherwise deal with the data in an appropriate manner. Ex: Content-Type: text/plain; charset=utf-8'
     match:
       name: match
       in: query
@@ -108,21 +122,109 @@ components:
       schema:
         type: string
       description: 'The match output strategy to be employed for this lookup. See more here: https://www.smarty.com/docs/cloud/us-street-api#match. Default: strict'
-    html:
-      name: html
-      in: query
-      required: false
-      schema:
-        type: boolean
-      description: HTML input is automatically detected and stripped, but you can manually specify whether your input is formatted as HTML by setting this to true or false.
-    Host:
-      name: Host
-      in: header
-      required: true
-      schema:
-        type: string
-      description: 'The Host request header field specifies the internet host and port number of the resource being requested. Ex: Host: us-extract.api.smarty.com'
   schemas:
+    Addresses:
+      title: Addresses
+      type: object
+      properties:
+        text:
+          type: string
+          example: 5732 Lincoln Drive Minneapolis MN
+          description: The actual input text
+        verified:
+          type: boolean
+          example: true
+          description: Was the address verified successfully
+        line:
+          type: integer
+          description: The starting line of the text in the input
+          example: 4
+        start:
+          type: integer
+          description: The starting character index of the text
+          example: 16
+        end:
+          type: integer
+          description: The ending character index of the text
+          example: 49
+        api_output:
+          type: array
+          description: The actual response from the US Street API
+          items:
+            $ref: '#/components/schemas/APIOutput'
+    MetadataObject:
+      title: Metadata Object
+      type: object
+      properties:
+        record_type:
+          type: string
+          maxLength: 1
+          description: "Indicates the type of record that was matched. Only given if a DPV match is made. \n\nF — Firm; the finest level of match available for an address. \n(e.g., Julie Julia 11300 Center Ave Gilroy CA 95020-9257)\nG — General Delivery; for mail to be held at local post offices. \n(e.g., General Delivery Provo UT 84601)\nH — High-rise; address contains apartment or building sub-units. \n(e.g., 1600 Pennsylvania Ave SE Washington DC 20003-3228)\nP — Post Office box \n(e.g., PO Box 4735 Tulsa OK 74159-0735)\nR — Rural Route or Highway Contract; may have box number ranges. \n(e.g., RR 2 Box 4560 Anasco PR 00610-9393)\nS — Street; address contains a valid primary number range. \n(e.g., 16990 Monterey Rd Lake Elsinore CA 92530-7529)\n[blank] — No record type because address did not make a valid DPV match"
+        zip_type:
+          type: string
+          maxLength: 32
+          description: "Indicates the type of the ZIP Code for the address that was matched. Only given if a 5-digit match is made. \n\nUnique — The ZIP Code consists of a single delivery point, pertaining to a US Postal Service customer (like a large business or government agency) that routes all of its own mail internally.\nMilitary — The ZIP Code pertains to military units and diplomatic organizations, often in foreign locations.\nPOBox — The ZIP Code is a PO Box ZIP Code and is assigned to a collection of Post Office Boxes.\nStandard — The ZIP Code does not pertain to any of the above categories."
+        county_fips:
+          type: string
+          maxLength: 5
+          description: The 5-digit county FIPS (Federal Information Processing Standards) code. It is a combination of a 2-digit state FIPS code and a 3-digit county code assigned by the NIST (National Institute of Standards and Technology).
+        county_name:
+          type: string
+          maxLength: 5
+          description: The name of the county in which the address is located
+        ews_match:
+          type: string
+          maxLength: 5
+          description: "Early warning system flag; a positive result indicates the street of the address is not yet ready for mail delivery and that the address will soon be added to the master ZIP+4 file in the coming weeks or months. This commonly occurs for new streets or streets undergoing a name change. \n\ntrue — The address was flagged by EWS, preventing a ZIP+4 match.\n[blank] — Address was not flagged by EWS."
+        carrier_route:
+          type: string
+          maxLength: 4
+          description: "The postal carrier route for the address. Consists of a one-letter prefix followed by a three-digit route designator. \n(e.g., C007, R123) \n\nC — Carrier Route (commonly termed \"City Route\")\nR — Rural Route\nH — Highway Contract Route\nB — Post Office Box Section\nG — General Delivery Unit\n\nRoutes C770 through C779 pertain to PO Box Street Addresses."
+        congressional_district:
+          type: string
+          maxLength: 2
+          description: The congressional district to which the address belongs. Output will be two digits from 01 - 53 or "AL." "AL" means that the entire state (or territory) is covered by a single congressional district. These include Alaska, Delaware, Montana, North Dakota, South Dakota, Vermont, Wyoming, Washington DC, Virgin Islands, and other territories.
+        building_default_indicator:
+          type: string
+          maxLength: 1
+          description: "Indicates whether the address is the \"default\" address for a building; for example, the main lobby \n\nY — Yes\nN — No"
+        rdi:
+          type: string
+          maxLength: 12
+          description: "Residential Delivery Indicator (residential or commercial) \n\nResidential — The address is a residential address.\nCommercial — The address is a commercial address.\n[blank] — This happens when the address is invalid or we don't have enough information to ascertain RDI status. The Bulk Address Validation Tool translates a [blank] RDI value to \"Unknown.\"\n\nNote: For some reason, known only to the US Postal Service, PO Boxes are always marked as \"Residential.\""
+        elot_sequence:
+          type: string
+          maxLength: 4
+          description: eLOT (Enhanced Line of Travel) 4-digit sequence number
+        elot_sort:
+          type: string
+          maxLength: 4
+          description: "eLOT (Enhanced Line of Travel) product was developed to give mailers the ability to sort their mailings by line of travel sequence. \n\nA — Ascending\nD — Descending\n[blank] — Address not submitted for eLOT"
+        latitude:
+          type: number
+          description: The horizontal component used for geographic positioning. It is the angle between 0° (the equator) and ±90° (north or south) at the poles. It is the first value in an ordered pair of (latitude, longitude). A negative number denotes a location below the equator; a positive number is above the equator. Combining lat/long values enables you to pinpoint addresses on a map.
+        longitude:
+          type: number
+          description: The vertical component used for geographic positioning. It is the angle between 0° (the Prime Meridian) and ±180° (westward or eastward). It is the second number in an ordered pair of (latitude, longitude). A negative number indicates a location west of Greenwich, England; a positive number east. Combining lat/long values enables you to pinpoint addresses on a map.
+        coordinate_license:
+          type: integer
+          description: The license ID for the geographic coordinate returned. See the licensing table below for more details.
+        precision:
+          type: string
+          maxLength: 18
+          description: "Indicates the precision of the latitude and longitude values. \n\nUnknown — Coordinates not known. Reasons could include: address is invalid, military address (APO or FPO), lat/lon coordinates not available.\nZip5 — Accurate to a 5-digit ZIP Code level (least precise)\nZip6 — Accurate to a 6-digit ZIP Code level\nZip7 — Accurate to a 7-digit ZIP Code level\nZip8 — Accurate to an 8-digit ZIP Code level\nZip9 — Accurate to a 9-digit ZIP Code level (most precise with the basic subscription)\nStreet — Accurate to a position along the street proportional to the house/building number.\nParcel — Accurate to the centroid of a property parcel. Requires the US Rooftop Geocoding subscription.\nRooftop — Accurate to the rooftop of a structure for this address. Requires the US Rooftop Geocoding subscription.\n\nNote: Concerning addresses for which the ZIP9 precision is not available, the ZIP# precision is interpolated based on neighboring addresses. Thus, ZIP7 is an average of all the lat/long coordinates of nearby ZIP Codes that share those first 7 digits."
+        time_zone:
+          type: string
+          maxLength: 48
+          description: "Indicates the common name of the time zone associated with the address. \n\nValid Responses\nAlaska, Atlantic, Central, Eastern, Hawaii, Mountain, None, Pacific, Samoa, UTC+9, UTC+10, UTC+11, UTC+12"
+        utc_offset:
+          type: number
+          description: "Indicates the number of hours the time zone is offset from Universal Time Coordinated (UTC), the international time standard, also known as Greenwich Meridian Time (GMT). \n\nValid Responses\n-11, -10, -9, -8, -7, -6, -5, -4, 0, 9, 10, 11, 12"
+        dst:
+          type: string
+          maxLength: 5
+          description: "Indicates if the time zone \"obeys,\" or, in other words, adjusts their clocks forward and back with the seasons. This information is particularly useful to determine time in other time zones with areas that may or may not use daylight saving time - for example, Arizona, Hawaii, and, of all places, Indiana. \n\ntrue — Time zone observes daylight saving time. \n\nIf dst is absent from the response, then time zone does not observe daylight saving time."
+      description: Object representing the different metadata of a verified address
     APIOutput:
       title: APIOutput
       type: object
@@ -169,6 +271,123 @@ components:
           $ref: '#/components/schemas/MetadataObject'
         analysis:
           $ref: '#/components/schemas/AnalysisObject'
+    '200':
+      title: Successful response
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            lines:
+              type: integer
+              example: 6
+              description: total lines of input received
+            unicode:
+              type: boolean
+              example: false
+              description: Did the text have unicode characters or was it plain ASCII?
+            address_count:
+              type: integer
+              example: 1
+              description: Amount of addresses found in the input
+            verified_count:
+              type: integer
+              example: 1
+              description: Amount of valid addresses found
+            bytes:
+              type: integer
+              example: 53
+              description: Length of input in bytes
+            character_count:
+              type: integer
+              example: 53
+              description: Length of input in Characters
+        addresses:
+          type: array
+          description: Array of addresses extracted from the input
+          items:
+            $ref: '#/components/schemas/Addresses'
+    ComponentsObject:
+      title: Components Object
+      type: object
+      description: Object representing the different components of a verified address
+      properties:
+        urbanization:
+          type: string
+          maxLength: 64
+          description: The neighborhood, or city subdivision; used with Puerto Rican addresses
+        primary_number:
+          type: string
+          description: The house, PO Box, or building number
+          maxLength: 30
+        street_name:
+          type: string
+          description: The name of the street
+          maxLength: 64
+        street_predirection:
+          type: string
+          maxLength: 16
+          description: Directional information before a street name (N, SW, etc.)
+        street_postdirection:
+          type: string
+          description: Directional information after a street name (N, SW, etc.)
+          maxLength: 16
+        street_suffix:
+          type: string
+          description: Abbreviated value describing the street (St, Ave, Blvd, etc.)
+          maxLength: 16
+        secondary_number:
+          type: string
+          description: Apartment or suite number, if any
+          maxLength: 32
+        secondary_designator:
+          type: string
+          description: Describes location within a complex/building (Ste, Apt, etc.)
+          maxLength: 16
+        extra_secondary_number:
+          type: string
+          description: "Descriptive information about the location of a building within a campus \n(e.g., E-5 in \"5619 Loop 1604, Bldg E-5, Ste. 101 San Antonio TX\")"
+          maxLength: 32
+        extra_secondary_designator:
+          type: string
+          description: "Description of the location type within a campus \n(e.g., Bldg, Unit, Lot, etc.)"
+          maxLength: 16
+        pmb_designator:
+          type: string
+          description: The private mailbox unit designator, assigned by a CMRA
+          maxLength: 16
+        pmb_number:
+          type: string
+          description: The private mailbox number, assigned by a CMRA
+          maxLength: 16
+        city_name:
+          type: string
+          description: The USPS-preferred city name for this particular address, or an acceptable alternate if provided by the user
+          maxLength: 64
+        default_city_name:
+          type: string
+          description: The default city name for this 5-digit ZIP Code
+          maxLength: 64
+        state_abbreviation:
+          type: string
+          description: The two-letter state abbreviation
+          maxLength: 2
+        zipcode:
+          type: string
+          description: The 5-digit ZIP Code
+          maxLength: 5
+        plus4_code:
+          type: string
+          description: The 4-digit add-on code (more specific than 5-digit ZIP)
+          maxLength: 4
+        delivery_point:
+          type: string
+          description: The last two digits of the house/box number, unless an "H" record is matched, in which case this is the secondary unit number representing the delivery point information to form the delivery point barcode (DPBC).
+          maxLength: 2
+        delivery_point_check_digit:
+          type: string
+          description: Correction character, or check digit, for the 11-digit barcode
+          maxLength: 1
     AnalysisObject:
       title: Analysis Object
       type: object
@@ -321,225 +540,6 @@ components:
 
             ignored-input — The provided input contained information that was not used for a match.'
       description: Object representing the different metadata of a verified address
-    '200':
-      title: Successful response
-      type: object
-      properties:
-        meta:
-          type: object
-          properties:
-            lines:
-              type: integer
-              example: 6
-              description: total lines of input received
-            unicode:
-              type: boolean
-              example: false
-              description: Did the text have unicode characters or was it plain ASCII?
-            address_count:
-              type: integer
-              example: 1
-              description: Amount of addresses found in the input
-            verified_count:
-              type: integer
-              example: 1
-              description: Amount of valid addresses found
-            bytes:
-              type: integer
-              example: 53
-              description: Length of input in bytes
-            character_count:
-              type: integer
-              example: 53
-              description: Length of input in Characters
-        addresses:
-          type: array
-          description: Array of addresses extracted from the input
-          items:
-            $ref: '#/components/schemas/Addresses'
-    Addresses:
-      title: Addresses
-      type: object
-      properties:
-        text:
-          type: string
-          example: 5732 Lincoln Drive Minneapolis MN
-          description: The actual input text
-        verified:
-          type: boolean
-          example: true
-          description: Was the address verified successfully
-        line:
-          type: integer
-          description: The starting line of the text in the input
-          example: 4
-        start:
-          type: integer
-          description: The starting character index of the text
-          example: 16
-        end:
-          type: integer
-          description: The ending character index of the text
-          example: 49
-        api_output:
-          type: array
-          description: The actual response from the US Street API
-          items:
-            $ref: '#/components/schemas/APIOutput'
-    MetadataObject:
-      title: Metadata Object
-      type: object
-      properties:
-        record_type:
-          type: string
-          maxLength: 1
-          description: "Indicates the type of record that was matched. Only given if a DPV match is made. \n\nF — Firm; the finest level of match available for an address. \n(e.g., Julie Julia 11300 Center Ave Gilroy CA 95020-9257)\nG — General Delivery; for mail to be held at local post offices. \n(e.g., General Delivery Provo UT 84601)\nH — High-rise; address contains apartment or building sub-units. \n(e.g., 1600 Pennsylvania Ave SE Washington DC 20003-3228)\nP — Post Office box \n(e.g., PO Box 4735 Tulsa OK 74159-0735)\nR — Rural Route or Highway Contract; may have box number ranges. \n(e.g., RR 2 Box 4560 Anasco PR 00610-9393)\nS — Street; address contains a valid primary number range. \n(e.g., 16990 Monterey Rd Lake Elsinore CA 92530-7529)\n[blank] — No record type because address did not make a valid DPV match"
-        zip_type:
-          type: string
-          maxLength: 32
-          description: "Indicates the type of the ZIP Code for the address that was matched. Only given if a 5-digit match is made. \n\nUnique — The ZIP Code consists of a single delivery point, pertaining to a US Postal Service customer (like a large business or government agency) that routes all of its own mail internally.\nMilitary — The ZIP Code pertains to military units and diplomatic organizations, often in foreign locations.\nPOBox — The ZIP Code is a PO Box ZIP Code and is assigned to a collection of Post Office Boxes.\nStandard — The ZIP Code does not pertain to any of the above categories."
-        county_fips:
-          type: string
-          maxLength: 5
-          description: The 5-digit county FIPS (Federal Information Processing Standards) code. It is a combination of a 2-digit state FIPS code and a 3-digit county code assigned by the NIST (National Institute of Standards and Technology).
-        county_name:
-          type: string
-          maxLength: 5
-          description: The name of the county in which the address is located
-        ews_match:
-          type: string
-          maxLength: 5
-          description: "Early warning system flag; a positive result indicates the street of the address is not yet ready for mail delivery and that the address will soon be added to the master ZIP+4 file in the coming weeks or months. This commonly occurs for new streets or streets undergoing a name change. \n\ntrue — The address was flagged by EWS, preventing a ZIP+4 match.\n[blank] — Address was not flagged by EWS."
-        carrier_route:
-          type: string
-          maxLength: 4
-          description: "The postal carrier route for the address. Consists of a one-letter prefix followed by a three-digit route designator. \n(e.g., C007, R123) \n\nC — Carrier Route (commonly termed \"City Route\")\nR — Rural Route\nH — Highway Contract Route\nB — Post Office Box Section\nG — General Delivery Unit\n\nRoutes C770 through C779 pertain to PO Box Street Addresses."
-        congressional_district:
-          type: string
-          maxLength: 2
-          description: The congressional district to which the address belongs. Output will be two digits from 01 - 53 or "AL." "AL" means that the entire state (or territory) is covered by a single congressional district. These include Alaska, Delaware, Montana, North Dakota, South Dakota, Vermont, Wyoming, Washington DC, Virgin Islands, and other territories.
-        building_default_indicator:
-          type: string
-          maxLength: 1
-          description: "Indicates whether the address is the \"default\" address for a building; for example, the main lobby \n\nY — Yes\nN — No"
-        rdi:
-          type: string
-          maxLength: 12
-          description: "Residential Delivery Indicator (residential or commercial) \n\nResidential — The address is a residential address.\nCommercial — The address is a commercial address.\n[blank] — This happens when the address is invalid or we don't have enough information to ascertain RDI status. The Bulk Address Validation Tool translates a [blank] RDI value to \"Unknown.\"\n\nNote: For some reason, known only to the US Postal Service, PO Boxes are always marked as \"Residential.\""
-        elot_sequence:
-          type: string
-          maxLength: 4
-          description: eLOT (Enhanced Line of Travel) 4-digit sequence number
-        elot_sort:
-          type: string
-          maxLength: 4
-          description: "eLOT (Enhanced Line of Travel) product was developed to give mailers the ability to sort their mailings by line of travel sequence. \n\nA — Ascending\nD — Descending\n[blank] — Address not submitted for eLOT"
-        latitude:
-          type: number
-          description: The horizontal component used for geographic positioning. It is the angle between 0° (the equator) and ±90° (north or south) at the poles. It is the first value in an ordered pair of (latitude, longitude). A negative number denotes a location below the equator; a positive number is above the equator. Combining lat/long values enables you to pinpoint addresses on a map.
-        longitude:
-          type: number
-          description: The vertical component used for geographic positioning. It is the angle between 0° (the Prime Meridian) and ±180° (westward or eastward). It is the second number in an ordered pair of (latitude, longitude). A negative number indicates a location west of Greenwich, England; a positive number east. Combining lat/long values enables you to pinpoint addresses on a map.
-        coordinate_license:
-          type: integer
-          description: The license ID for the geographic coordinate returned. See the licensing table below for more details.
-        precision:
-          type: string
-          maxLength: 18
-          description: "Indicates the precision of the latitude and longitude values. \n\nUnknown — Coordinates not known. Reasons could include: address is invalid, military address (APO or FPO), lat/lon coordinates not available.\nZip5 — Accurate to a 5-digit ZIP Code level (least precise)\nZip6 — Accurate to a 6-digit ZIP Code level\nZip7 — Accurate to a 7-digit ZIP Code level\nZip8 — Accurate to an 8-digit ZIP Code level\nZip9 — Accurate to a 9-digit ZIP Code level (most precise with the basic subscription)\nStreet — Accurate to a position along the street proportional to the house/building number.\nParcel — Accurate to the centroid of a property parcel. Requires the US Rooftop Geocoding subscription.\nRooftop — Accurate to the rooftop of a structure for this address. Requires the US Rooftop Geocoding subscription.\n\nNote: Concerning addresses for which the ZIP9 precision is not available, the ZIP# precision is interpolated based on neighboring addresses. Thus, ZIP7 is an average of all the lat/long coordinates of nearby ZIP Codes that share those first 7 digits."
-        time_zone:
-          type: string
-          maxLength: 48
-          description: "Indicates the common name of the time zone associated with the address. \n\nValid Responses\nAlaska, Atlantic, Central, Eastern, Hawaii, Mountain, None, Pacific, Samoa, UTC+9, UTC+10, UTC+11, UTC+12"
-        utc_offset:
-          type: number
-          description: "Indicates the number of hours the time zone is offset from Universal Time Coordinated (UTC), the international time standard, also known as Greenwich Meridian Time (GMT). \n\nValid Responses\n-11, -10, -9, -8, -7, -6, -5, -4, 0, 9, 10, 11, 12"
-        dst:
-          type: string
-          maxLength: 5
-          description: "Indicates if the time zone \"obeys,\" or, in other words, adjusts their clocks forward and back with the seasons. This information is particularly useful to determine time in other time zones with areas that may or may not use daylight saving time - for example, Arizona, Hawaii, and, of all places, Indiana. \n\ntrue — Time zone observes daylight saving time. \n\nIf dst is absent from the response, then time zone does not observe daylight saving time."
-      description: Object representing the different metadata of a verified address
-    ComponentsObject:
-      title: Components Object
-      type: object
-      description: Object representing the different components of a verified address
-      properties:
-        urbanization:
-          type: string
-          maxLength: 64
-          description: The neighborhood, or city subdivision; used with Puerto Rican addresses
-        primary_number:
-          type: string
-          description: The house, PO Box, or building number
-          maxLength: 30
-        street_name:
-          type: string
-          description: The name of the street
-          maxLength: 64
-        street_predirection:
-          type: string
-          maxLength: 16
-          description: Directional information before a street name (N, SW, etc.)
-        street_postdirection:
-          type: string
-          description: Directional information after a street name (N, SW, etc.)
-          maxLength: 16
-        street_suffix:
-          type: string
-          description: Abbreviated value describing the street (St, Ave, Blvd, etc.)
-          maxLength: 16
-        secondary_number:
-          type: string
-          description: Apartment or suite number, if any
-          maxLength: 32
-        secondary_designator:
-          type: string
-          description: Describes location within a complex/building (Ste, Apt, etc.)
-          maxLength: 16
-        extra_secondary_number:
-          type: string
-          description: "Descriptive information about the location of a building within a campus \n(e.g., E-5 in \"5619 Loop 1604, Bldg E-5, Ste. 101 San Antonio TX\")"
-          maxLength: 32
-        extra_secondary_designator:
-          type: string
-          description: "Description of the location type within a campus \n(e.g., Bldg, Unit, Lot, etc.)"
-          maxLength: 16
-        pmb_designator:
-          type: string
-          description: The private mailbox unit designator, assigned by a CMRA
-          maxLength: 16
-        pmb_number:
-          type: string
-          description: The private mailbox number, assigned by a CMRA
-          maxLength: 16
-        city_name:
-          type: string
-          description: The USPS-preferred city name for this particular address, or an acceptable alternate if provided by the user
-          maxLength: 64
-        default_city_name:
-          type: string
-          description: The default city name for this 5-digit ZIP Code
-          maxLength: 64
-        state_abbreviation:
-          type: string
-          description: The two-letter state abbreviation
-          maxLength: 2
-        zipcode:
-          type: string
-          description: The 5-digit ZIP Code
-          maxLength: 5
-        plus4_code:
-          type: string
-          description: The 4-digit add-on code (more specific than 5-digit ZIP)
-          maxLength: 4
-        delivery_point:
-          type: string
-          description: The last two digits of the house/box number, unless an "H" record is matched, in which case this is the secondary unit number representing the delivery point information to form the delivery point barcode (DPBC).
-          maxLength: 2
-        delivery_point_check_digit:
-          type: string
-          description: Correction character, or check digit, for the 11-digit barcode
-          maxLength: 1
   securitySchemes:
     auth_id:
       type: apiKey
