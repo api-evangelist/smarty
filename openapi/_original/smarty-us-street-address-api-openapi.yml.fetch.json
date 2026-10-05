@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/smarty/openapi-specification/HEAD/us-street-api.yaml",
+ "requested_url": "https://raw.githubusercontent.com/smarty/openapi-specification/HEAD/us-street-api.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 46598,
+ "sha256": "e0b028a8cbecddc9249c54f6e3ff27a39802e32f521bb95e8474bd83dc33558c",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

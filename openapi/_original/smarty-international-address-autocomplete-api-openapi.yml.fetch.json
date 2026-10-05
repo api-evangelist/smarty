@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/smarty/openapi-specification/HEAD/international-autocomplete-api.yaml",
+ "requested_url": "https://raw.githubusercontent.com/smarty/openapi-specification/HEAD/international-autocomplete-api.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 15249,
+ "sha256": "9aa022d42697196efb99d33cc1a1750a2876d8c9af799cc9347be9558778e31e",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
