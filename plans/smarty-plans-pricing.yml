@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-12 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-06-12'
 specification: API Commons Plans
 specificationVersion: '0.1'
 provider: Smarty
@@ -160,3 +165,40 @@ notes: >-
   No overage charges apply. When quotas are depleted the API returns a 402
   Payment Required error. Alerts are sent at 10% remaining capacity.
   Month-to-month subscriptions have no cancellation fees.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Free Trial
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Free Trial - International
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Professional - US Address
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Professional - International Address
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
