@@ -1,0 +1,40 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- guidewire/integrations/guidewire-integration-edges.yml
+source:
+- guidewire/integrations/guidewire-integration-edges.yml
+edges:
+- partner_name: Guidewire (own)
+  partner: guidewire
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.guidewire.com/product/01tKj00000PBAEkIAP/01tKj00000PBAEkIAP
+  mirror_of: guidewire/integrations/guidewire-integration-edges.yml
+  apps:
+  - Smarty Address Verification for InsuranceNow
+  - Smarty US Reverse Geocoding for ClaimCenter
+  - Smarty US Address Autocomplete for PolicyCenter
+  - Smarty International Address Verification for PolicyCenter
+  - Smarty US Address Verification for ClaimCenter
+  - Smarty US Property Data for ClaimCenter
+  - Smarty US Property Data for PolicyCenter
+  - Smarty US Reverse Geocoding for PolicyCenter
+  - Smarty US Address Autocomplete for ClaimCenter
+  - Smarty International Address Verification for ClaimCenter
+  - Smarty US Address Verification for PolicyCenter
+  - Smarty US Rooftop Geocoding - PolicyCenter
+  - Smarty US Rooftop Geocoding - ClaimCenter
+  listing_count: 13
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Accelerator; Aerial inspection;Data & Reports; InsuranceNow
+  badges:
+  - Ready for Guidewire
+  - 'Partner tier: Advantage'
+  - Built by Guidewire
