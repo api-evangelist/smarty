@@ -1584,3 +1584,9 @@ components:
 externalDocs:
   description: Extensive documentation for the US Address Enrichment API
   url: https://www.smarty.com/docs/cloud/us-address-enrichment-api
+x-provenance:
+  method: harvested
+  publisher: Smarty
+  source: https://raw.githubusercontent.com/smarty/openapi-specification/HEAD/us-enrichment-api.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
