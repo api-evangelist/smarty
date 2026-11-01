@@ -1,4 +1,4 @@
-# Smarty (smarty)
+# Smarty
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,59 +64,167 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Smarty (formerly SmartyStreets) is an address intelligence company that provides REST APIs for US and international address verification, validation, geocoding, and autocomplete at high volume. The platform supports over 210 million US addresses including 20 million non-USPS addresses, delivering up to 55 metadata points and ZIP9-level geocodes per lookup. Smarty offers both cloud-hosted and on-premises deployment options, supporting embedded-key and secret-key authentication. APIs are designed for high-throughput workloads, with US address lookups reaching up to 25,000 per second.
+Smarty (formerly SmartyStreets) is an address intelligence company that provides REST APIs for US and international address verification, validation, geocoding, and autocomplete at high volume. The platform supports over 210 million US addresses including 20 million non-USPS addresses, delivering up to 55 metadata points and ZIP9-level geocodes per lookup. Smarty offers both cloud-hosted and on-premises deployment options, supporting embedded-key and secret-key authentication patterns. APIs are designed for high-throughput workloads, with US address lookups reaching up to 25,000 per second, making Smarty suitable for enterprise address validation pipelines and real-time checkout address autocomplete.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/smarty/refs/heads/main/apis.yml
+**Areas:** Address Verification · Geocoding · Address Autocomplete · ZIP Code · Address Intelligence · Location Data · International Address · US Address · Geospatial
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=smarty-api-evangelist&utm_content=repo
+## Smarty on APIs.io
 
-## Tags
+Everything profiled for Smarty is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/smarty/](https://apis.io/providers/smarty/)** — or go straight to one of the APIs or properties below.
 
-Address Verification, Geocoding, Address Autocomplete, ZIP Code, Address Intelligence, Location Data, International Address, US Address
+### APIs (5)
 
-## APIs
+- [Smarty Lookup API](https://apis.io/apis/smarty/smarty-lookup-api/) — The Lookup API from Smarty — 3 operation(s) for lookup.
+- [Smarty Street Address API](https://apis.io/apis/smarty/smarty-street-address-api/) — The street-address API from Smarty — 1 operation(s) for street-address.
+- [Smarty Us Enrichment API](https://apis.io/apis/smarty/smarty-us-enrichment-api/) — The us-enrichment API from Smarty — 8 operation(s) for us-enrichment.
+- [Smarty US Extract API](https://apis.io/apis/smarty/smarty-us-extract-api-api/) — The US Extract API API from Smarty — 1 operation(s) for us extract api.
+- [Smarty Verify API](https://apis.io/apis/smarty/smarty-verify-api/) — The Verify API from Smarty — 1 operation(s) for verify.
 
-| Name | Description | Human URL |
-|------|-------------|-----------|
-| US Street Address API | Verifies and validates US street addresses against the USPS database, returning standardized components, deliverability status, and up to 55 metadata points including ZIP9 geocodes. | https://www.smarty.com/products/apis/us-street-api |
-| US Autocomplete Pro API | Provides real-time US address suggestions as users type, returning verified deliverable address candidates. | https://www.smarty.com/products/apis/us-autocomplete-api |
-| US ZIP Code API | Looks up and validates US ZIP codes, returning city and state associations, county data, and geographic metadata. | https://www.smarty.com/products/apis/us-zipcode-api |
-| US Reverse Geocode API | Converts latitude/longitude coordinates into US street addresses with full component breakdown. | https://www.smarty.com/products/apis/us-reverse-geocoding |
-| US Address Enrichment API | Returns up to 350 property attributes for a US address including property characteristics and ownership data. | https://www.smarty.com/products/apis/us-address-enrichment-api |
-| US Extract API | Extracts and validates US addresses from freeform unstructured text input. | https://www.smarty.com/products/apis/us-extract-api |
-| International Street Address API | Verifies and standardizes street addresses for countries outside the United States. | https://www.smarty.com/products/apis/international-street-api |
-| International Address Autocomplete API | Delivers real-time address suggestions for international addresses as users type. | https://www.smarty.com/products/apis/international-address-autocomplete-api |
-| International Postal Code API | Validates and looks up postal codes for international locations with city, region, and geographic metadata. | https://www.smarty.com/products/apis/international-postal-code-api |
+### Published properties
 
-## Plans / Rate Limits / FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Plans: [plans/smarty-plans-pricing.yml](plans/smarty-plans-pricing.yml)
-- Rate Limits: [rate-limits/smarty-rate-limits.yml](rate-limits/smarty-rate-limits.yml)
-- FinOps: [finops/smarty-finops.yml](finops/smarty-finops.yml)
+#### Agentic access (1)
 
-**Pricing summary:** Freemium — 42-day free trial (1,000 US lookups, 100 international). Professional US plans start at $50/month; international plans start at $95/month. No overages; quota depletion returns HTTP 402. Enterprise plans available with custom quotas.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-**Rate limits:** Plan-based throughput of 25,000 lookups/second (US) and 3,500/second (international). Embedded-key requests have undisclosed per-IP security limits. HTTP 429 returned with a Retry-After header on throttling. Leaky Bucket algorithm.
+- [Smarty Agentic Access](https://apis.io/agentic-access/smarty/smarty-agentic-access/)
 
-## Timestamps
+#### JSON Schema (2)
 
-- Created: 2026-06-12
-- Modified: 2026-06-12
+The data models the API reads and writes.
 
-## Common Properties
+- [Smarty US Address Request](https://apis.io/schemas/smarty/smarty-us-address-request/)
+- [Smarty US Address Response](https://apis.io/schemas/smarty/smarty-us-address-response/)
 
-| Type | URL |
-|------|-----|
-| Website | https://www.smarty.com/ |
-| Documentation | https://www.smarty.com/docs |
-| GitHub Organization | https://github.com/smartystreets |
-| LinkedIn | https://www.linkedin.com/company/smarty-digital-llc |
-| Blog | https://www.smarty.com/blog |
-| Pricing | https://www.smarty.com/pricing |
-| Status Page | https://status.smarty.com/ |
-| Changelog | https://www.smarty.com/docs/changelog |
-| X | https://x.com/smartycompany |
+#### JSON-LD (1)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-- Kin Lane / kin@apievangelist.com
+- [Smarty Context](https://apis.io/jsonld/smarty/smarty-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Smarty Vocabulary](https://apis.io/vocabularies/smarty/smarty-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Smarty Us Autocomplete Response](https://apis.io/examples/smarty/smarty-us-autocomplete-response/)
+- [Smarty Us Reverse Geocode Response](https://apis.io/examples/smarty/smarty-us-reverse-geocode-response/)
+
+#### Collections (12)
+
+Postman and Open Collection request collections.
+
+- [International Address Autocomplete Lookup API](https://apis.io/collections/smarty/open-smarty-lookup-api/)
+- [International Address Autocomplete Lookup reverse-geo API](https://apis.io/collections/smarty/open-smarty-reverse-geo-api/)
+- [International Address Autocomplete Lookup street-address API](https://apis.io/collections/smarty/open-smarty-street-address-api/)
+- [International Address Autocomplete Lookup us-enrichment API](https://apis.io/collections/smarty/open-smarty-us-enrichment-api/)
+- [International Address Autocomplete Lookup US Extract API API](https://apis.io/collections/smarty/open-smarty-us-extract-api-api/)
+- [International Address Autocomplete Lookup Verify API](https://apis.io/collections/smarty/open-smarty-verify-api/)
+- [International Address Autocomplete Lookup API](https://apis.io/collections/smarty/postman-smarty-lookup-api/)
+- [International Address Autocomplete Lookup reverse-geo API](https://apis.io/collections/smarty/postman-smarty-reverse-geo-api/)
+- [International Address Autocomplete Lookup street-address API](https://apis.io/collections/smarty/postman-smarty-street-address-api/)
+- [International Address Autocomplete Lookup us-enrichment API](https://apis.io/collections/smarty/postman-smarty-us-enrichment-api/)
+- [International Address Autocomplete Lookup US Extract API API](https://apis.io/collections/smarty/postman-smarty-us-extract-api-api/)
+- [International Address Autocomplete Lookup Verify API](https://apis.io/collections/smarty/postman-smarty-verify-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Smarty — jsonschema rules](https://apis.io/rules/smarty/smarty-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Smarty Authentication](https://apis.io/security/smarty/smarty-authentication/)
+- [Smarty Domain Security](https://apis.io/security/smarty/smarty-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Smarty Plans Pricing](https://apis.io/plans/smarty/smarty-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Smarty Rate Limits](https://apis.io/rate-limits/smarty/smarty-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Smarty Finops](https://apis.io/finops/smarty/smarty-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.smarty.com/)
+- [Documentation](https://www.smarty.com/docs)
+- [Pricing](https://www.smarty.com/pricing)
+- [Changelog](https://www.smarty.com/docs/changelog)
+- [Blog](https://www.smarty.com/blog)
+- [GitHub](https://github.com/smartystreets)
+- [Status](https://status.smarty.com/)
+
+## API Evangelist rating
+
+**Kin Score 37.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 56.6 |
+| Contract governance | 23.5 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 25.0 |
+| Access clarity | 18.4 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/smarty/](https://apis.io/providers/smarty/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Smarty: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/smarty/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
